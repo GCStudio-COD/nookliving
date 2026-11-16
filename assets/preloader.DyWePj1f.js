@@ -1,1 +1,1 @@
-import{a}from"./index.BSdFiPHn.js";const r=a(1500);export{r as $};
+import{a}from"./index.BSdFiPHn.js";const r=a(0);export{r as $};
