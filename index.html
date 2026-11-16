@@ -94,6 +94,12 @@
         }
 
         /* 1. All headings, paragraphs, and sections outside cards */
+        .c-hero-home_title {
+            font-size: clamp(2.5rem, 1.8rem + 3.8vw, 5.4rem) !important;
+            line-height: 1.04 !important;
+            letter-spacing: -0.03em !important;
+        }
+
         .c-hero-home_tagline {
             font-size: clamp(1rem, 0.85rem + 0.6vw, 1.4rem) !important;
             letter-spacing: -0.01em !important;
@@ -354,6 +360,22 @@
         .c-menu-desktop_item.active .c-menu-desktop_link_label {
             color: #ffffff !important;
         }
+        .c-menu-desktop_link.is-current-page:before {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+        }
+        .c-menu-desktop_link.is-current-page,
+        .c-menu-desktop_link.is-current-page .c-menu-desktop_link_label {
+            color: #ffffff !important;
+        }
+        .c-menu-mobile_nav_link.is-current-page,
+        .c-menu-mobile_nav_link.is-current-page .c-menu-mobile_nav_label {
+            background-color: #816AB0 !important;
+            color: #ffffff !important;
+            border-radius: 8px;
+            padding-left: 0.5rem;
+        }
+
 
         .c-menu-mobile_nav_link:hover,
         .c-menu-mobile_nav_link:hover .c-menu-mobile_nav_label {
@@ -372,6 +394,35 @@
             padding-top: clamp(2.5rem, 4vw, 5rem);
             padding-bottom: clamp(3rem, 5vw, 6rem);
             position: relative;
+            overflow: hidden;
+        }
+
+        .community-header-bar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-bottom: clamp(1.75rem, 3vw, 2.75rem);
+        }
+
+        @media (min-width: 768px) {
+            .community-header-bar {
+                flex-direction: row;
+                align-items: flex-end;
+                justify-content: space-between;
+                gap: 2rem;
+            }
+        }
+
+        .community-header-text {
+            max-width: 680px;
+        }
+
+        .community-header-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+            padding-bottom: 0.25rem;
         }
 
         .c-community-section_badge {
@@ -449,8 +500,18 @@
 
         /* Swiper Container */
         .community-swiper {
-            padding: 10px 4px 30px 4px !important;
-            overflow: visible !important;
+            width: 100% !important;
+            padding: 10px 4px 35px 4px !important;
+            overflow: hidden !important;
+        }
+
+        .community-swiper .swiper-slide {
+            height: auto !important;
+            display: flex;
+        }
+
+        .community-swiper .c-community-card {
+            width: 100%;
         }
 
         /* Native horizontal scroll fallback before Swiper loads */
@@ -464,8 +525,14 @@
         }
 
         .community-swiper:not(.swiper-initialized) .swiper-slide {
-            flex: 0 0 320px;
+            flex: 0 0 300px;
             scroll-snap-align: start;
+        }
+
+        @media (min-width: 768px) {
+            .community-swiper:not(.swiper-initialized) .swiper-slide {
+                flex: 0 0 calc((100% - 48px) / 3);
+            }
         }
 
         /* Community Event Card */
@@ -889,6 +956,777 @@
     <link rel="modulepreload" as="script" crossorigin="" href="./assets/Rail.DA9f2iCn.js">
     <link rel="modulepreload" as="script" crossorigin="" href="./assets/_commonjsHelpers.Cpj98o6Y.js">
     <link rel="modulepreload" as="script" crossorigin="" href="./assets/scroll.C7dNMCy6.js">
+
+    <!-- ================================================================= -->
+    <!-- Nook Living - Interactive Questionnaire & Enquiry Modal Styles    -->
+    <!-- ================================================================= -->
+    <style id="nook-enquiry-modal-styles">
+        :root {
+            --nook-plum: #3B1238;
+            --nook-plum-dark: #2A0B27;
+            --nook-dusty-pink: #E8A0BF;
+            --nook-dusty-pink-light: #F7D4E3;
+            --nook-cream: #FDFBF7;
+            --nook-cream-muted: #F5EFE6;
+            --nook-mustard: #E5A823;
+            --nook-charcoal: #231C21;
+        }
+
+        .nook-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(0.75rem, 3vw, 1.5rem);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+        }
+
+        .nook-modal-overlay.is-open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .nook-modal-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(35, 28, 33, 0.65);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+
+        .nook-modal-dialog {
+            position: relative;
+            z-index: 2;
+            background: #ffffff;
+            color: var(--nook-charcoal);
+            width: 100%;
+            max-width: 620px;
+            max-height: 90vh;
+            border-radius: 28px;
+            box-shadow: 0 30px 70px -15px rgba(59, 18, 56, 0.45), 0 0 0 1px rgba(59, 18, 56, 0.08);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0.88) translateY(32px);
+            opacity: 0;
+            transition: transform 0.42s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.32s ease;
+        }
+
+        .nook-modal-overlay.is-open .nook-modal-dialog {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        /* Header */
+        .nook-modal-header {
+            padding: 1.5rem 1.75rem 1.15rem;
+            border-bottom: 1px solid rgba(59, 18, 56, 0.08);
+            background: var(--nook-cream);
+            position: relative;
+        }
+
+        .nook-modal-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--nook-plum);
+            background: rgba(232, 160, 191, 0.35);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            margin-bottom: 0.5rem;
+        }
+
+        .nook-modal-title {
+            font-size: clamp(1.35rem, 1.2rem + 0.5vw, 1.7rem);
+            font-weight: 700;
+            color: var(--nook-plum);
+            line-height: 1.2;
+            margin: 0 0 0.3rem 0;
+        }
+
+        .nook-modal-subtitle {
+            font-size: 0.875rem;
+            color: #645a60;
+            margin: 0;
+            line-height: 1.45;
+        }
+
+        .nook-modal-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(59, 18, 56, 0.12);
+            background: #ffffff;
+            color: var(--nook-plum);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.25rem;
+            font-weight: 600;
+            transition: all 0.25s ease;
+            line-height: 1;
+        }
+
+        .nook-modal-close:hover {
+            background: var(--nook-plum);
+            color: #ffffff;
+            transform: rotate(90deg);
+        }
+
+        /* Progress Track */
+        .nook-modal-progress-track {
+            width: 100%;
+            height: 4px;
+            background: rgba(59, 18, 56, 0.08);
+            position: relative;
+        }
+
+        .nook-modal-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--nook-dusty-pink) 0%, #816AB0 50%, var(--nook-mustard) 100%);
+            background-size: 200% 100%;
+            width: 0%;
+            transition: width 0.45s cubic-bezier(0.34, 1.25, 0.64, 1);
+            animation: nookBarShimmer 3s ease infinite;
+        }
+
+        /* Body & Steps */
+        .nook-modal-body {
+            padding: 1.5rem 1.75rem;
+            overflow-y: auto;
+            flex: 1;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .nook-step-section {
+            display: none;
+        }
+
+        .nook-step-section.is-active {
+            display: block;
+            animation: nookStepSlideIn 0.36s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* ============================================================= */
+        /* Enhanced Modal Animations & Micro-Interactions                 */
+        /* ============================================================= */
+        @keyframes nookStepSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(24px) scale(0.97);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        @keyframes nookOptCascade {
+            0% {
+                opacity: 0;
+                transform: translateY(14px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes nookSelectPulse {
+            0% { transform: scale(0.97); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes nookBadgePop {
+            0% { transform: scale(0.8); }
+            60% { transform: scale(1.22); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes nookCheckSpin {
+            0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        @keyframes nookBarShimmer {
+            0% { background-position: 100% 0; }
+            100% { background-position: -100% 0; }
+        }
+
+        @keyframes nookBtnShine {
+            0% { left: -100%; }
+            35%, 100% { left: 100%; }
+        }
+
+        @keyframes nookFloatBadge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        @keyframes nookHeartBeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.18); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            56% { transform: scale(1); }
+        }
+
+        @keyframes nookWaPulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .nook-field-label {
+            display: block;
+            font-size: 0.925rem;
+            font-weight: 700;
+            color: var(--nook-plum);
+            margin-bottom: 0.75rem;
+        }
+
+        .nook-field-label small {
+            font-weight: 400;
+            color: #645a60;
+            font-size: 0.8rem;
+            margin-left: 0.35rem;
+        }
+
+        /* Room Selection Cards */
+        .nook-room-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.65rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .nook-room-card {
+            border: 1.5px solid rgba(59, 18, 56, 0.12);
+            border-radius: 16px;
+            padding: 0.85rem 1.1rem;
+            background: #ffffff;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        .nook-room-card:hover {
+            border-color: var(--nook-dusty-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 18, 56, 0.08);
+        }
+
+        .nook-room-card.is-selected {
+            border-color: var(--nook-plum);
+            background: rgba(232, 160, 191, 0.14);
+            box-shadow: 0 0 0 2px var(--nook-plum);
+        }
+
+        .nook-room-card_info {
+            flex: 1;
+        }
+
+        .nook-room-card_title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--nook-plum);
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .nook-room-card_badge {
+            font-size: 0.675rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: var(--nook-mustard);
+            color: var(--nook-plum-dark);
+            padding: 0.15rem 0.45rem;
+            border-radius: 9999px;
+        }
+
+        .nook-room-card_desc {
+            font-size: 0.8rem;
+            color: #645a60;
+            line-height: 1.35;
+        }
+
+        .nook-room-card_price {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--nook-plum);
+            background: rgba(59, 18, 56, 0.06);
+            padding: 0.35rem 0.65rem;
+            border-radius: 10px;
+            white-space: nowrap;
+            margin-left: 0.75rem;
+        }
+
+        /* Pill Group Options */
+        .nook-pill-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .nook-pill-option {
+            border: 1.5px solid rgba(59, 18, 56, 0.14);
+            background: #ffffff;
+            color: var(--nook-charcoal);
+            padding: 0.45rem 0.95rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .nook-pill-option:hover {
+            border-color: var(--nook-dusty-pink);
+            color: var(--nook-plum);
+        }
+
+        .nook-pill-option.is-selected {
+            background: var(--nook-plum);
+            color: #ffffff;
+            border-color: var(--nook-plum);
+            box-shadow: 0 4px 10px rgba(59, 18, 56, 0.2);
+        }
+
+        /* Text Inputs */
+        .nook-input-group {
+            margin-bottom: 1rem;
+        }
+
+        .nook-input-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--nook-plum);
+            margin-bottom: 0.35rem;
+        }
+
+        .nook-input {
+            width: 100%;
+            border: 1.5px solid rgba(59, 18, 56, 0.15);
+            background: var(--nook-cream);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            font-size: 0.925rem;
+            color: var(--nook-charcoal);
+            outline: none;
+            transition: all 0.25s ease;
+            box-sizing: border-box;
+        }
+
+        .nook-input:focus {
+            border-color: var(--nook-plum);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(232, 160, 191, 0.3);
+        }
+
+        .nook-textarea {
+            width: 100%;
+            min-height: 75px;
+            resize: vertical;
+        }
+
+        
+        
+        /* Modal Intro Screen Styles */
+        .nook-intro-view {
+            text-align: center;
+            padding: 1.25rem 0.5rem 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nook-intro-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--nook-plum);
+            background: rgba(232, 160, 191, 0.35);
+            padding: 0.25rem 0.85rem;
+            border-radius: 9999px;
+            margin-bottom: 0.85rem;
+            animation: nookFloatBadge 3s ease-in-out infinite;
+        }
+
+        .nook-intro-title {
+            font-size: clamp(1.75rem, 1.4rem + 1vw, 2.25rem);
+            font-weight: 800;
+            color: var(--nook-plum);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin: 0 0 0.65rem 0;
+        }
+
+        .nook-intro-subtitle {
+            font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.1rem);
+            color: #554a52;
+            line-height: 1.5;
+            max-width: 440px;
+            margin: 0 0 1.15rem 0;
+        }
+
+        .nook-intro-callout {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #FFF0F5;
+            border: 1.5px dashed var(--nook-dusty-pink);
+            border-radius: 14px;
+            padding: 0.6rem 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--nook-plum);
+            margin-bottom: 1.35rem;
+        }
+
+        .nook-intro-preview-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.6rem;
+            width: 100%;
+            max-width: 440px;
+            margin-bottom: 1.75rem;
+            text-align: left;
+        }
+
+        .nook-intro-preview-item {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: #FAF7F2;
+            border: 1px solid rgba(59, 18, 56, 0.08);
+            border-radius: 12px;
+            padding: 0.55rem 0.75rem;
+            font-size: 0.825rem;
+            font-weight: 600;
+            color: #4a3e47;
+        }
+
+        .nook-intro-preview-num {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #816AB0;
+            background: rgba(129, 106, 176, 0.12);
+            padding: 0.15rem 0.45rem;
+            border-radius: 6px;
+        }
+
+        .nook-intro-start-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            max-width: 300px;
+            padding: 0.9rem 1.75rem;
+            background: var(--nook-plum);
+            color: #ffffff !important;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(59, 18, 56, 0.25);
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nook-intro-start-btn:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            animation: nookBtnShine 3s infinite ease-in-out;
+        }
+
+        .nook-intro-start-btn:hover {
+            background: #816AB0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(129, 106, 176, 0.35);
+        }
+
+        /* Modal Vibe Options Styles */
+        .nook-modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .nook-modal-opt-btn {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            width: 100%;
+            text-align: left;
+            padding: 0.85rem 1rem;
+            background: #FAF7F2;
+            border: 1.5px solid rgba(59, 18, 56, 0.1);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+            font-family: inherit;
+        }
+
+        .nook-step-section.is-active .nook-modal-opt-btn:nth-child(1) {
+            animation: nookOptCascade 0.34s cubic-bezier(0.16, 1, 0.3, 1) 0.04s both;
+        }
+        .nook-step-section.is-active .nook-modal-opt-btn:nth-child(2) {
+            animation: nookOptCascade 0.34s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+        }
+        .nook-step-section.is-active .nook-modal-opt-btn:nth-child(3) {
+            animation: nookOptCascade 0.34s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+        }
+        .nook-step-section.is-active .nook-modal-opt-btn:nth-child(4) {
+            animation: nookOptCascade 0.34s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+        }
+
+        .nook-modal-opt-btn:hover {
+            background: #FFF8FA;
+            border-color: var(--nook-dusty-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(232, 160, 191, 0.18);
+        }
+
+        .nook-modal-opt-btn:active {
+            transform: scale(0.97);
+        }
+
+        .nook-modal-opt-btn.is-selected {
+            background: #FFF5F9 !important;
+            border-color: var(--nook-plum) !important;
+            box-shadow: 0 6px 16px rgba(59, 18, 56, 0.12);
+            animation: nookSelectPulse 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .nook-modal-opt-badge {
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            background: #EAE1D5;
+            color: var(--nook-plum);
+            font-weight: 800;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+            transition: all 0.2s ease;
+        }
+
+        .nook-modal-opt-btn.is-selected .nook-modal-opt-badge {
+            background: var(--nook-plum);
+            color: #ffffff;
+            animation: nookBadgePop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .nook-modal-opt-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .nook-modal-opt-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #231C21;
+            line-height: 1.3;
+            margin-bottom: 0.2rem;
+        }
+
+        .nook-modal-opt-desc {
+            font-size: 0.825rem;
+            color: #645a60;
+            line-height: 1.4;
+        }
+
+        .nook-modal-opt-check {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1.5px solid #D5CBC0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+            font-size: 0.75rem;
+            color: transparent;
+            transition: all 0.2s ease;
+        }
+
+        .nook-modal-opt-btn.is-selected .nook-modal-opt-check {
+            border-color: var(--nook-plum);
+            background: var(--nook-plum);
+            color: #ffffff;
+            animation: nookCheckSpin 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .nook-vibe-summary-box {
+            background: var(--nook-cream);
+            border: 1px dashed var(--nook-dusty-pink);
+            border-radius: 14px;
+            padding: 0.85rem 1.15rem;
+            font-size: 0.875rem;
+            color: var(--nook-plum);
+        }
+
+        /* Modal Footer */
+        .nook-modal-footer {
+            padding: 1.1rem 1.75rem 1.35rem;
+            border-top: 1px solid rgba(59, 18, 56, 0.08);
+            background: var(--nook-cream);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+
+        .nook-btn-back {
+            border: 1.5px solid rgba(59, 18, 56, 0.2);
+            background: transparent;
+            color: var(--nook-plum);
+            padding: 0.65rem 1.25rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nook-btn-back:hover {
+            background: rgba(59, 18, 56, 0.06);
+        }
+
+        .nook-btn-next,
+        .nook-btn-submit {
+            border: none;
+            background: var(--nook-plum);
+            color: #ffffff;
+            padding: 0.7rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            box-shadow: 0 4px 14px rgba(59, 18, 56, 0.25);
+            margin-left: auto;
+        }
+
+        .nook-btn-next:hover,
+        .nook-btn-submit:hover {
+            background: var(--nook-plum-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 18, 56, 0.35);
+        }
+
+        .nook-btn-whatsapp {
+            border: 1.5px solid #25D366;
+            background: #E8F8EE;
+            color: #0E7734;
+            padding: 0.7rem 1.25rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-decoration: none;
+            animation: nookWaPulse 2.2s infinite;
+        }
+
+        .nook-btn-whatsapp:hover {
+            background: #25D366;
+            color: #ffffff;
+        }
+
+        /* Success Screen */
+        .nook-success-view {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .nook-success-icon {
+            width: 68px;
+            height: 68px;
+            background: rgba(232, 160, 191, 0.3);
+            color: var(--nook-plum);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.25rem;
+            animation: nookHeartBeat 2s ease-in-out infinite;
+        }
+
+        @keyframes nookPop {
+            0% { transform: scale(0); opacity: 0; }
+            70% { transform: scale(1.15); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .nook-summary-card {
+            background: var(--nook-cream);
+            border-radius: 16px;
+            border: 1px dashed rgba(59, 18, 56, 0.2);
+            padding: 1rem 1.25rem;
+            margin: 1.5rem auto;
+            max-width: 440px;
+            text-align: left;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: var(--nook-charcoal);
+        }
+    </style>
+
 </head>
 
 <body>
@@ -948,26 +1786,26 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                 </a>
                 <div class="c-menu-desktop_inner"> <!-- Main items (in desktop bar menu) -->
                     <ul class="c-menu-desktop_list">
-                        <li class="c-menu-desktop_item" data-has-children="false"> <a href="#" target="_self"
-                                class="c-menu-desktop_link"> <span class="c-menu-desktop_link_label">Home</span> </a>
+                        <li class="c-menu-desktop_item" data-has-children="false"> <a href="#top" data-no-swup="" target="_self"
+                                class="c-menu-desktop_link is-current-page"> <span class="c-menu-desktop_link_label">Home</span> </a>
                         </li>
-                        <li class="c-menu-desktop_item" data-has-children="false"> <a href="#" target="_self"
+                        <li class="c-menu-desktop_item" data-has-children="false"> <a href="#section-living" data-no-swup="" target="_self"
                                 class="c-menu-desktop_link"> <span class="c-menu-desktop_link_label">Living</span> </a>
                         </li>
-                        <li class="c-menu-desktop_item" data-has-children="false"> <a href="#" target="_self"
+                        <li class="c-menu-desktop_item" data-has-children="false"> <a href="#community-functions-slider" data-no-swup="" target="_self"
                                 class="c-menu-desktop_link"> <span class="c-menu-desktop_link_label">Community</span>
                             </a>
                         </li>
-                        <li class="c-menu-desktop_item" data-has-children="false"> <a href="#" target="_self"
+                        <li class="c-menu-desktop_item" data-has-children="false"> <a href="#about-nook" data-no-swup="" target="_self"
                                 class="c-menu-desktop_link"> <span class="c-menu-desktop_link_label">About</span> </a>
                         </li>
-                        <li class="c-menu-desktop_item" data-has-children="false"> <a href="#" target="_self"
+                        <li class="c-menu-desktop_item" data-has-children="false"> <a href="#nook-footer" data-no-swup="" target="_self"
                                 class="c-menu-desktop_link"> <span class="c-menu-desktop_link_label">Gallery</span> </a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div style="height: var(--menu-bar-height); display: flex; align-items: stretch;"> <c-button-quote id="buttonquote-3" style="height: 100%; display: flex; border-radius: var(--radius-sm); overflow: hidden;"> <a class="c-button-quote c-menu-desktop_contact" href="#" style="height: 100%; display: flex; align-items: center;"> <span
+            <div style="height: var(--menu-bar-height); display: flex; align-items: stretch;"> <c-button-quote id="buttonquote-3" style="height: 100%; display: flex; border-radius: var(--radius-sm); overflow: hidden;"> <a class="c-button-quote c-menu-desktop_contact" data-no-swup="" data-open-enquire="true" href="#" style="height: 100%; display: flex; align-items: center;"> <span
                             class="c-button-quote_label"> Enquire now </span> </a> </c-button-quote> </div>
         </nav>
     </c-menu-desktop>
@@ -982,7 +1820,7 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                     width="887" height="261">
             </a>
             <div class="c-menu-mobile_cta">
-                <div> <a class="c-menu-mobile_contact max-2xs:hidden" href="#">Enquire now</a> </div>
+                <div> <a class="c-menu-mobile_contact max-2xs:hidden" data-no-swup="" data-open-enquire="true" href="#">Enquire now</a> </div>
                 <div class="relative"> <button type="button" class="c-menu-mobile_burger" data-menu-mobile-toggler="">
                         <span class="sr-only">Toggle menu</span> <span class="c-menu-mobile_burger_icon -default"> <span
                                 class="c-menu-mobile_burger_icon_line"></span> <span
@@ -1009,21 +1847,21 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
         <nav class="c-menu-mobile_nav">
             <div class="c-menu-mobile_nav_inner">
                 <ul class="c-menu-mobile_list">
-                    <li class="c-menu-mobile_list_item" style="--index:0"> <a href="#" target="_self"
-                            class="c-menu-mobile_nav_link"> <span class="c-menu-mobile_nav_label">Home</span> </a> </li>
-                    <li class="c-menu-mobile_list_item" style="--index:1"> <a href="#" target="_self"
+                    <li class="c-menu-mobile_list_item" style="--index:0"> <a href="#top" data-no-swup="" target="_self"
+                            class="c-menu-mobile_nav_link is-current-page"> <span class="c-menu-mobile_nav_label">Home</span> </a> </li>
+                    <li class="c-menu-mobile_list_item" style="--index:1"> <a href="#section-living" data-no-swup="" target="_self"
                             class="c-menu-mobile_nav_link"> <span class="c-menu-mobile_nav_label">Living</span> </a>
                     </li>
-                    <li class="c-menu-mobile_list_item" style="--index:2"> <a href="#" target="_self"
+                    <li class="c-menu-mobile_list_item" style="--index:2"> <a href="#community-functions-slider" data-no-swup="" target="_self"
                             class="c-menu-mobile_nav_link"> <span class="c-menu-mobile_nav_label">Community</span> </a>
                     </li>
-                    <li class="c-menu-mobile_list_item" style="--index:3"> <a href="#" target="_self"
+                    <li class="c-menu-mobile_list_item" style="--index:3"> <a href="#about-nook" data-no-swup="" target="_self"
                             class="c-menu-mobile_nav_link"> <span class="c-menu-mobile_nav_label">About</span> </a>
                     </li>
-                    <li class="c-menu-mobile_list_item" style="--index:4"> <a href="#" target="_self"
+                    <li class="c-menu-mobile_list_item" style="--index:4"> <a href="#nook-footer" data-no-swup="" target="_self"
                             class="c-menu-mobile_nav_link"> <span class="c-menu-mobile_nav_label">Gallery</span> </a>
                     </li>
-                </ul> <a href="#" class="c-menu-mobile_nav_contact"> <span
+                </ul> <a href="#" data-no-swup="" data-no-swup="" data-open-enquire="true" class="c-menu-mobile_nav_contact"> <span
                         class="c-menu-mobile_nav_label c-menu-mobile_nav_contact_label">Contact</span> <span
                         class="c-menu-mobile_nav_contact_icon"> <span class="c-icon"> <svg width="1.01em" height="1em"
                                 viewBox="0 0 413.1 412.2" class="svg-contact" aria-hidden="true" focusable="false"
@@ -1060,7 +1898,7 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
     <!-- ================================================================= -->
     <!-- 4. Main Page Content                                               -->
     <!-- ================================================================= -->
-    <main class="transition">
+    <main class="transition" id="top">
         <div id="swup" class="transition-slide">
             <div class="transition-inner">
                 <div class="c-hero-home is-inview" data-scroll="" data-scroll-css-progress="" style="--progress: 0;">
@@ -1068,11 +1906,10 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                         <div class="c-hero-home_container container">
                             <div class="c-hero-home_content">
                                 <div class="anim-first-hit -delay-2">
-                                    <h1 class="c-hero-home_title">Find Your<br>Corner Feel at<br>Home</h1>
+                                    <h1 class="c-hero-home_title">YOU CALL IT HOME,<br>WE CALL IT NOOK.</h1>
                                 </div>
                                 <div class="anim-first-hit -delay-1">
-                                    <h2 class="c-hero-home_tagline">A premium women’s living and lifestyle community in
-                                        Calicut.</h2>
+                                    <h2 class="c-hero-home_tagline">More than a place to stay. A women's co-living space in Kozhikode where independence meets good company.</h2>
                                 </div>
                             </div>
                         </div>
@@ -1081,17 +1918,16 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                         <div class="c-hero-home_container container">
                             <div class="c-hero-home_content">
                                 <div class="sm:anim-first-hit -delay-2">
-                                    <div class="c-hero-home_title">Find Your<br>Corner Feel at<br>Home</div>
+                                    <div class="c-hero-home_title">YOU CALL IT HOME,<br>WE CALL IT NOOK.</div>
                                 </div>
                                 <div class="sm:anim-first-hit -delay-1">
-                                    <div class="c-hero-home_tagline">A premium women’s living and lifestyle community in
-                                        Calicut.</div>
+                                    <div class="c-hero-home_tagline">More than a place to stay. A women's co-living space in Kozhikode where independence meets good company.</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="c-homepage-timeline">
+                <div class="c-homepage-timeline" id="section-living">
                     <div class="c-homepage-timeline_intro is-inview" data-scroll="" data-scroll-css-progress=""
                         data-scroll-offset="0,100%" style="--progress: 0;">
                         <div class="c-homepage-timeline_intro_illustration_wrap">
@@ -1138,20 +1974,16 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                                 <div class="c-tile-animated_bg -colored" style="--color-bg: #816AB0"></div>
                                 <div class="c-tile-animated_bg -white"></div>
                                 <div class="c-tile-animated_inner">
-                                    <h3 class="c-tile-animated_title">One brief. One team.</h3>
-                                    <p class="c-tile-animated_description">You brief us once and we take it from there.
-                                        From methodology design and recruitment to local moderation and reporting,
-                                        everything is managed by a single point of contact who leads your study from
-                                        start to finish. You get clear updates, fast turnarounds, and high-quality
-                                        insights—without compromise.</p>
-                                    <div class="c-tile-animated_cta"> <a href="#" target="_self"
+                                    <h3 class="c-tile-animated_title">Mornings feel better here.</h3>
+                                    <p class="c-tile-animated_description">some like slow mornings, some are out of the bed before the alarm. At nook, there is room for all your little habits. And after a long day, come back to a place where you can put your feet up and feel at ease.</p>
+                                    <div class="c-tile-animated_cta"> <a href="#" target="_self" data-no-swup="" data-open-enquire="true"
                                             class="c-button button-purple button-primary"
                                             style="--color-primary: #816AB0; --button-background: #816AB0; --button-background-hover: #816AB0;">
                                             <span class="c-button_icon -hover"> <span class="c-icon"> <svg width="1em"
                                                         height="1em" viewBox="0 0 20 20" class="svg-arrow-right"
                                                         aria-hidden="true" focusable="false" data-icon="arrow-right">
                                                         <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                    </svg> </span> </span> <span class="c-button_label"> Services
+                                                    </svg> </span> </span> <span class="c-button_label"> Take a Peek Inside
                                             </span> <span class="c-button_icon -default"> <span class="c-icon"> <svg
                                                         width="1em" height="1em" viewBox="0 0 20 20"
                                                         class="svg-arrow-right" aria-hidden="true" focusable="false"
@@ -1167,20 +1999,16 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                                 <div class="c-tile-animated_bg -colored" style="--color-bg: #1F4397"></div>
                                 <div class="c-tile-animated_bg -white"></div>
                                 <div class="c-tile-animated_inner">
-                                    <h3 class="c-tile-animated_title">One brief. One team.</h3>
-                                    <p class="c-tile-animated_description">You brief us once and we take it from there.
-                                        From methodology design and recruitment to local moderation and reporting,
-                                        everything is managed by a single point of contact who leads your study from
-                                        start to finish. You get clear updates, fast turnarounds, and high-quality
-                                        insights—without compromise.</p>
-                                    <div class="c-tile-animated_cta"> <a href="#" target="_self"
+                                    <h3 class="c-tile-animated_title">your vibe, your rules</h3>
+                                    <p class="c-tile-animated_description">One of you is out for a run at 5 AM. Another is deep into a late-night game. Someone's always experimenting in the kitchen. At Nook, it all lives side by side, and nobody has to change to fit in.</p>
+                                    <div class="c-tile-animated_cta"> <a href="#" target="_self" data-no-swup="" data-open-enquire="true"
                                             class="c-button button-dark-blue button-primary"
                                             style="--color-primary: #1F4397; --button-background: #1F4397; --button-background-hover: #1F4397;">
                                             <span class="c-button_icon -hover"> <span class="c-icon"> <svg width="1em"
                                                         height="1em" viewBox="0 0 20 20" class="svg-arrow-right"
                                                         aria-hidden="true" focusable="false" data-icon="arrow-right">
                                                         <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                    </svg> </span> </span> <span class="c-button_label"> Methodology
+                                                    </svg> </span> </span> <span class="c-button_label"> Pick Your Vibe
                                             </span> <span class="c-button_icon -default"> <span class="c-icon"> <svg
                                                         width="1em" height="1em" viewBox="0 0 20 20"
                                                         class="svg-arrow-right" aria-hidden="true" focusable="false"
@@ -1196,20 +2024,17 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                                 <div class="c-tile-animated_bg -colored" style="--color-bg: #CD266B"></div>
                                 <div class="c-tile-animated_bg -white"></div>
                                 <div class="c-tile-animated_inner">
-                                    <h3 class="c-tile-animated_title">One brief. One team.</h3>
-                                    <p class="c-tile-animated_description">You brief us once and we take it from there.
-                                        From methodology design and recruitment to local moderation and reporting,
-                                        everything is managed by a single point of contact who leads your study from
-                                        start to finish. You get clear updates, fast turnarounds, and high-quality
-                                        insights—without compromise.</p>
-                                    <div class="c-tile-animated_cta"> <a href="#" target="_self"
+                                    <span class="c-tile-animated_tag" style="display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.35rem; color: #CD266B;">Work, Study &amp; Life</span>
+                                    <h3 class="c-tile-animated_title">A place for all your plans.</h3>
+                                    <p class="c-tile-animated_description">You've got work. You've got classes. You've got that project you keep calling &quot;almost done.&quot; Nook gives you the quiet to deal with all of it. Get your head down, get it done, then go be a potato for the rest of the evening.</p>
+                                    <div class="c-tile-animated_cta"> <a href="#" target="_self" data-no-swup="" data-open-enquire="true"
                                             class="c-button button-magenta button-primary"
                                             style="--color-primary: #CD266B; --button-background: #CD266B; --button-background-hover: #CD266B;"> <span
                                                 class="c-button_icon -hover"> <span class="c-icon"> <svg width="1em"
                                                         height="1em" viewBox="0 0 20 20" class="svg-arrow-right"
                                                         aria-hidden="true" focusable="false" data-icon="arrow-right">
                                                         <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                    </svg> </span> </span> <span class="c-button_label"> Industry Sectors </span> <span class="c-button_icon -default"> <span
+                                                    </svg> </span> </span> <span class="c-button_label"> Laptop and Chill </span> <span class="c-button_icon -default"> <span
                                                     class="c-icon"> <svg width="1em" height="1em" viewBox="0 0 20 20"
                                                         class="svg-arrow-right" aria-hidden="true" focusable="false"
                                                         data-icon="arrow-right">
@@ -1224,20 +2049,17 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                                 <div class="c-tile-animated_bg -colored" style="--color-bg: #816AB0"></div>
                                 <div class="c-tile-animated_bg -white"></div>
                                 <div class="c-tile-animated_inner">
-                                    <h3 class="c-tile-animated_title">One brief. One team.</h3>
-                                    <p class="c-tile-animated_description">You brief us once and we take it from there.
-                                        From methodology design and recruitment to local moderation and reporting,
-                                        everything is managed by a single point of contact who leads your study from
-                                        start to finish. You get clear updates, fast turnarounds, and high-quality
-                                        insights—without compromise.</p>
-                                    <div class="c-tile-animated_cta"> <a href="#" target="_self"
+                                    <span class="c-tile-animated_tag" style="display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.35rem; color: #816AB0;">Learning &amp; Independence</span>
+                                    <h3 class="c-tile-animated_title">There's more to living than just living.</h3>
+                                    <p class="c-tile-animated_description">There's always something new to pick up. Maybe it's a life skill you'll actually use, maybe it's something you never thought you'd try. Nook's workshops and community experiences make learning feel less like a class and more like part of your week.</p>
+                                    <div class="c-tile-animated_cta"> <a href="#" target="_self" data-no-swup="" data-open-enquire="true"
                                             class="c-button button-purple button-primary"
                                             style="--color-primary: #816AB0; --button-background: #816AB0; --button-background-hover: #816AB0;"> <span
                                                 class="c-button_icon -hover"> <span class="c-icon"> <svg width="1em"
                                                         height="1em" viewBox="0 0 20 20" class="svg-arrow-right"
                                                         aria-hidden="true" focusable="false" data-icon="arrow-right">
                                                         <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                    </svg> </span> </span> <span class="c-button_label"> Our Network
+                                                    </svg> </span> </span> <span class="c-button_label"> Learn something fun.
                                             </span> <span class="c-button_icon -default"> <span class="c-icon"> <svg
                                                         width="1em" height="1em" viewBox="0 0 20 20"
                                                         class="svg-arrow-right" aria-hidden="true" focusable="false"
@@ -1477,17 +2299,14 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                             <div class="col-span-full md:col-start-2 md:col-span-14">
                                 <p class="heading-2xl text-center">Ready to find<br>your corner?</p>
                                 <div class="mt-fluid-2xl flex flex-col items-center gap-6">
-                                    <p class="heading-xs max-w-100 text-center text-balance md:max-w-140"> Whether
-                                        you’re starting your career or studying in Calicut, Nook living offers safe,
-                                        comfortable, and inspiring co-living spaces designed for women. Let’s help you
-                                        settle in. </p> <a
-                                        href="#" target="_self" data-deluxe-callout-action="true"
+                                    <p class="heading-xs max-w-100 text-center text-balance md:max-w-140"> A place to call your own, people to share the little moments with, and plenty of new experiences waiting for you. Your Nook story starts here </p> <a
+                                        href="#" target="_self" data-deluxe-callout-action="true" data-no-swup="" data-open-enquire="true"
                                         class="c-button button-green button-secondary"> <span
                                             class="c-button_icon -hover"> <span class="c-icon"> <svg width="1em"
                                                     height="1em" viewBox="0 0 20 20" class="svg-arrow-right"
                                                     aria-hidden="true" focusable="false" data-icon="arrow-right">
                                                     <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                </svg> </span> </span> <span class="c-button_label"> Enquire now </span>
+                                                </svg> </span> </span> <span class="c-button_label"> Say Hi, Get a Corner. </span>
                                         <span class="c-button_icon -default"> <span class="c-icon"> <svg width="1em"
                                                     height="1em" viewBox="0 0 20 20" class="svg-arrow-right"
                                                     aria-hidden="true" focusable="false" data-icon="arrow-right">
@@ -1577,88 +2396,8 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                         </path>
                     </svg>
                 </div>
-                <div class="c-numbers-stack">
-                    <div class="container">
-                        <div class="grid grid-cols-6 gap-gutter md:grid-cols-16">
-                            <div class="col-span-full md:col-start-2 md:col-span-14">
-                                <div class="c-numbers-stack_grid">
-                                    <div class="c-numbers-stack_content">
-                                        <div class="c-numbers-stack_content_sticky">
-                                            <h2 class="c-numbers-stack_title" data-scroll="" data-scroll-repeat=""
-                                                style="--accent-color: var(--color-pink-500);">
-                                                <p>A few numbers behind the <strong>lifestyle</strong> we offer</p>
-                                            </h2>
-                                            <div>
-                                                <p class="c-numbers-stack_text body-md">These numbers represent our
-                                                    dedication to comfort, safety, and sisterhood. Discover why women
-                                                    across Calicut choose Nook living as their second home.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="c-numbers-stack_list">
-                                        <div class="c-numbers-stack_list_item" style="--index: 1" data-scroll=""
-                                            data-scroll-css-progress="" data-scroll-offset="0%, 40%"
-                                            data-scroll-position="start, start">
-                                            <div class="c-numbers-stack_card -blue">
-                                                <div class="c-numbers-stack_card_icon_wrap"> <span
-                                                        class="c-numbers-stack_card_icon"> <span class="c-icon"> <svg
-                                                                width="1em" height="1em" viewBox="0 0 66 66"
-                                                                class="svg-globe" aria-hidden="true" focusable="false"
-                                                                data-icon="globe">
-                                                                <path fill="currentColor"
-                                                                    d="M15.5 32.995a17.495 17.495 0 1 1 34.99 0 17.495 17.495 0 0 1-34.99 0M32.995 18h-.125c.23.45.48.988.705 1.585.607 1.615 1.16 3.98.177 6.07-.905 1.925-2.462 2.425-3.625 2.725l-.17.043c-1.13.292-1.6.412-1.937.925-.315.48-.26 1.082.1 2.25l.08.262c.143.455.313.995.4 1.505.112.635.142 1.43-.258 2.2a3.75 3.75 0 0 1-1.554 1.628 5.5 5.5 0 0 1-1.66.525l-.173.03c-.895.157-1.35.237-1.785.705-.343.367-.555 1.005-.68 1.93-.05.377-.08.752-.112 1.14l-.015.204c-.035.426-.08.91-.175 1.326l-.06.275a14.95 14.95 0 0 0 10.867 4.664 14.9 14.9 0 0 0 7.635-2.087 8 8 0 0 1-.645-.715c-.593-.745-1.36-2.017-1.095-3.515.127-.717.513-1.322.89-1.79.385-.475.85-.915 1.258-1.292l.277-.253c.313-.288.583-.533.81-.773q.17-.17.313-.364a1 1 0 0 0 .077-.133c.125-.417-.025-.725-.21-.867-.138-.106-.487-.263-1.115.132q-.314.203-.633.395a2.5 2.5 0 0 1-.687.293 1.335 1.335 0 0 1-1.585-.9 1.5 1.5 0 0 1-.07-.5 2.5 2.5 0 0 1 .04-.473c.063-.525.157-1.3-.143-2.455-.242-.928-.595-1.635-.955-2.355q-.257-.51-.49-1.03c-.22-.5-.46-1.15-.417-1.84.05-.8.453-1.45 1.105-1.94.793-.595 1.79-1.957 2.653-3.335a38 38 0 0 0 1.017-1.725l.058-.105A14.93 14.93 0 0 0 32.995 18m10.093 3.903c-.255.45-.583 1.017-.96 1.62-.848 1.35-2.06 3.1-3.273 4.007a.5.5 0 0 0-.11.1c0 .068.025.253.21.675q.125.277.325.675c.392.785.94 1.887 1.25 3.085.167.64.248 1.21.275 1.703 1.09-.36 2.185-.196 3.03.457 1.045.807 1.483 2.212 1.075 3.57-.19.62-.625 1.133-.975 1.5-.295.307-.65.63-.97.925l-.235.212q-.538.477-1.002 1.026c-.266.325-.355.537-.376.654-.074.413.128.943.59 1.526q.346.428.768.782a14.97 14.97 0 0 0 5.28-11.425c0-4.395-1.89-8.35-4.903-11.092M18 32.995a14.9 14.9 0 0 0 1.968 7.433l.044-.375c.136-1.013.42-2.333 1.33-3.305 1.036-1.11 2.308-1.32 3.12-1.453q.12-.018.228-.04c.435-.075.697-.145.9-.258a1.25 1.25 0 0 0 .535-.59c.035-.067.082-.224.015-.612-.058-.333-.168-.68-.308-1.128l-.102-.334c-.325-1.063-.835-2.788.2-4.36.902-1.368 2.35-1.715 3.285-1.943l.285-.07c.995-.258 1.582-.5 1.99-1.367.53-1.13.3-2.655-.255-4.125q-.437-1.15-1.075-2.2A15 15 0 0 0 18 32.995">
-                                                                </path>
-                                                            </svg> </span> </span> </div>
-                                                <p class="c-numbers-stack_card_stat">60+</p>
-                                                <p class="c-numbers-stack_card_description"> Our network spans over 60
-                                                    countries, giving you local insight with global consistency. </p>
-                                            </div>
-                                        </div>
-                                        <div class="c-numbers-stack_list_item" style="--index: 2" data-scroll=""
-                                            data-scroll-css-progress="" data-scroll-offset="0%, 40%"
-                                            data-scroll-position="start, start">
-                                            <div class="c-numbers-stack_card -green">
-                                                <div class="c-numbers-stack_card_icon_wrap"> <span
-                                                        class="c-numbers-stack_card_icon"> <span class="c-icon"> <svg
-                                                                width="1em" height="1em" viewBox="0 0 66 66"
-                                                                class="svg-check" aria-hidden="true" focusable="false"
-                                                                data-icon="check">
-                                                                <path fill="currentColor"
-                                                                    d="M45.429 24.585c.365.375.571.883.571 1.412 0 .53-.206 1.037-.571 1.412L30.805 42.376a2.1 2.1 0 0 1-.675.462 2.04 2.04 0 0 1-2.269-.462l-7.265-7.435a2.035 2.035 0 0 1-.024-2.848 1.91 1.91 0 0 1 2.783.025l5.977 6.118 13.337-13.65a1.913 1.913 0 0 1 2.76 0">
-                                                                </path>
-                                                            </svg> </span> </span> </div>
-                                                <p class="c-numbers-stack_card_stat">400</p>
-                                                <p class="c-numbers-stack_card_description"> We’ve successfully
-                                                    delivered more than 400 research projects around the world — and
-                                                    counting. </p>
-                                            </div>
-                                        </div>
-                                        <div class="c-numbers-stack_list_item" style="--index: 3" data-scroll=""
-                                            data-scroll-css-progress="" data-scroll-offset="0%, 40%"
-                                            data-scroll-position="start, start">
-                                            <div class="c-numbers-stack_card -purple -red"
-                                                style="--background-color: #816AB0; --color: var(--color-white); background-color: #816AB0;">
-                                                <div class="c-numbers-stack_card_icon_wrap"> <span
-                                                        class="c-numbers-stack_card_icon"> <span class="c-icon"> <svg
-                                                                width="1em" height="1em" viewBox="0 0 66 66"
-                                                                class="svg-heart" aria-hidden="true" focusable="false"
-                                                                data-icon="heart">
-                                                                <path fill="currentColor"
-                                                                    d="M50 27.5c-.2-3.8-1.8-6.8-4.4-8.3s-6-1.4-9.4.3c-1 .5-2 1.2-2.9 1.9-.9-.7-1.9-1.4-2.9-1.9-3.4-1.7-6.7-1.8-9.4-.3-5.3 3.1-6 11.7-1.4 19.5 3.5 6 8.8 9.6 13.5 9.6h.4c4.7 0 10-3.6 13.5-9.6 2.1-3.7 3.2-7.7 3-11.3Zm-15.6-1.2s.1.2.2.3c.2.3.5.6.7 1 0 .1.1.2.2.3.3.4.5.8.8 1.2 1.2 2.1 2 4.3 2.4 6.4.7 4.2-.2 7.9-2.8 9.4-.2.1-.4.2-.7.3H35c-.2 0-.4.1-.6.2h-1.2c-.8 0-1.6-.3-2.3-.7-3.9-2.2-4.1-9.5-.4-15.8.9-1.5 1.9-2.8 3-4l.2.2c.3.3.5.6.8.9ZM22 37.4c-3.6-6.3-3.5-13.5.4-15.8.8-.5 1.7-.7 2.7-.7s2.6.4 4 1.1c.7.4 1.4.8 2.1 1.3-1.2 1.3-2.4 2.8-3.3 4.4-2.8 4.9-3.6 10.1-2.6 14-1.3-1.2-2.4-2.7-3.4-4.4Zm22.7 0c-1 1.7-2.1 3.1-3.4 4.4.6-2.1.6-4.4.1-6.9-.4-2.3-1.3-4.7-2.7-7.1v-.1c-.3-.5-.5-.9-.8-1.3-.1-.2-.3-.4-.4-.5-.2-.3-.4-.6-.6-.8-.1-.2-.3-.4-.4-.5-.2-.3-.4-.5-.7-.8 0-.1-.2-.2-.3-.3.7-.5 1.4-1 2.1-1.3 1.4-.7 2.8-1.1 4-1.1s1.9.2 2.7.7c1.8 1 2.9 3.2 3 6.1.2 3.1-.8 6.5-2.6 9.7Z">
-                                                                </path>
-                                                            </svg> </span> </span> </div>
-                                                <p class="c-numbers-stack_card_stat">50+</p>
-                                                <p class="c-numbers-stack_card_description"> Curated community events, workshops, wellness sessions, and celebrations held each year. </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="rounded-lg bg-beige-500">
-                    <div class="c-featured-articles">
+                                <div class="rounded-lg bg-beige-500" id="about-nook">
+                    <div class="c-featured-articles" id="featured-articles">
                         <h2 class="sr-only">Life at Nook living</h2>
                         <ul class="c-featured-articles_list">
                             <li class="c-featured-articles_item">
@@ -1672,8 +2411,8 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                                             <picture class="c-article-card_picture block w-full h-full c-image block">
                                                 <img
                                                     src="./assets/article-coliving.jpg"
-                                                    alt="A modern, aesthetic living space at Nook Living in Calicut"
-                                                    title="A curated living space designed for women at Nook Living"
+                                                    alt="Turns Out Home Feels Better With Your People in It — Nook Living"
+                                                    title="Turns Out Home Feels Better With Your People in It."
                                                     loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                                                     class="object-cover w-full h-full c-image_img"
                                                     style="aspect-ratio:1376 / 768;object-position:center center"
@@ -1682,9 +2421,9 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                                         </c-dato-image>
                                     </div>
                                     <div class="c-article-card_content">
-                                        <h3 class="c-article-card_title">The Modern Co-Living Guide: Why Women in Calicut Choose Community Living</h3>
-                                    </div> <a href="#" class="c-article-card_link"> <span class="sr-only">Read more
-                                            about The Modern Co-Living Guide: Why Women in Calicut Choose Community Living</span> </a>
+                                        <h3 class="c-article-card_title">Turns Out Home Feels Better With Your People in It.</h3>
+                                    </div> <a href="#" class="c-article-card_link" data-no-swup=""> <span class="sr-only">Read more
+                                            about Turns Out Home Feels Better With Your People in It.</span> </a>
                                 </div>
                             </li>
                             <li class="c-featured-articles_item">
@@ -1699,8 +2438,8 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                                             <picture class="c-article-card_picture block w-full h-full c-image block">
                                                 <img
                                                     src="./assets/article-sanctuary.jpg"
-                                                    alt="A serene, private bedroom sanctuary designed for women at Nook Living"
-                                                    title="Safe, comfortable living for women at Nook Living" loading="lazy"
+                                                    alt="A comfortable room, your own space and some much-needed downtime at Nook Living"
+                                                    title="A comfortable room, your own space and some much-needed downtime" loading="lazy"
                                                     referrerpolicy="no-referrer-when-downgrade"
                                                     class="object-cover w-full h-full c-image_img"
                                                     style="aspect-ratio:1376 / 768;object-position:center center"
@@ -1709,9 +2448,9 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                                         </c-dato-image>
                                     </div>
                                     <div class="c-article-card_content">
-                                        <h3 class="c-article-card_title">Designing Safe Sanctuaries: How We Prioritize Comfort, Peace of Mind &amp; Privacy</h3>
-                                    </div> <a href="#" class="c-article-card_link"> <span class="sr-only">Read more
-                                            about Designing Safe Sanctuaries: How We Prioritize Comfort, Peace of Mind &amp; Privacy</span> </a>
+                                        <h3 class="c-article-card_title">A comfortable room, your own space and some much-needed downtime. Sounds like a good place to come back to.</h3>
+                                    </div> <a href="#" class="c-article-card_link" data-no-swup=""> <span class="sr-only">Read more
+                                            about A comfortable room, your own space and some much-needed downtime. Sounds like a good place to come back to.</span> </a>
                                 </div>
                             </li>
                             <li class="c-featured-articles_item">
@@ -1725,8 +2464,8 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                                             <picture class="c-article-card_picture block w-full h-full c-image block">
                                                 <img
                                                     src="./assets/article-study.jpg"
-                                                    alt="Aesthetic study and productive workspace at Nook Living"
-                                                    title="Work and study spaces designed for focus at Nook Living" loading="lazy"
+                                                    alt="Productive Days, Calm Evenings, All Under One Roof — Nook Living"
+                                                    title="Productive Days, Calm Evenings, All Under One Roof" loading="lazy"
                                                     referrerpolicy="no-referrer-when-downgrade"
                                                     class="object-cover w-full h-full c-image_img"
                                                     style="aspect-ratio:1376 / 768;object-position:center center"
@@ -1735,9 +2474,9 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                                         </c-dato-image>
                                     </div>
                                     <div class="c-article-card_content">
-                                        <h3 class="c-article-card_title">Balancing Career, Studies &amp; Self-Care: Daily Life Inside Nook Living</h3>
-                                    </div> <a href="#" class="c-article-card_link"> <span class="sr-only">Read more
-                                            about Balancing Career, Studies &amp; Self-Care: Daily Life Inside Nook Living</span> </a>
+                                        <h3 class="c-article-card_title">Productive Days, Calm Evenings, All Under One Roof</h3>
+                                    </div> <a href="#" class="c-article-card_link" data-no-swup=""> <span class="sr-only">Read more
+                                            about Productive Days, Calm Evenings, All Under One Roof</span> </a>
                                 </div>
                             </li>
                             <li class="c-featured-articles_item">
@@ -1756,8 +2495,8 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                                             <picture class="c-article-card_picture block w-full h-full c-image block">
                                                 <img
                                                     src="./assets/article-community.jpg"
-                                                    alt="Community rooftop gathering and sisterhood events at Nook Living"
-                                                    title="Sisterhood and rooftop community gatherings at Nook Living"
+                                                    alt="Where Strangers Turn Into Sisters Over Chai and Dinner — Nook Living"
+                                                    title="Where Strangers Turn Into Sisters Over Chai and Dinner"
                                                     loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                                                     class="object-cover w-full h-full c-image_img"
                                                     style="aspect-ratio:1376 / 768;object-position:center center"
@@ -1766,9 +2505,9 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                                         </c-dato-image>
                                     </div>
                                     <div class="c-article-card_content">
-                                        <h3 class="c-article-card_title">Rooftops, Dinners &amp; Sisterhood: What Makes Our Community Weekends Special</h3>
-                                    </div> <a href="#" class="c-article-card_link"> <span class="sr-only">Read more
-                                            about Rooftops, Dinners &amp; Sisterhood: What Makes Our Community Weekends Special</span> </a>
+                                        <h3 class="c-article-card_title">Where Strangers Turn Into Sisters Over Chai and Dinner</h3>
+                                    </div> <a href="#" class="c-article-card_link" data-no-swup=""> <span class="sr-only">Read more
+                                            about Where Strangers Turn Into Sisters Over Chai and Dinner</span> </a>
                                 </div>
                             </li>
                         </ul>
@@ -1776,44 +2515,45 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                     <!-- ================================================================= -->
                     <!-- 4.3 Community Functions & Gatherings (Swiper Carousel)            -->
                     <!-- ================================================================= -->
-                    <section class="c-community-section" id="community-functions">
+                    <section class="c-community-section" id="community-functions-slider">
                         <div class="container">
-                            <div class="grid grid-cols-6 gap-gutter md:grid-cols-16 mb-fluid-md items-end">
-                                <div class="col-span-full md:col-start-2 md:col-span-10">
-                                    <div class="c-community-section_badge">
-                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                            <circle cx="9" cy="7" r="4"></circle>
-                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                        </svg>
-                                        Community Life
+                            <div class="grid grid-cols-6 gap-gutter md:grid-cols-16">
+                                <div class="col-span-full md:col-start-2 md:col-span-14">
+                                    <!-- Header Row (Title on Left, Nav Buttons on Right) -->
+                                    <div class="community-header-bar">
+                                        <div class="community-header-text">
+                                            <div class="c-community-section_badge">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                                    <circle cx="9" cy="7" r="4"></circle>
+                                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                                </svg>
+                                                Events and workshops
+                                            </div>
+                                            <h2 class="c-community-section_title">Good Things Happen at Nook</h2>
+                                            <p class="c-community-section_subtitle">
+                                                Movie nights, brunch dates, wellness sessions and everything in between. Basically, your social calendar just got a whole lot more interesting.
+                                            </p>
+                                        </div>
+                                        <div class="community-header-nav">
+                                            <button class="community-swiper-btn community-swiper-prev" aria-label="Previous function" type="button">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                                </svg>
+                                            </button>
+                                            <button class="community-swiper-btn community-swiper-next" aria-label="Next function" type="button">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                                </svg>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <h2 class="c-community-section_title">Curated Functions &amp; Gatherings</h2>
-                                    <p class="c-community-section_subtitle">
-                                        Living at Nook is about belonging. From sunset rooftop cinema to soulful Sunday brunches and wellness circles, here's what brings our sisterhood together.
-                                    </p>
-                                </div>
-                                <div class="col-span-full md:col-span-4 flex items-center justify-start md:justify-end gap-3 pb-2">
-                                    <div class="community-nav-wrap">
-                                        <button class="community-swiper-btn community-swiper-prev" aria-label="Previous function" type="button">
-                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <line x1="19" y1="12" x2="5" y2="12"></line>
-                                                <polyline points="12 19 5 12 12 5"></polyline>
-                                            </svg>
-                                        </button>
-                                        <button class="community-swiper-btn community-swiper-next" aria-label="Next function" type="button">
-                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                <polyline points="12 5 19 12 12 19"></polyline>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <!-- Swiper -->
-                            <div class="swiper community-swiper">
+                                    <!-- Swiper Carousel -->
+                                    <div class="swiper community-swiper">
                                 <div class="swiper-wrapper">
                                     <!-- Slide 1 -->
                                     <div class="swiper-slide">
@@ -2035,26 +2775,26 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                                 <div class="swiper-pagination community-swiper-pagination"></div>
                             </div>
                         </div>
-                    </section>
+                    </div>
+                </div>
+            </section>
                 </div>
                 <!-- ================================================================= -->
                 <!-- 5. Site Footer                                                    -->
                 <!-- ================================================================= -->
-                <footer class="c-footer">
+                <footer class="c-footer" id="nook-footer">
                     <div class="container">
                         <div class="grid grid-cols-6 gap-gutter md:grid-cols-16">
                             <div class="col-span-full md:col-start-2 md:col-span-14">
                                 <div class="grid gap-x-gutter gap-y-fluid-2xl md:grid-cols-14">
                                     <div class="col-span-full md:col-span-6 xl:col-span-4">
-                                        <p class="max-md:heading-xs md:body-lg max-w-[450px] font-medium"> Ready to find your corner?
-                                            Join Calicut’s premier women’s co-living community. Enjoy fully-furnished private spaces,
-                                            thoughtful amenities, and a safe, welcoming environment designed for you. </p> <a href="#" target="_self"
+                                        <p class="max-md:heading-xs md:body-lg max-w-[480px] font-medium">Ready to make yourself at home? A space of your own, good people around you and plenty to look forward to. If Nook sounds like your kind of living, we'd love to hear from you. Let's get you one step closer to finding your Nook!</p> <a href="#" target="_self" data-no-swup="" data-open-enquire="true"
                                             class="c-button mt-fluid-sm button-purple button-secondary" style="--color-primary: #816AB0; --button-background: #ffffff;"> <span
                                                 class="c-button_icon -hover"> <span class="c-icon"> <svg width="1em"
                                                         height="1em" viewBox="0 0 20 20" class="svg-arrow-right"
                                                         aria-hidden="true" focusable="false" data-icon="arrow-right">
                                                         <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                    </svg> </span> </span> <span class="c-button_label"> Enquire now
+                                                    </svg> </span> </span> <span class="c-button_label"> Find Your Nook.
                                             </span> <span class="c-button_icon -default"> <span class="c-icon"> <svg
                                                         width="1em" height="1em" viewBox="0 0 20 20"
                                                         class="svg-arrow-right" aria-hidden="true" focusable="false"
@@ -2213,16 +2953,20 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
                         },
                         breakpoints: {
                             640: {
-                                slidesPerView: 2.1,
+                                slidesPerView: 2,
+                                spaceBetween: 20,
+                            },
+                            768: {
+                                slidesPerView: 3,
                                 spaceBetween: 24,
                             },
                             1024: {
-                                slidesPerView: 3.1,
-                                spaceBetween: 28,
+                                slidesPerView: 3,
+                                spaceBetween: 24,
                             },
                             1280: {
-                                slidesPerView: 3.3,
-                                spaceBetween: 30,
+                                slidesPerView: 3,
+                                spaceBetween: 28,
                             }
                         }
                     });
@@ -2235,6 +2979,768 @@ C287.7,321.2,276.5,325.8,265,325.8z"></path>
             }
         });
     </script>
+
+    <!-- ================================================================= -->
+    <!-- Nook Living - Interactive Questionnaire & Enquiry Modal Popup     -->
+    <!-- ================================================================= -->
+        <div id="nook-enquire-modal" class="nook-modal-overlay" aria-hidden="true" data-lenis-prevent="true">
+        <div class="nook-modal-backdrop" id="nook-modal-backdrop" title="Click to close"></div>
+        <div class="nook-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="nook-modal-title">
+            <!-- Header -->
+            <div class="nook-modal-header">
+                <span class="nook-modal-kicker">✨ Pick Your Vibe</span>
+                <button type="button" class="nook-modal-close" id="nook-modal-close-btn" aria-label="Close Questionnaire">&times;</button>
+                <h3 class="nook-modal-title" id="nook-modal-title">Hey, future Nookie!</h3>
+                <p class="nook-modal-subtitle" id="nook-modal-subtitle">Before you move in, we'd love to know a little about you!</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="nook-modal-progress-track">
+                <div class="nook-modal-progress-bar" id="nook-progress-bar"></div>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="nook-modal-body">
+                <!-- STEP 0: INTRO SCREEN -->
+                <div class="nook-step-section is-active" id="nook-step-0">
+                    <div class="nook-intro-view">
+                        <div class="nook-intro-badge">✨ Welcome to Nook</div>
+                        <h2 class="nook-intro-title">
+                            Hey, future <span style="color: #816AB0;">Nookie!</span>
+                        </h2>
+                        <p class="nook-intro-subtitle">
+                            Before you move in, we'd love to know a little about you!
+                        </p>
+
+                        <div class="nook-intro-callout">
+                            <span class="nook-intro-callout-icon">✨</span>
+                            <span class="nook-intro-callout-text">4 little questions, Pick your vibe!</span>
+                        </div>
+
+                        <div class="nook-intro-preview-list">
+                            <div class="nook-intro-preview-item">
+                                <span class="nook-intro-preview-num">01</span>
+                                <span>At-home personality</span>
+                            </div>
+                            <div class="nook-intro-preview-item">
+                                <span class="nook-intro-preview-num">02</span>
+                                <span>Dream roommate energy</span>
+                            </div>
+                            <div class="nook-intro-preview-item">
+                                <span class="nook-intro-preview-num">03</span>
+                                <span>What feels like home</span>
+                            </div>
+                            <div class="nook-intro-preview-item">
+                                <span class="nook-intro-preview-num">04</span>
+                                <span>Daily routine</span>
+                            </div>
+                        </div>
+
+                        <button type="button" class="nook-intro-start-btn" id="nook-intro-start-btn">
+                            Pick Your Vibe &rarr;
+                        </button>
+                    </div>
+                </div>
+
+                <!-- QUESTION 1 -->
+                <div class="nook-step-section" id="nook-step-1">
+                    <label class="nook-field-label">01. What's your at-home personality?<small>(Pick one)</small></label>
+                    <div class="nook-modal-options">
+                        <button type="button" class="nook-modal-opt-btn" data-q="1" data-letter="A">
+                            <span class="nook-modal-opt-badge">A</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">Certified Chatterbox</div>
+                                <div class="nook-modal-opt-desc">Always up for chat, gossip and good company.</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="nook-modal-opt-btn" data-q="1" data-letter="B">
+                            <span class="nook-modal-opt-badge">B</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">Do Not Disturb Girlie</div>
+                                <div class="nook-modal-opt-desc">Me time, music and my cozy corner, Perfect!</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="nook-modal-opt-btn" data-q="1" data-letter="C">
+                            <span class="nook-modal-opt-badge">C</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">Socially Selective</div>
+                                <div class="nook-modal-opt-desc">Sometimes social, sometimes solo, depending on the mood.</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="nook-modal-opt-btn" data-q="1" data-letter="D">
+                            <span class="nook-modal-opt-badge">D</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">The Spontaneous One</div>
+                                <div class="nook-modal-opt-desc">Always up for random plans, new adventures</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- QUESTION 2 -->
+                <div class="nook-step-section" id="nook-step-2">
+                    <label class="nook-field-label">02. Whats your dream roommate energy?<small>(Pick one)</small></label>
+                    <div class="nook-modal-options">
+                        <button type="button" class="nook-modal-opt-btn" data-q="2" data-letter="A">
+                            <span class="nook-modal-opt-badge">A</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">Roomie Turned Bestie</div>
+                                <div class="nook-modal-opt-desc">Late-night talks, getting ready together, sharing snacks and stories</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="nook-modal-opt-btn" data-q="2" data-letter="B">
+                            <span class="nook-modal-opt-badge">B</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">The Peaceful Roomie</div>
+                                <div class="nook-modal-opt-desc">Personal space, mutual respect and zero drama</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="nook-modal-opt-btn" data-q="2" data-letter="C">
+                            <span class="nook-modal-opt-badge">C</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">The Perfect Balance</div>
+                                <div class="nook-modal-opt-desc">We can hang out, and still enjoy our own personal space.</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="nook-modal-opt-btn" data-q="2" data-letter="D">
+                            <span class="nook-modal-opt-badge">D</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">My Partner in Crime</div>
+                                <div class="nook-modal-opt-desc">Always ready for quick outings, exploring the city, and making memories!</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- QUESTION 3 -->
+                <div class="nook-step-section" id="nook-step-3">
+                    <label class="nook-field-label">03. What feels like home to you?<small>(Pick one)</small></label>
+                    <div class="nook-modal-options">
+                        <button type="button" class="nook-modal-opt-btn" data-q="3" data-letter="A">
+                            <span class="nook-modal-opt-badge">A</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">My Safe Little Bubble</div>
+                                <div class="nook-modal-opt-desc">cozy corners and peaceful evenings</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="nook-modal-opt-btn" data-q="3" data-letter="B">
+                            <span class="nook-modal-opt-badge">B</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">A Home That Feels Alive</div>
+                                <div class="nook-modal-opt-desc">movie nights, shared meals, and friendships that feel like family.</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="nook-modal-opt-btn" data-q="3" data-letter="C">
+                            <span class="nook-modal-opt-badge">C</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">My Space, My Rules</div>
+                                <div class="nook-modal-opt-desc">Freedom, independence and privacy</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="nook-modal-opt-btn" data-q="3" data-letter="D">
+                            <span class="nook-modal-opt-badge">D</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">A Little Bit of Everything</div>
+                                <div class="nook-modal-opt-desc">Friends, me-time,fun and belonging.</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- QUESTION 4 -->
+                <div class="nook-step-section" id="nook-step-4">
+                    <label class="nook-field-label">04. What's your daily routine like?<small>(Pick one)</small></label>
+                    <div class="nook-modal-options">
+                        <button type="button" class="nook-modal-opt-btn" data-q="4" data-letter="A">
+                            <span class="nook-modal-opt-badge">A</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">The Early Bird</div>
+                                <div class="nook-modal-opt-desc">Up early, ready to make the most of the day.</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="nook-modal-opt-btn" data-q="4" data-letter="B">
+                            <span class="nook-modal-opt-badge">B</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">The Night Owl</div>
+                                <div class="nook-modal-opt-desc">Late nights, slow mornings. That's my thing!</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="nook-modal-opt-btn" data-q="4" data-letter="C">
+                            <span class="nook-modal-opt-badge">C</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">The Go-With-The-Flow</div>
+                                <div class="nook-modal-opt-desc">No fixed plans, just taking the day as it comes.</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="nook-modal-opt-btn" data-q="4" data-letter="D">
+                            <span class="nook-modal-opt-badge">D</span>
+                            <div class="nook-modal-opt-info">
+                                <div class="nook-modal-opt-title">The Routine Lover</div>
+                                <div class="nook-modal-opt-desc">I like having a plan and sticking to my schedule.</div>
+                            </div>
+                            <span class="nook-modal-opt-check" aria-hidden="true">✓</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 5: CONTACT INFO -->
+                <div class="nook-step-section" id="nook-step-5">
+                    <div class="nook-vibe-summary-box" id="nook-modal-vibe-summary">
+                        <strong>✨ Your Nook Vibe Match:</strong>
+                        <div id="nook-modal-vibe-tags" style="margin-top: 0.35rem; color: #816AB0; font-weight: 600;">Pick your answers to match!</div>
+                    </div>
+
+                    <label class="nook-field-label" style="margin-top: 1rem;">Where should we say hi and send your match?</label>
+                    <div class="nook-input-group">
+                        <label for="nook-user-name">Your Full Name *</label>
+                        <input type="text" id="nook-user-name" class="nook-input" placeholder="e.g. Ananya Sharma" required autocomplete="name">
+                    </div>
+
+                    <div class="nook-input-group">
+                        <label for="nook-user-phone">WhatsApp / Phone Number *</label>
+                        <input type="tel" id="nook-user-phone" class="nook-input" placeholder="e.g. +91 98765 43210" required autocomplete="tel">
+                    </div>
+
+                    <div class="nook-input-group">
+                        <label for="nook-user-notes">Any questions or notes? <small>(Optional)</small></label>
+                        <textarea id="nook-user-notes" class="nook-input nook-textarea" placeholder="e.g. When can I visit? Tell us anything you'd like..."></textarea>
+                    </div>
+                </div>
+
+                <!-- SUCCESS VIEW -->
+                <div class="nook-step-section" id="nook-step-success">
+                    <div class="nook-success-view">
+                        <div class="nook-success-icon">♡</div>
+                        <h4 style="font-size: 1.5rem; font-weight: 700; color: var(--nook-plum); margin-bottom: 0.5rem;">Enquiry Received!</h4>
+                        <p style="font-size: 0.95rem; color: #554a52; line-height: 1.6; max-width: 440px; margin: 0 auto;">You’re one step closer to your corner. Say hi on WhatsApp to chat directly with our team at Nook Living Kozhikode!</p>
+
+                        <div class="nook-summary-card" id="nook-summary-content">
+                            <!-- Populated via JS -->
+                        </div>
+
+                        <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; align-items: center;">
+                            <a id="nook-success-whatsapp-link" href="#" target="_blank" rel="noopener" class="nook-btn-whatsapp">
+                                <span>💬</span> Continue on WhatsApp
+                            </a>
+                            <button type="button" class="nook-btn-next" id="nook-btn-finish">Back to Site</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Controls -->
+            <div class="nook-modal-footer" id="nook-modal-footer">
+                <button type="button" class="nook-btn-back" id="nook-btn-back" style="display: none;">&larr; Back</button>
+                <div style="display: flex; gap: 0.5rem; margin-left: auto;">
+                    <a href="https://wa.me/919999999999?text=Hi%20Nook!%20I'd%20like%20to%20say%20hi%20and%20find%20my%20corner." target="_blank" rel="noopener" class="nook-btn-whatsapp" id="nook-footer-wa-btn" style="display: none;">
+                        <span>💬</span> Chat on WhatsApp
+                    </a>
+                    <button type="button" class="nook-btn-next" id="nook-btn-next">Next &rarr;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- Nook Living - Interactive Questionnaire Modal Script              -->
+    <!-- ================================================================= -->
+        <!-- ================================================================= -->
+    <!-- Nook Living - Interactive Questionnaire Modal Script              -->
+    <!-- ================================================================= -->
+    <script id="nook-enquiry-modal-script">
+        (function() {
+            window.nookVibeAnswers = window.nookVibeAnswers || {};
+
+            const modal = document.getElementById('nook-enquire-modal');
+            const backdrop = document.getElementById('nook-modal-backdrop');
+            const closeBtn = document.getElementById('nook-modal-close-btn');
+            const progressBar = document.getElementById('nook-progress-bar');
+            const modalTitle = document.getElementById('nook-modal-title');
+            const modalSubtitle = document.getElementById('nook-modal-subtitle');
+            const btnBack = document.getElementById('nook-btn-back');
+            const btnNext = document.getElementById('nook-btn-next');
+            const btnFinish = document.getElementById('nook-btn-finish');
+            const footerWaBtn = document.getElementById('nook-footer-wa-btn');
+            const modalFooter = document.getElementById('nook-modal-footer');
+
+            let currentStep = 0;
+            const totalSteps = 5;
+
+            const enquiryData = {
+                name: '',
+                phone: '',
+                notes: ''
+            };
+
+            // Open Modal
+            function openModal(e) {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (typeof e.stopImmediatePropagation === 'function') {
+                        e.stopImmediatePropagation();
+                    }
+                }
+                modal.classList.add('is-open');
+                modal.setAttribute('aria-hidden', 'false');
+
+                // Clear any rogue is-current-page from other header links
+                document.querySelectorAll('.c-menu-desktop_item:not(:first-child) .c-menu-desktop_link').forEach(function(link) {
+                    link.classList.remove('is-current-page');
+                });
+
+                // Sync with already selected answers on page
+                syncModalOptionsFromGlobal();
+
+                // If all 4 vibe questions are already answered, jump straight to Contact (Step 5)
+                const answeredCount = Object.keys(window.nookVibeAnswers).length;
+                if (answeredCount >= 4) {
+                    showStep(5);
+                } else {
+                    // Always show the Intro Screen first (Hey, future Nookie!)
+                    showStep(0);
+                }
+
+                if (window.lenis && typeof window.lenis.stop === 'function') {
+                    window.lenis.stop();
+                }
+            }
+
+            // Close Modal
+            function closeModal(e) {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (typeof e.stopImmediatePropagation === 'function') {
+                        e.stopImmediatePropagation();
+                    }
+                }
+                modal.classList.remove('is-open');
+                modal.setAttribute('aria-hidden', 'true');
+
+                if (window.lenis && typeof window.lenis.start === 'function') {
+                    window.lenis.start();
+                }
+            }
+
+            function syncModalOptionsFromGlobal() {
+                const answers = window.nookVibeAnswers || {};
+                document.querySelectorAll('.nook-modal-opt-btn').forEach(function(btn) {
+                    const q = btn.getAttribute('data-q');
+                    const letter = btn.getAttribute('data-letter');
+                    if (answers[q] && answers[q].letter === letter) {
+                        btn.classList.add('is-selected');
+                    } else if (answers[q]) {
+                        btn.classList.remove('is-selected');
+                    }
+                });
+            }
+
+            function showStep(step) {
+                currentStep = step;
+                document.querySelectorAll('.nook-step-section').forEach(function(s) {
+                    s.classList.remove('is-active');
+                });
+
+                if (step <= 5) {
+                    const activeSection = document.getElementById('nook-step-' + step);
+                    if (activeSection) activeSection.classList.add('is-active');
+                } else {
+                    const successSection = document.getElementById('nook-step-success');
+                    if (successSection) successSection.classList.add('is-active');
+                }
+
+                if (step === 0) {
+                    // STEP 0: INTRO SCREEN
+                    progressBar.style.width = '0%';
+                    modalTitle.textContent = 'Hey, future Nookie!';
+                    modalSubtitle.textContent = "Before you move in, we'd love to know a little about you!";
+                    modalFooter.style.display = 'none';
+                } else if (step === 1) {
+                    progressBar.style.width = '20%';
+                    btnBack.style.display = 'inline-block';
+                    footerWaBtn.style.display = 'none';
+                    btnNext.textContent = 'Next Question →';
+                    modalTitle.textContent = 'Question 01 of 04';
+                    modalSubtitle.textContent = "What's your at-home personality?";
+                    modalFooter.style.display = 'flex';
+                } else if (step === 2) {
+                    progressBar.style.width = '40%';
+                    btnBack.style.display = 'inline-block';
+                    footerWaBtn.style.display = 'none';
+                    btnNext.textContent = 'Next Question →';
+                    modalTitle.textContent = 'Question 02 of 04';
+                    modalSubtitle.textContent = "Whats your dream roommate energy?";
+                    modalFooter.style.display = 'flex';
+                } else if (step === 3) {
+                    progressBar.style.width = '60%';
+                    btnBack.style.display = 'inline-block';
+                    footerWaBtn.style.display = 'none';
+                    btnNext.textContent = 'Next Question →';
+                    modalTitle.textContent = 'Question 03 of 04';
+                    modalSubtitle.textContent = "What feels like home to you?";
+                    modalFooter.style.display = 'flex';
+                } else if (step === 4) {
+                    progressBar.style.width = '80%';
+                    btnBack.style.display = 'inline-block';
+                    footerWaBtn.style.display = 'none';
+                    btnNext.textContent = 'Almost Done: Say Hi →';
+                    modalTitle.textContent = 'Question 04 of 04';
+                    modalSubtitle.textContent = "What's your daily routine like?";
+                    modalFooter.style.display = 'flex';
+                } else if (step === 5) {
+                    // Contact step
+                    progressBar.style.width = '100%';
+                    btnBack.style.display = 'inline-block';
+                    footerWaBtn.style.display = 'inline-flex';
+                    btnNext.textContent = 'Say Hi, Get a Corner ♡';
+                    modalTitle.textContent = 'Ready to find your corner?';
+                    modalSubtitle.textContent = 'Your Nook story starts here. Where should we send your match?';
+                    modalFooter.style.display = 'flex';
+
+                    // Update vibe tags in summary box
+                    const tagsEl = document.getElementById('nook-modal-vibe-tags');
+                    const vibeArr = [];
+                    if (window.nookVibeAnswers['1']) vibeArr.push(window.nookVibeAnswers['1'].title);
+                    if (window.nookVibeAnswers['2']) vibeArr.push(window.nookVibeAnswers['2'].title);
+                    if (window.nookVibeAnswers['3']) vibeArr.push(window.nookVibeAnswers['3'].title);
+                    if (window.nookVibeAnswers['4']) vibeArr.push(window.nookVibeAnswers['4'].title);
+
+                    if (tagsEl) {
+                        tagsEl.textContent = vibeArr.length > 0 ? vibeArr.join(' • ') : 'Pick your vibe to complete match!';
+                    }
+                } else {
+                    // Success View
+                    progressBar.style.width = '100%';
+                    modalTitle.textContent = 'Welcome, future Nookie!';
+                    modalSubtitle.textContent = 'We have your vibe match and will get in touch shortly.';
+                    modalFooter.style.display = 'none';
+                }
+            }
+
+            // Hook up Intro Start Button
+            const introStartBtn = document.getElementById('nook-intro-start-btn');
+            if (introStartBtn) {
+                introStartBtn.addEventListener('click', function() {
+                    showStep(1);
+                });
+            }
+
+            // Options Selection in Modal
+            document.querySelectorAll('.nook-modal-opt-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const q = this.getAttribute('data-q');
+                    const letter = this.getAttribute('data-letter');
+                    const titleEl = this.querySelector('.nook-modal-opt-title');
+                    const title = titleEl ? titleEl.textContent.trim() : '';
+
+                    // Unselect siblings
+                    const parent = this.closest('.nook-modal-options');
+                    if (parent) {
+                        parent.querySelectorAll('.nook-modal-opt-btn').forEach(function(b) {
+                            b.classList.remove('is-selected');
+                        });
+                    }
+                    this.classList.add('is-selected');
+
+                    // Save globally
+                    window.nookVibeAnswers[q] = { letter: letter, title: title };
+
+// Saved choice to modal state
+
+                    // Advance to next step after brief gentle pause
+                    setTimeout(function() {
+                        if (currentStep < 5) {
+                            showStep(currentStep + 1);
+                        }
+                    }, 220);
+                });
+            });
+
+            // Navigation Handlers
+            btnNext.addEventListener('click', function() {
+                if (currentStep < 5) {
+                    showStep(currentStep + 1);
+                } else if (currentStep === 5) {
+                    // Validate inputs
+                    const nameInput = document.getElementById('nook-user-name');
+                    const phoneInput = document.getElementById('nook-user-phone');
+
+                    if (!nameInput.value.trim()) {
+                        nameInput.focus();
+                        nameInput.style.borderColor = '#e62f2d';
+                        return;
+                    }
+                    if (!phoneInput.value.trim()) {
+                        phoneInput.focus();
+                        phoneInput.style.borderColor = '#e62f2d';
+                        return;
+                    }
+
+                    enquiryData.name = nameInput.value.trim();
+                    enquiryData.phone = phoneInput.value.trim();
+                    enquiryData.notes = document.getElementById('nook-user-notes').value.trim();
+
+                    // Vibe summary
+                    const vibeArr = [];
+                    if (window.nookVibeAnswers['1']) vibeArr.push('At-Home: ' + window.nookVibeAnswers['1'].title);
+                    if (window.nookVibeAnswers['2']) vibeArr.push('Roomie: ' + window.nookVibeAnswers['2'].title);
+                    if (window.nookVibeAnswers['3']) vibeArr.push('Home: ' + window.nookVibeAnswers['3'].title);
+                    if (window.nookVibeAnswers['4']) vibeArr.push('Routine: ' + window.nookVibeAnswers['4'].title);
+                    const vibeSummary = vibeArr.length > 0 ? vibeArr.join(' • ') : '';
+
+                    // Populate summary card
+                    const summaryEl = document.getElementById('nook-summary-content');
+                    summaryEl.innerHTML = `
+                        <div><strong>Resident:</strong> ${enquiryData.name} (${enquiryData.phone})</div>
+                        ${vibeSummary ? `<div><strong>Vibe Profile:</strong> ✨ ${vibeSummary}</div>` : ''}
+                        ${enquiryData.notes ? `<div><strong>Notes:</strong> ${enquiryData.notes}</div>` : ''}
+                    `;
+
+                    // WhatsApp Message Link
+                    let waBody = `Hi Nook Living! I just submitted an enquiry on your website:
+` +
+                        `• Name: ${enquiryData.name}
+` +
+                        `• Phone: ${enquiryData.phone}`;
+                    if (vibeSummary) {
+                        waBody += `
+• Vibe: ${vibeSummary}`;
+                    }
+                    if (enquiryData.notes) {
+                        waBody += `
+• Notes: ${enquiryData.notes}`;
+                    }
+                    const waText = encodeURIComponent(waBody);
+                    const waUrl = `https://wa.me/919999999999?text=${waText}`;
+
+                    document.getElementById('nook-success-whatsapp-link').href = waUrl;
+                    footerWaBtn.href = waUrl;
+
+                    showStep(6);
+                }
+            });
+
+            btnBack.addEventListener('click', function() {
+                if (currentStep > 1) {
+                    showStep(currentStep - 1);
+                }
+            });
+
+            btnFinish.addEventListener('click', closeModal);
+            closeBtn.addEventListener('click', closeModal);
+            backdrop.addEventListener('click', closeModal);
+
+            // Close on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+                    closeModal();
+                }
+            });
+
+            // Wire up triggers
+            function setupTriggers() {
+                const triggers = document.querySelectorAll(`
+                    .c-menu-desktop_contact,
+                    .c-menu-mobile_contact,
+                    .c-menu-mobile_nav_contact,
+                    [data-open-enquire="true"]
+                `);
+
+                triggers.forEach(function(trigger) {
+                    trigger.setAttribute('data-no-swup', '');
+                    trigger.addEventListener('click', openModal, { capture: true });
+                });
+
+                document.querySelectorAll('a, button').forEach(function(el) {
+                    const txt = el.textContent.trim().toLowerCase();
+                    if (txt === 'enquire now' || txt === 'enquire' || txt === 'say hi, get a corner.' || txt === 'say hi, get a corner →' || txt === 'find your nook.' || txt === 'find your nook') {
+                        el.setAttribute('data-no-swup', '');
+                        el.addEventListener('click', openModal, { capture: true });
+                    }
+                });
+            }
+
+            setupTriggers();
+
+            if (window.swup) {
+                window.swup.hooks.on('page:view', setupTriggers);
+            }
+        })();
+    </script>
+
+
+        <!-- ================================================================= -->
+    <!-- 7. Dynamic Header Navigation Scroll-Spy & Active State Script    -->
+    <!-- ================================================================= -->
+    <script id="nook-scrollspy-script">
+        (function() {
+            const desktopLinks = document.querySelectorAll('.c-menu-desktop_link');
+            const mobileLinks = document.querySelectorAll('.c-menu-mobile_nav_link');
+
+            // Section IDs mapped to their menu target hashes
+            const sectionTargetMap = [
+                { id: 'top', hash: '#top' },
+                { id: 'section-living', hash: '#section-living' },
+                { id: 'about-nook', hash: '#about-nook' },
+                { id: 'community-functions-slider', hash: '#community-functions-slider' },
+                { id: 'nook-footer', hash: '#nook-footer' }
+            ];
+
+            function setActiveHash(activeHash) {
+                desktopLinks.forEach(function(link) {
+                    const href = link.getAttribute('href');
+                    if (href === activeHash) {
+                        link.classList.add('is-current-page');
+                    } else {
+                        link.classList.remove('is-current-page');
+                    }
+                });
+
+                mobileLinks.forEach(function(link) {
+                    const href = link.getAttribute('href');
+                    if (href === activeHash) {
+                        link.classList.add('is-current-page');
+                    } else {
+                        link.classList.remove('is-current-page');
+                    }
+                });
+            }
+
+            let isUserClicking = false;
+            let clickTimer = null;
+
+            function updateScrollSpy() {
+                if (isUserClicking) return;
+
+                const scrollY = window.scrollY || window.pageYOffset || 0;
+                const windowHeight = window.innerHeight || 800;
+                const docHeight = Math.max(
+                    document.body.scrollHeight,
+                    document.documentElement.scrollHeight,
+                    document.body.offsetHeight,
+                    document.documentElement.offsetHeight
+                );
+
+                // 1. If reached bottom of page, activate Gallery / Footer
+                if (scrollY + windowHeight >= docHeight - 140) {
+                    setActiveHash('#nook-footer');
+                    return;
+                }
+
+                // 2. If near top of page, activate Home
+                if (scrollY < 260) {
+                    setActiveHash('#top');
+                    return;
+                }
+
+                // 3. Evaluate section positions (observation trigger line at 35% viewport height)
+                const triggerLine = scrollY + (windowHeight * 0.35);
+                let currentHash = '#top';
+
+                // Evaluate sections based on their actual DOM position
+                const activeSections = [];
+                sectionTargetMap.forEach(function(item) {
+                    const el = document.getElementById(item.id);
+                    if (el) {
+                        const top = el.getBoundingClientRect().top + scrollY;
+                        activeSections.push({ hash: item.hash, top: top });
+                    }
+                });
+
+                // Sort by vertical position on page
+                activeSections.sort(function(a, b) {
+                    return a.top - b.top;
+                });
+
+                // Find the latest section that starts before triggerLine
+                activeSections.forEach(function(sec) {
+                    if (sec.top <= triggerLine) {
+                        currentHash = sec.hash;
+                    }
+                });
+
+                setActiveHash(currentHash);
+            }
+
+            // Click handling with Lenis smooth scroll integration
+            function setupNavClicks(links) {
+                links.forEach(function(link) {
+                    link.addEventListener('click', function(e) {
+                        const href = this.getAttribute('href');
+                        if (!href || !href.startsWith('#')) return;
+
+                        const targetId = href.substring(1);
+                        const targetEl = document.getElementById(targetId);
+
+                        if (targetEl) {
+                            e.preventDefault();
+                            e.stopPropagation();
+
+                            isUserClicking = true;
+                            if (clickTimer) clearTimeout(clickTimer);
+                            clickTimer = setTimeout(function() {
+                                isUserClicking = false;
+                            }, 1200);
+
+                            setActiveHash(href);
+
+                            if (window.lenis && typeof window.lenis.scrollTo === 'function') {
+                                window.lenis.scrollTo(targetEl, { offset: -60, duration: 1.2 });
+                            } else {
+                                targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+
+                            // Auto close mobile drawer if open
+                            const mobileMenu = document.getElementById('menumobile-1');
+                            if (mobileMenu && mobileMenu.classList.contains('is-active')) {
+                                const burger = mobileMenu.querySelector('[data-menu-mobile-toggler]');
+                                if (burger) burger.click();
+                            }
+                        }
+                    });
+                });
+            }
+
+            setupNavClicks(desktopLinks);
+            setupNavClicks(mobileLinks);
+
+            // Listen on window scroll and Lenis scroll
+            window.addEventListener('scroll', updateScrollSpy, { passive: true });
+            if (window.lenis && typeof window.lenis.on === 'function') {
+                window.lenis.on('scroll', updateScrollSpy);
+            }
+
+            // Also check after layout settle
+            setTimeout(updateScrollSpy, 150);
+            setTimeout(updateScrollSpy, 600);
+            setTimeout(updateScrollSpy, 1500);
+
+            if (window.swup) {
+                window.swup.hooks.on('page:view', function() {
+                    setupNavClicks(document.querySelectorAll('.c-menu-desktop_link'));
+                    setupNavClicks(document.querySelectorAll('.c-menu-mobile_nav_link'));
+                    updateScrollSpy();
+                });
+            }
+        })();
+    </script>
+
 </body>
 
 </html>
