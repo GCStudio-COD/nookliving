@@ -65,7 +65,7 @@
         img[src*="timeline_end_cloud"],
         .c-homepage-timeline_path_wrapper>img,
         .c-homepage-timeline_intro_illustration_background,
-        .c-homepage-timeline_end img {
+        .c-homepage-timeline_end>img {
             display: none !important;
             visibility: hidden !important;
             opacity: 0 !important;
@@ -1038,7 +1038,9 @@
         .c-nook-rive-character,
         .c-homepage-timeline_end .c-nook-rive-character,
         .c-nook-rive-character img,
-        .c-homepage-timeline_end .c-nook-rive-character img {
+        .c-homepage-timeline_end .c-nook-rive-character img,
+        .c-nook5-bottom-character,
+        .c-nook5-bottom-character img {
             display: block !important;
             visibility: visible !important;
             opacity: 1 !important;
@@ -1053,9 +1055,42 @@
             transition: transform 0.3s ease, filter 0.3s ease;
         }
 
-        .c-nook-rive-character:hover img {
+        .c-nook-rive-character:hover img,
+        .c-nook5-bottom-character:hover img {
             transform: scale(1.02);
             filter: drop-shadow(0 16px 32px rgba(129, 106, 176, 0.2));
+        }
+
+        /* Dedicated Bottom Character Styling for nook5.svg **/
+        .c-nook5-bottom-character {
+            position: absolute !important;
+            bottom: -100px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: 70% !important;
+            max-width: 1070px !important;
+            z-index: 25 !important;
+        }
+
+        .c-nook5-bottom-character img {
+            width: 100% !important;
+            height: auto !important;
+            max-height: 64vw !important;
+            object-fit: contain !important;
+            object-position: bottom center !important;
+            filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.05)) !important;
+            transition: transform 0.3s ease, filter 0.3s ease !important;
+        }
+
+        @media (max-width: 768px) {
+            .c-nook5-bottom-character {
+                width: 104% !important;
+                bottom: -30px !important;
+            }
+
+            .c-nook5-bottom-character img {
+                max-height: 78vw !important;
+            }
         }
     </style>
 
@@ -1948,6 +1983,7 @@
                 opacity: 0;
                 transform: translate3d(0, -28px, 0);
             }
+
             100% {
                 opacity: 1;
                 transform: translate3d(0, 0, 0);
@@ -1967,6 +2003,7 @@
                 transform: translate3d(0, 42px, 0);
                 filter: blur(8px);
             }
+
             100% {
                 opacity: 1;
                 transform: translate3d(0, 0, 0);
@@ -1985,6 +2022,7 @@
                 opacity: 0;
                 transform: translate3d(0, 26px, 0);
             }
+
             100% {
                 opacity: 0.95;
                 transform: translate3d(0, 0, 0);
@@ -2002,6 +2040,7 @@
                 opacity: 0;
                 transform: translate3d(0, 52px, 0) scale(0.93);
             }
+
             100% {
                 opacity: 1;
                 transform: translate3d(0, 0, 0) scale(1);
@@ -2018,6 +2057,7 @@
             0% {
                 opacity: 0;
             }
+
             100% {
                 opacity: 1;
             }
@@ -2047,6 +2087,7 @@
 
         /* 7. Reduced Motion Support */
         @media (prefers-reduced-motion: reduce) {
+
             .c-menu-desktop,
             .c-menu-mobile_bar,
             .c-hero-home_title,
@@ -2060,6 +2101,7 @@
                 filter: none !important;
                 transition: none !important;
             }
+
             .c-hero-home_tagline {
                 opacity: 0.95 !important;
             }
@@ -3296,36 +3338,11 @@
            c1.9,0,3.9-0.1,5.8-0.1c335.8,0,514.9,555.2,112.5,1261.5c-326.6,573.2-77.6,980.7-77.6,1271.6"></path>
                             </svg> </c-homepage-timeline>
                         <div class="c-homepage-timeline_end" data-scroll="" data-scroll-css-progress="">
-                            <!-- Timeline End Characters at Exact .riv Positions -->
-                            <!-- binoculars.riv replacement (nook8.svg) -->
-                            <div id="rive-58" class="c-nook-rive-character">
-                                <div
-                                    class="absolute z-10 aspect-[1789/1438] max-md:right-[-16%] max-md:bottom-[2%] max-md:w-[73%] md:right-[-8.5%] md:bottom-[2%] md:w-[60%]">
-                                    <div class="h-full w-full">
-                                        <img src="./images/nook8.svg" alt="Nook Character"
-                                            class="h-full w-full object-contain" />
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- unicycle.riv replacement (nook4.svg) -->
-                            <div id="rive-59" class="c-nook-rive-character">
-                                <div
-                                    class="absolute z-10 aspect-[1694/1594] max-md:bottom-[8%] max-md:left-[16%] max-md:w-[70%] md:bottom-[5%] md:left-[22%] md:w-[54%]">
-                                    <div class="h-full w-full">
-                                        <img src="./images/nook4.svg" alt="Nook Character"
-                                            class="h-full w-full object-contain" />
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- basketball_player.riv replacement (nook3.svg) -->
-                            <div id="rive-60" class="c-nook-rive-character">
-                                <div
-                                    class="absolute z-10 aspect-[1608/1608] max-md:bottom-[4%] max-md:left-[-15%] max-md:w-[58%] md:bottom-[10%] md:left-[-5%] md:w-[44%]">
-                                    <div class="h-full w-full">
-                                        <img src="./images/nook3.svg" alt="Nook Character"
-                                            class="h-full w-full object-contain" />
-                                    </div>
-                                </div>
+                            <!-- Timeline End Character (nook5.svg) -->
+                            <div id="nook5-bottom-character" class="c-nook5-bottom-character c-nook-rive-character"
+                                style="position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%); width: 70%; max-width: 1070px; z-index: 25;">
+                                <img src="./images/nook5.svg" alt="Nook Characters"
+                                    style="display: block; width: 100%; height: auto; max-height: 64vw; object-fit: contain; object-position: bottom center;" />
                             </div> <img src="./assets/timeline_end_cloud_1.svg" alt=""
                                 class="c-homepage-timeline_end_cloud_1" width="517" height="104" aria-hidden="true">
                             <img src="./assets/timeline_end_cloud_2.svg" alt="" class="c-homepage-timeline_end_cloud_2"
