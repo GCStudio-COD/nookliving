@@ -178,6 +178,162 @@
             color: #2c2e2a !important;
         }
 
+        .c-tile-animated_description ul,
+        ul.c-tile-animated_description {
+            font-size: 0.95rem !important;
+            line-height: 1.4 !important;
+        }
+
+        .c-tile-animated_description ul li,
+        ul.c-tile-animated_description li {
+            font-size: 0.95rem !important;
+            line-height: 1.4 !important;
+        }
+
+        /* Pricing Section (Pick Your Roomie ERA) Card Colors */
+        .c-pricing-card-yellow,
+        .c-pricing-card-yellow h3,
+        .c-pricing-card-yellow p,
+        .c-pricing-card-yellow div,
+        .c-pricing-card-yellow span {
+            color: #232323 !important;
+        }
+
+        .c-pricing-card-coral,
+        .c-pricing-card-coral h3,
+        .c-pricing-card-coral p,
+        .c-pricing-card-coral div,
+        .c-pricing-card-coral span {
+            color: #ffffff !important;
+        }
+
+        .c-pricing-card-blue,
+        .c-pricing-card-blue h3,
+        .c-pricing-card-blue p,
+        .c-pricing-card-blue div,
+        .c-pricing-card-blue span {
+            color: #ffffff !important;
+        }
+
+        /* Final Call To Action Card */
+        .c-final-cta-card,
+        .c-final-cta-card h2,
+        .c-final-cta-card p {
+            color: #232323 !important;
+        }
+
+        .c-final-cta-card a,
+        .c-final-cta-card a span:first-child {
+            color: #ffffff !important;
+        }
+
+        /* Clean Featured Articles (Images only, no padding gap) */
+        .c-featured-articles_item {
+            padding-bottom: 0 !important;
+        }
+
+        .c-featured-articles {
+            padding-bottom: clamp(1rem, 2vw, 2.5rem) !important;
+        }
+
+        /* The Nook Gallery Section */
+        #section-the-nook,
+        #section-the-nook h2,
+        #section-the-nook p {
+            color: #232323 !important;
+        }
+
+        .nook-gallery-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1.5px solid rgba(35, 35, 35, 0.2);
+            color: #232323 !important;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            box-shadow: none !important;
+        }
+
+        .nook-gallery-btn:hover:not(.swiper-button-disabled) {
+            background: #ba396a;
+            color: #ffffff !important;
+            border-color: #ba396a;
+        }
+
+        .nook-gallery-btn.swiper-button-disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .nook-gallery-swiper {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .nook-gallery-swiper .swiper-wrapper {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .nook-gallery-swiper .swiper-slide {
+            height: auto;
+            display: flex;
+        }
+
+        .nook-gallery-card {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            overflow: hidden;
+            border-radius: 1.75rem;
+            box-shadow: none !important;
+        }
+
+        .nook-gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (min-width: 640px) {
+            .nook-gallery-card {
+                border-radius: 2rem;
+            }
+        }
+
+        .nook-gallery-pagination {
+            position: relative;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nook-gallery-pagination .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(35, 35, 35, 0.25);
+            opacity: 1;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            margin: 0 !important;
+        }
+
+        .nook-gallery-pagination .swiper-pagination-bullet-active {
+            background: #ba396a;
+            width: 26px;
+            border-radius: 9999px;
+        }
+
         /* Card buttons inside timeline cards preserve their specific button colors */
         .c-tile-animated .c-button {
             color: var(--button-color) !important;
@@ -383,293 +539,7 @@
         }
     </style>
 
-    <style id="community-functions-styling">
-        /* ================================================================= */
-        /* Community Functions Swiper Carousel Styling                       */
-        /* ================================================================= */
-        .c-community-section {
-            padding-top: clamp(2.5rem, 4vw, 5rem);
-            padding-bottom: clamp(3rem, 5vw, 6rem);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .community-header-bar {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-            margin-bottom: clamp(1.75rem, 3vw, 2.75rem);
-        }
-
-        @media (min-width: 768px) {
-            .community-header-bar {
-                flex-direction: row;
-                align-items: flex-end;
-                justify-content: space-between;
-                gap: 2rem;
-            }
-        }
-
-        .community-header-text {
-            max-width: 680px;
-        }
-
-        .community-header-nav {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
-            padding-bottom: 0.25rem;
-        }
-
-        .c-community-section_badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8125rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: #816AB0 !important;
-            background: rgba(129, 106, 176, 0.12);
-            padding: 6px 14px;
-            border-radius: 9999px;
-            margin-bottom: 1rem;
-        }
-
-        .c-community-section_title {
-            font-size: clamp(1.85rem, 2.5vw + 1rem, 2.75rem);
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 1.15;
-            color: #1a1a1a !important;
-            margin-bottom: 0.75rem;
-        }
-
-        .c-community-section_subtitle {
-            font-size: clamp(0.95rem, 1vw + 0.5rem, 1.125rem);
-            color: #4a4a4a !important;
-            line-height: 1.6;
-            max-width: 650px;
-        }
-
-        /* Swiper Navigation Buttons */
-        .community-nav-wrap {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .community-swiper-btn {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            color: #2c2e2a !important;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        .community-swiper-btn:hover:not(.swiper-button-disabled) {
-            background: #816AB0;
-            color: #ffffff !important;
-            border-color: #816AB0;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(129, 106, 176, 0.25);
-        }
-
-        .community-swiper-btn:active:not(.swiper-button-disabled) {
-            transform: translateY(0);
-        }
-
-        .community-swiper-btn.swiper-button-disabled {
-            opacity: 0.35;
-            cursor: not-allowed;
-            pointer-events: none;
-        }
-
-        /* Swiper Container */
-        .community-swiper {
-            width: 100% !important;
-            padding: 10px 4px 35px 4px !important;
-            overflow: hidden !important;
-        }
-
-        .community-swiper .swiper-slide {
-            height: auto !important;
-            display: flex;
-        }
-
-        .community-swiper .c-community-card {
-            width: 100%;
-        }
-
-        /* Native horizontal scroll fallback before Swiper loads */
-        .community-swiper:not(.swiper-initialized) .swiper-wrapper {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 20px;
-            padding-bottom: 20px;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .community-swiper:not(.swiper-initialized) .swiper-slide {
-            flex: 0 0 300px;
-            scroll-snap-align: start;
-        }
-
-        @media (min-width: 768px) {
-            .community-swiper:not(.swiper-initialized) .swiper-slide {
-                flex: 0 0 calc((100% - 48px) / 3);
-            }
-        }
-
-        /* Community Event Card */
-        .c-community-card {
-            background: #ffffff;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-            transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .c-community-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09);
-        }
-
-        .c-community-card_img-wrap {
-            position: relative;
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            background: #e8e4db;
-        }
-
-        .c-community-card_img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .c-community-card:hover .c-community-card_img {
-            transform: scale(1.06);
-        }
-
-        .c-community-card_badge {
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            color: #2c2e2a !important;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 6px 14px;
-            border-radius: 9999px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            z-index: 2;
-        }
-
-        .c-community-card_body {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .c-community-card_tag {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: #816AB0 !important;
-            margin-bottom: 0.5rem;
-        }
-
-        .c-community-card_title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            line-height: 1.3;
-            color: #1a1a1a !important;
-            margin-bottom: 0.65rem;
-        }
-
-        .c-community-card_desc {
-            font-size: 0.9rem;
-            line-height: 1.55;
-            color: #555555 !important;
-            margin-bottom: 1.25rem;
-            flex-grow: 1;
-        }
-
-        .c-community-card_footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.06);
-            font-size: 0.8125rem;
-            color: #666666 !important;
-        }
-
-        .c-community-card_meta {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .c-community-card_meta svg {
-            width: 15px;
-            height: 15px;
-            color: #816AB0;
-            flex-shrink: 0;
-        }
-
-        /* Swiper Pagination */
-        .community-swiper-pagination {
-            position: relative !important;
-            margin-top: 1.5rem !important;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .community-swiper-pagination .swiper-pagination-bullet {
-            width: 8px;
-            height: 8px;
-            background: #816AB0;
-            opacity: 0.25;
-            margin: 0 !important;
-            transition: all 0.3s ease;
-        }
-
-        .community-swiper-pagination .swiper-pagination-bullet-active {
-            opacity: 1;
-            width: 24px;
-            border-radius: 4px;
-            background: #816AB0;
-        }
-    </style>
+    
 
     <style id="nook-hero-svg-styling">
         /* ================================================================= */
@@ -2261,11 +2131,10 @@
                         <div class="c-hero-home_container container">
                             <div class="c-hero-home_content">
                                 <div class="anim-first-hit -delay-2">
-                                    <h1 class="c-hero-home_title">YOU CALL IT HOME,<br>WE CALL IT NOOK.</h1>
+                                    <h1 class="c-hero-home_title">The Plot twist?<br>You’re home.</h1>
                                 </div>
                                 <div class="anim-first-hit -delay-1">
-                                    <h2 class="c-hero-home_tagline">More than a place to stay. A women's co-living space
-                                        in Kozhikode where independence meets good company.</h2>
+                                    <h2 class="c-hero-home_tagline">You call it home, we call it nook. </h2>
                                 </div>
                             </div>
                         </div>
@@ -2274,11 +2143,10 @@
                         <div class="c-hero-home_container container">
                             <div class="c-hero-home_content">
                                 <div class="sm:anim-first-hit -delay-2">
-                                    <div class="c-hero-home_title">YOU CALL IT HOME,<br>WE CALL IT NOOK.</div>
+                                    <div class="c-hero-home_title">The Plot twist?<br>You’re home.</div>
                                 </div>
                                 <div class="sm:anim-first-hit -delay-1">
-                                    <div class="c-hero-home_tagline">More than a place to stay. A women's co-living
-                                        space in Kozhikode where independence meets good company.</div>
+                                    <div class="c-hero-home_tagline">You call it home, we call it nook. </div>
                                 </div>
                             </div>
                         </div>
@@ -3044,26 +2912,22 @@
                                 <div class="c-tile-animated_bg -colored" style="--color-bg: #816AB0"></div>
                                 <div class="c-tile-animated_bg -white"></div>
                                 <div class="c-tile-animated_inner">
-                                    <h3 class="c-tile-animated_title">Mornings feel better here.</h3>
-                                    <p class="c-tile-animated_description">Some like slow mornings, some are out of the
-                                        bed before the alarm. At nook, there is room for all your little habits. And
-                                        after a long day, come back to a place where you can put your feet up and feel
-                                        at ease.</p>
-                                    <div class="c-tile-animated_cta"> <a href="#" target="_self" data-no-swup=""
-                                            data-open-enquire="true" class="c-button button-purple button-primary"
-                                            style="--color-primary: #816AB0; --button-background: #816AB0; --button-background-hover: #816AB0;">
-                                            <span class="c-button_icon -hover"> <span class="c-icon"> <svg width="1em"
-                                                        height="1em" viewBox="0 0 20 20" class="svg-arrow-right"
-                                                        aria-hidden="true" focusable="false" data-icon="arrow-right">
-                                                        <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                    </svg> </span> </span> <span class="c-button_label"> Take a Peek
-                                                Inside
-                                            </span> <span class="c-button_icon -default"> <span class="c-icon"> <svg
-                                                        width="1em" height="1em" viewBox="0 0 20 20"
-                                                        class="svg-arrow-right" aria-hidden="true" focusable="false"
-                                                        data-icon="arrow-right">
-                                                        <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                    </svg> </span> </span> </a> </div>
+                                    <h3 class="c-tile-animated_title">The bare minimum? <br>We don’t know her</h3>
+                                    <ul class="c-tile-animated_description"
+                                        style="list-style-type: disc !important; padding-left: 1.35rem !important; margin: 0 !important;">
+                                        <li
+                                            style="display: list-item !important; list-style-type: disc !important; margin-bottom: 0.5rem !important;">
+                                            Main character comfort.</li>
+                                        <li
+                                            style="display: list-item !important; list-style-type: disc !important; margin-bottom: 0.5rem !important;">
+                                            Good people. Better memories.</li>
+                                        <li
+                                            style="display: list-item !important; list-style-type: disc !important; margin-bottom: 0.5rem !important;">
+                                            Plans? We’ve got plans.</li>
+                                        <li
+                                            style="display: list-item !important; list-style-type: disc !important; margin-bottom: 0 !important;">
+                                            Social when you want. Solo when you don’t.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -3073,24 +2937,17 @@
                                 <div class="c-tile-animated_bg -colored" style="--color-bg: #1F4397"></div>
                                 <div class="c-tile-animated_bg -white"></div>
                                 <div class="c-tile-animated_inner">
-                                    <h3 class="c-tile-animated_title">Your vibe, Your rules</h3>
-                                    <p class="c-tile-animated_description">One of you is out for a run at 5 AM. Another
-                                        is deep into a late-night game. Someone's always experimenting in the kitchen.
-                                        At Nook, it all lives side by side, and nobody has to change to fit in.</p>
-                                    <div class="c-tile-animated_cta"> <a href="#" target="_self" data-no-swup=""
-                                            data-open-enquire="true" class="c-button button-dark-blue button-primary"
-                                            style="--color-primary: #1F4397; --button-background: #1F4397; --button-background-hover: #1F4397;">
-                                            <span class="c-button_icon -hover"> <span class="c-icon"> <svg width="1em"
-                                                        height="1em" viewBox="0 0 20 20" class="svg-arrow-right"
-                                                        aria-hidden="true" focusable="false" data-icon="arrow-right">
-                                                        <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                    </svg> </span> </span> <span class="c-button_label"> Pick Your Vibe
-                                            </span> <span class="c-button_icon -default"> <span class="c-icon"> <svg
-                                                        width="1em" height="1em" viewBox="0 0 20 20"
-                                                        class="svg-arrow-right" aria-hidden="true" focusable="false"
-                                                        data-icon="arrow-right">
-                                                        <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                    </svg> </span> </span> </a> </div>
+                                    <h3 class="c-tile-animated_title">Your calendar is<br>about to get <span style="color: #d0447e;">delulu.</span></h3>
+                                    <div class="c-tile-animated_description">
+                                        <ul style="list-style-type: disc !important; padding-left: 1.35rem !important; margin: 0 !important;">
+                                            <li style="display: list-item !important; list-style-type: disc !important; margin-bottom: 0.5rem !important;"><strong>Creative Era :</strong> Art, crafts, and hands-on workshops.</li>
+                                            <li style="display: list-item !important; list-style-type: disc !important; margin-bottom: 0.5rem !important;"><strong>Move Your Body :</strong> Fitness and wellness sessions.</li>
+                                            <li style="display: list-item !important; list-style-type: disc !important; margin-bottom: 0.5rem !important;"><strong>Level-Up Season :</strong> Skill-development classes.</li>
+                                            <li style="display: list-item !important; list-style-type: disc !important; margin-bottom: 0.5rem !important;"><strong>Adulting 101 :</strong> Practical everyday-life coaching.</li>
+                                            <li style="display: list-item !important; list-style-type: disc !important; margin-bottom: 0 !important;"><strong>The Social Club :</strong> Community events, movie nights, &amp; celebrations.</li>
+                                        </ul>
+                                        <p style="font-size: 0.85rem; line-height: 1.4; margin-top: 1.25rem; margin-bottom: 0; opacity: 0.85;">Complimentary access to in-house events and creative spaces. Selected activities and services are available as add-ons.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -3100,25 +2957,13 @@
                                 <div class="c-tile-animated_bg -colored" style="--color-bg: #CD266B"></div>
                                 <div class="c-tile-animated_bg -white"></div>
                                 <div class="c-tile-animated_inner">
-                                    <h3 class="c-tile-animated_title">A place for all your plans.</h3>
-                                    <p class="c-tile-animated_description">You've got work. You've got classes. You've
-                                        got that project you keep calling &quot;almost done.&quot; Nook gives you the
-                                        quiet to deal with all of it. Get your head down, get it done, then go be a
-                                        potato for the rest of the evening.</p>
-                                    <div class="c-tile-animated_cta"> <a href="#" target="_self" data-no-swup=""
-                                            data-open-enquire="true" class="c-button button-magenta button-primary"
-                                            style="--color-primary: #CD266B; --button-background: #CD266B; --button-background-hover: #CD266B;">
-                                            <span class="c-button_icon -hover"> <span class="c-icon"> <svg width="1em"
-                                                        height="1em" viewBox="0 0 20 20" class="svg-arrow-right"
-                                                        aria-hidden="true" focusable="false" data-icon="arrow-right">
-                                                        <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                    </svg> </span> </span> <span class="c-button_label"> Laptop and
-                                                Chill </span> <span class="c-button_icon -default"> <span
-                                                    class="c-icon"> <svg width="1em" height="1em" viewBox="0 0 20 20"
-                                                        class="svg-arrow-right" aria-hidden="true" focusable="false"
-                                                        data-icon="arrow-right">
-                                                        <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                    </svg> </span> </span> </a> </div>
+                                    <h3 class="c-tile-animated_title">About Us<br>Why We Exist</h3>
+                                    <p class="c-tile-animated_description" style="font-size: 0.95rem; line-height: 1.45;">
+                                        Because moving out shouldn’t mean missing out.<br>
+                                        We get it. The excitement of moving out. The nerves of starting over. The need for independence. And sometimes, the simple wish to come home to people who understand.<br>
+                                        That’s why Nook exists. To create a space where women can be independent without feeling disconnected. Where your room feels like yours, your individuality matters, and your next chapter has room to grow.<br>
+                                        Built around women. Made for real life. Not just a place to stay. A place to become.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -3128,26 +2973,11 @@
                                 <div class="c-tile-animated_bg -colored" style="--color-bg: #816AB0"></div>
                                 <div class="c-tile-animated_bg -white"></div>
                                 <div class="c-tile-animated_inner">
-                                    <h3 class="c-tile-animated_title">There's more to living than just living.</h3>
-                                    <p class="c-tile-animated_description">There's always something new to pick up.
-                                        Maybe it's a life skill you'll actually use, maybe it's something you never
-                                        thought you'd try. Nook's workshops and community experiences make learning feel
-                                        less like a class and more like part of your week.</p>
-                                    <div class="c-tile-animated_cta"> <a href="#" target="_self" data-no-swup=""
-                                            data-open-enquire="true" class="c-button button-purple button-primary"
-                                            style="--color-primary: #816AB0; --button-background: #816AB0; --button-background-hover: #816AB0;">
-                                            <span class="c-button_icon -hover"> <span class="c-icon"> <svg width="1em"
-                                                        height="1em" viewBox="0 0 20 20" class="svg-arrow-right"
-                                                        aria-hidden="true" focusable="false" data-icon="arrow-right">
-                                                        <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                    </svg> </span> </span> <span class="c-button_label"> Learn something
-                                                fun
-                                            </span> <span class="c-button_icon -default"> <span class="c-icon"> <svg
-                                                        width="1em" height="1em" viewBox="0 0 20 20"
-                                                        class="svg-arrow-right" aria-hidden="true" focusable="false"
-                                                        data-icon="arrow-right">
-                                                        <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                    </svg> </span> </span> </a> </div>
+                                    <h3 class="c-tile-animated_title">The Social Club</h3>
+                                    <div class="c-tile-animated_description" style="display: flex; flex-direction: column; gap: 1.25rem; font-size: 0.95rem; line-height: 1.45;">
+                                        <p style="margin: 0;">Community events, movie nights,<br>and celebrations.</p>
+                                        <p style="margin: 0;">Complimentary access to in-house events and creative spaces. Selected activities and services are available as add-ons.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -3367,128 +3197,185 @@
                         src="./assets/HomepageTimeline.astro_astro_type_script_index_0_lang.Dn8kEPv7.js"></script>
                 </div>
 
-                <!-- 4.2 Callout Banner -->
-                <c-deluxe-callout class="group relative block rounded-b-lg bg-green py-fluid-4xl" id="deluxecallout-62">
+                <!-- 4.2 Rooms & Pricing (Pick Your Roomie ERA) -->
+                <section class="relative block rounded-b-lg py-fluid-4xl" id="section-rooms"
+                    style="background-color: #ba396a !important; color: #ffffff !important;">
                     <div class="container">
                         <div class="grid grid-cols-6 gap-gutter md:grid-cols-16">
                             <div class="col-span-full md:col-start-2 md:col-span-14">
-                                <p class="heading-2xl text-center">Ready to find<br>your corner?</p>
-                                <div class="mt-fluid-2xl flex flex-col items-center gap-6">
-                                    <p class="heading-xs max-w-100 text-center text-balance md:max-w-140"> A place to
-                                        call your own, people to share the little moments with, and plenty of new
-                                        experiences waiting for you. Your Nook story starts here </p> <a href="#"
-                                        target="_self" data-deluxe-callout-action="true" data-no-swup=""
-                                        data-open-enquire="true" class="c-button button-green button-secondary"> <span
-                                            class="c-button_icon -hover"> <span class="c-icon"> <svg width="1em"
-                                                    height="1em" viewBox="0 0 20 20" class="svg-arrow-right"
-                                                    aria-hidden="true" focusable="false" data-icon="arrow-right">
-                                                    <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                </svg> </span> </span> <span class="c-button_label"> Say Hi, Get a
-                                            Corner </span>
-                                        <span class="c-button_icon -default"> <span class="c-icon"> <svg width="1em"
-                                                    height="1em" viewBox="0 0 20 20" class="svg-arrow-right"
-                                                    aria-hidden="true" focusable="false" data-icon="arrow-right">
-                                                    <path fill="none" d="m8 14 4-4-4-4"></path>
-                                                </svg> </span> </span> </a>
+                                <!-- Heading -->
+                                <div class="text-center">
+                                    <h2 class="text-white font-bold tracking-tight leading-[1.02]"
+                                        style="font-size: clamp(2.5rem, 1.8rem + 3.8vw, 4.75rem); letter-spacing: -0.04em;">
+                                        Pick Your<br>Roomie ERA
+                                    </h2>
+                                    <p class="text-white font-semibold text-lg md:text-xl mt-4 sm:mt-5"
+                                        style="letter-spacing: -0.02em;">
+                                        Your room. Your comfort level.
+                                    </p>
+                                    <p class="text-white text-sm sm:text-base md:text-[1.05rem] leading-relaxed mt-4 sm:mt-5 max-w-2xl mx-auto opacity-95 text-balance">
+                                        Sharing stories or sharing a little less space?<br class="hidden sm:inline">
+                                        We’ve got options. Pick the setup that works for your lifestyle and your budget. No one-size-fits-all energy here.
+                                    </p>
                                 </div>
-                                <div class="body-md mt-60 grid gap-gutter max-md:hidden md:grid-cols-3">
-                                    <div class="text-center">Fully Furnished Spaces</div>
-                                    <div class="text-center">24/7 Security &amp; Care</div>
-                                    <div class="text-center">Wholesome Dining &amp; WiFi</div>
+
+                                <!-- Tier Switcher Tabs -->
+                                <div class="mt-10 sm:mt-14 mb-6 sm:mb-8 flex items-center justify-start gap-3 sm:gap-4">
+                                    <button type="button" class="nook-tier-tab active" data-tier="normal"
+                                        style="background: #f5f1e5; color: #ba396a; font-weight: 700; border-radius: 9999px; padding: 0.55rem 1.6rem; font-size: 1.05rem; border: none; cursor: pointer; transition: all 0.2s ease;">
+                                        Normal
+                                    </button>
+                                    <button type="button" class="nook-tier-tab" data-tier="cooler"
+                                        style="background: transparent; color: #ffffff; font-weight: 600; border-radius: 9999px; padding: 0.55rem 1.6rem; font-size: 1.05rem; border: none; cursor: pointer; transition: all 0.2s ease;">
+                                        Cooler
+                                    </button>
+                                    <button type="button" class="nook-tier-tab" data-tier="ac"
+                                        style="background: transparent; color: #ffffff; font-weight: 600; border-radius: 9999px; padding: 0.55rem 1.6rem; font-size: 1.05rem; border: none; cursor: pointer; transition: all 0.2s ease;">
+                                        AC
+                                    </button>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pointer-events-none absolute top-[-100vh] bottom-0 left-0 w-[56%] max-md:hidden">
-                        <div class="sticky top-0 flex h-screen w-full items-end">
-                            <div id="rive-61" class="c-nook-rive-character">
-                                <div
-                                    class="aspect-[1979/1570] translate-y-[100%] transform transition-transform duration-[300ms] ease-[var(--ease-smooth)] group-[.is-active]:translate-y-[12%] md:w-[56vw]">
-                                    <div class="h-full w-full">
-                                        <img src="./images/nook7.svg" alt="Nook Pop Up Character"
-                                            class="h-full w-full object-contain pointer-events-auto" />
+
+                                <!-- Cards Grid -->
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    <!-- Card 1: The Social Nook -->
+                                    <div class="c-pricing-card-yellow flex flex-col justify-between"
+                                        style="background-color: #f1e34d; border-radius: 2rem; padding: 2.25rem 2rem; min-height: 420px;">
+                                        <div>
+                                            <h3 style="color: #232323; font-size: 1.65rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em;">
+                                                The Social Nook
+                                            </h3>
+                                            <p style="color: #232323; font-size: 0.95rem; font-weight: 500; margin-top: 0.75rem;">
+                                                4 sharing
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <hr style="border: none; border-top: 1.5px solid rgba(35, 35, 35, 0.25); margin: 0 0 1.25rem 0;">
+                                            <div id="price-social-nook"
+                                                style="color: #232323; font-size: clamp(2.35rem, 1.8rem + 1.4vw, 3.25rem); font-weight: 800; letter-spacing: -0.03em;">
+                                                ₹10,000
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card 2: The Cosy Duo -->
+                                    <div class="c-pricing-card-coral flex flex-col justify-between"
+                                        style="background-color: #e33864; border-radius: 2rem; padding: 2.25rem 2rem; min-height: 420px;">
+                                        <div>
+                                            <h3 style="color: #ffffff; font-size: 1.65rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em;">
+                                                The Cosy Duo
+                                            </h3>
+                                            <p style="color: #ffffff; font-size: 0.95rem; font-weight: 500; margin-top: 0.75rem; display: flex; align-items: center; gap: 0.45rem;">
+                                                <svg width="15" height="15" viewBox="0 0 24 24" fill="#f1e34d" aria-hidden="true" style="flex-shrink: 0;">
+                                                    <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                                                </svg>
+                                                <span>2 sharing, single wardrobe</span>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <hr style="border: none; border-top: 1.5px solid rgba(255, 255, 255, 0.3); margin: 0 0 1.25rem 0;">
+                                            <div id="price-cosy-duo"
+                                                style="color: #ffffff; font-size: clamp(2.35rem, 1.8rem + 1.4vw, 3.25rem); font-weight: 800; letter-spacing: -0.03em;">
+                                                ₹11,000
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card 3: The Extra Space Duo -->
+                                    <div class="c-pricing-card-blue flex flex-col justify-between"
+                                        style="background-color: #4d7fe8; border-radius: 2rem; padding: 2.25rem 2rem; min-height: 420px;">
+                                        <div>
+                                            <h3 style="color: #ffffff; font-size: 1.65rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em;">
+                                                The Extra<br>Space Duo
+                                            </h3>
+                                            <p style="color: #ffffff; font-size: 0.95rem; font-weight: 500; margin-top: 0.75rem; display: flex; align-items: center; gap: 0.45rem;">
+                                                <svg width="15" height="15" viewBox="0 0 24 24" fill="#f1e34d" aria-hidden="true" style="flex-shrink: 0;">
+                                                    <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                                                </svg>
+                                                <span>2 sharing, full wardrobe</span>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <hr style="border: none; border-top: 1.5px solid rgba(255, 255, 255, 0.3); margin: 0 0 1.25rem 0;">
+                                            <div id="price-extra-space"
+                                                style="color: #ffffff; font-size: clamp(2.35rem, 1.8rem + 1.4vw, 3.25rem); font-weight: 800; letter-spacing: -0.03em;">
+                                                ₹12,000
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </c-deluxe-callout>
-                <script type="module"
-                    src="./assets/DeluxeCallout.astro_astro_type_script_index_0_lang.BnxRAw_C.js"></script>
-                <div class="relative aspect-[2268/1350] overflow-hidden rounded-lg">
-                    <script type="module"
-                        src="./assets/DatoImage.astro_astro_type_script_index_0_lang.D95xo-zc.js"></script>
-                    <c-inner-parallax data-speed="0.1" data-scroll="true"
-                        class="absolute inset-0 block overflow-hidden"> <c-dato-image data-astro-cid-zpkbt6gy="true"
-                            id="datoimage-5">
-                            <picture
-                                class="absolute top-0 left-0 w-full h-full z-above will-change-[transform] c-image block"
-                                data-datocms-image="true"
-                                style="background-image:url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAPCAYAAAD+pA/bAAACy0lEQVR42lWUaW4UQQyFXUv3zGSyKiAQS1jE9TgDl+CEIH5EIEUMk5neqorPru4snbhrGdez/fyq4/dvXyXlJOMwSt/3cuw66Y5H6fqO9SDTNEnOWZxzr0IIp00TpWnafdu2t03TSAxBvPeiTy4F3yQpZTtTsDilJDnpZjWb59mhLFbWnN8wOZEiTrGwE+xgK310LMvkcS+Ow2CA4zhWI+PJbM4kWYAr0rzm/EWpCBowMflhS+dmvCLPQziJHbRo1go8EExtIpAGSWnS4Bd4vvGlvBcNJOIB+AfmCuAEdb9mfClM3BxhKSh2cK50KOA4DtWmsYKnHODxA0Cf8dXxGkDPHwH8qXf2DMx/K5wFqi8bHT2Jg1agAajCMh8BnumB/xuy+EjKXwD65L17QUMD/zteW2aZ9YH9fSnu6JyJwawyBEVKjXbbmowCanONy1McX2NvAXmHWm5CiC9jjAHb8XKs9yjrDz63nPmpVeTsrAgNojhRX2ZzUywDZBdEtqX4M9bngFwiz6u2ba5aJsgzYLsmxnOPdMHb5JKNde9zDTKzFVXDxT1VglgAladGtWBoHUCH9v1q1fq2XXnWnkpoh2mnOKrXROlHpUitQJFeFtELUlSSwSRbKk1o3N2TwD0BDvgdCKDWUEXHwZ59GixDzmVIiJbRKlj6YBWs1+tKkV4uDZLLfLlMijsC7OD6LwHUNhW/ObB35LeegsesktPbp300YKqQVO+BBlAuSi7zVX9osmZABUEbuYfve7LWShLzHu4nsszqC2jUsyl4o3SRqw5xoxVIbXTNvjwNMJLlQLYDfI/YBHiDgvT7ox+gloQ2jNuQE9i+GDWyXDgqaFet0vEAbPw/aso+ZNpkBdWmqkx5Gpq7wmuDvLcEOcPvEmruHho8iwbv+IyioonNstVrykH0HjyOPiyP9yqfFjcsr3E5wXUL5p1zzz538h8t/b88G2okJAAAAABJRU5ErkJggg==&quot;);background-size:cover;background-repeat:no-repeat;background-position:50% 50%;color:transparent"
-                                data-scroll="true" data-scroll-speed="-0.1" data-astro-cid-zpkbt6gy="">
-                                <source
-                                    srcset="https://www.datocms-assets.com/166003/1761409698-mm-audience-front.png?dpr=0.25&amp;w=2000 500w,https://www.datocms-assets.com/166003/1761409698-mm-audience-front.png?dpr=0.5&amp;w=2000 1000w,https://www.datocms-assets.com/166003/1761409698-mm-audience-front.png?dpr=0.75&amp;w=2000 1500w,https://www.datocms-assets.com/166003/1761409698-mm-audience-front.png?w=2000 2000w"
-                                    sizes="100vw" data-astro-cid-zpkbt6gy=""> <img
-                                    src="./assets/1761409698-mm-audience-front.png"
-                                    alt="Vibrant community residents at Nook living" title="Our residents"
-                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="c-image_img"
-                                    style="aspect-ratio:2000 / 1190" data-testid="img" data-astro-cid-zpkbt6gy="">
-                            </picture>
-                        </c-dato-image> </c-inner-parallax> <c-inner-parallax data-speed="0.1" data-scroll="true"
-                        class="absolute inset-0 block overflow-hidden"> <c-dato-image data-astro-cid-zpkbt6gy="true"
-                            id="datoimage-6">
-                            <picture class="absolute top-0 left-0 w-full h-full will-change-[transform] c-image block"
-                                data-datocms-image="true"
-                                style="background-image:url(&quot;data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgLCgoLDhgQGg0XDhUdHRUVJR0dHRYfFhYdHysjGh0oHRUiJDUlKC0vMjIyHSI4PTcwPCsxMi8BCgsLDg0OHBANHC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIAA8AGAMBIgACEQEDEQH/xAAXAAADAQAAAAAAAAAAAAAAAAADBQYB/8QAHhAAAgIBBQEAAAAAAAAAAAAAAQQAAgMFESJBURP/xAAVAQEBAAAAAAAAAAAAAAAAAAADAv/EABcRAQEBAQAAAAAAAAAAAAAAAAIBABH/2gAMAwEAAhEDEQA/AKNjUaqL2A8k6lrOTI9Ygdxq+t9AQTFaqtFstrbbwW1c5E5jMvsZGeNTMhFGsdnCDSZI4tFE3//Z&quot;);background-size:cover;background-repeat:no-repeat;background-position:50% 50%;color:transparent"
-                                data-scroll="true" data-scroll-speed="-0.1" data-astro-cid-zpkbt6gy="">
-                                <source
-                                    srcset="https://www.datocms-assets.com/166003/1761409711-mm-audience-bg.jpg?dpr=0.25&amp;w=2000 500w,https://www.datocms-assets.com/166003/1761409711-mm-audience-bg.jpg?dpr=0.5&amp;w=2000 1000w,https://www.datocms-assets.com/166003/1761409711-mm-audience-bg.jpg?dpr=0.75&amp;w=2000 1500w,https://www.datocms-assets.com/166003/1761409711-mm-audience-bg.jpg?w=2000 2000w"
-                                    sizes="100vw" data-astro-cid-zpkbt6gy=""> <img
-                                    src="./assets/1761409711-mm-audience-bg.jpg"
-                                    alt="Decorative background for Nook living community showcase" title="Our community"
-                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="c-image_img"
-                                    style="aspect-ratio:2000 / 1190" data-testid="img" data-astro-cid-zpkbt6gy="">
-                            </picture>
-                        </c-dato-image> </c-inner-parallax> <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
-                        viewBox="0 0 1512 563"
-                        class="absolute top-0 left-0 h-full w-full will-change-[transform] max-md:transform-none!"
-                        data-scroll="" data-scroll-speed="-0.05" aria-hidden="true">
-                        <path fill="#f5e211"
-                            d="M555.3 555.2q-40.2 0-77.9-2.1c-59-3.3-140.5-12.3-193.9-36.6-24.4-11.1-42.3-23.3-54.7-37.2a73 73 0 0 1-19.7-59c3.9-30.6 27.2-58.7 71.3-86 31.9-19.7 75.5-39.6 129.7-59.2 91.4-33 209.7-63.7 316.5-82.3 118.9-20.7 219.1-.2 335 23.4q50.5 10.5 106.1 20.5c-19.8-45.3-46.7-79.1-81.9-103.3-32.5-22.3-71.4-35.9-119.1-41.7-92-11.2-197.8 10.4-282.7 27.7q-33.2 6.8-62.4 12.2C395.8 172.1 232.9 216.3-31 346a37.5 37.5 0 0 1-33.1-67.3c132.2-65 244.9-111.4 354.8-146 93.9-29.6 185.9-51.2 317.6-74.7q28-5.1 60.6-11.9c90.3-18.4 202.6-41.2 306.7-28.6 127.8 15.5 216.8 82.2 264.5 198.2q7 17 10.1 33.8c83 10.6 178.2 16 293.9 9a37.6 37.6 0 0 1 4.5 74.9 1637 1637 0 0 1-304.2-9.1 178 178 0 0 1-45.6 67.7c-41.8 40.3-107.8 74.5-196.4 101.8-75.4 23.2-166.4 41-263.1 51.3a1741 1741 0 0 1-184 10.1M284.1 428.6c2.3 2.9 9.5 10.1 30.4 19.6 70.2 31.9 241.6 41.1 416.9 22.3 195.8-20.9 351.1-70.5 415.5-132.6q12.9-12.4 20.4-25.1c-43.6-7.3-83.5-15.4-120.6-23-113-23-202.3-41.2-307.2-23a1934 1934 0 0 0-298.5 77c-48.9 17.4-88 34.7-116.3 51.4-30 17.7-38.4 29.5-40.6 33.4">
-                        </path>
-                        <path fill="#ff705d"
-                            d="m99 234.6-5.1 2.2q-1-1.5-2.3-2.4c-1.3-.9-1.8-1-2.9-1.2q-1.5-.3-3.2-.2-1.6.2-3.2.9-2.9 1.3-4.5 3.7a10 10 0 0 0-1.7 5.8q-.1 3.3 1.7 7.4a18 18 0 0 0 4.3 6.3q2.5 2.3 5.4 2.7t5.8-.8q1.6-.7 2.8-1.7t2-2.4 1-2.9-.1-3.3l5.1-2.2q.7 2.7.4 5.2-.2 2.6-1.4 4.8a15 15 0 0 1-7.8 7.1q-4.4 2-8.6 1.3-4.3-.6-7.9-3.6t-5.9-8.3a23 23 0 0 1-2.1-10 15 15 0 0 1 9.6-13.6q2.7-1.2 5.3-1.4a14 14 0 0 1 9.7 2.6q2 1.5 3.6 4m23.4 17.4q-3.6 1.5-6.8 1-3.3-.5-6-2.8c-2.7-2.3-3.2-3.6-4.3-6.2a16 16 0 0 1-1.4-7.5q.2-3.6 2.2-6.3t5.5-4.2 6.8-1 6 2.8a16 16 0 0 1 4.3 6.2q1.7 4 1.4 7.4-.2 3.5-2.2 6.3a13 13 0 0 1-5.5 4.3m-1.8-4.1a7 7 0 0 0 3.3-2.8q1-1.8.9-4.2-.2-2.3-1.1-4.7a13 13 0 0 0-2.6-4.1 9 9 0 0 0-3.6-2.3 6 6 0 0 0-4.3.4 7 7 0 0 0-3.3 2.8 8 8 0 0 0-.9 4.2q.2 2.3 1.1 4.7a13 13 0 0 0 2.6 4.1 9 9 0 0 0 3.6 2.3 6 6 0 0 0 4.3-.4m14.5-19.4 6.1 15-4.9 2-10.3-25.2 4.7-1.9 1.7 4.1.3-.1q0-2.4 1.4-4.3a9 9 0 0 1 4.2-3.2 10 10 0 0 1 5-.8q2.4.3 4.3 2 2 1.6 3.2 4.8l6.6 16-4.9 2-6.3-15.5q-1.2-2.7-3.2-3.7a6 6 0 0 0-4.6.1 6 6 0 0 0-2.7 2q-1 1.3-1.2 3-.2 1.8.6 3.7m24.9-10.1 6 15.1-4.9 2-10.1-25.4 4.7-1.9 1.6 4.1.3-.1q0-2.4 1.5-4.3a9 9 0 0 1 4.3-3.1q2.6-1 5-.7t4.3 2 3.2 4.8l6.4 16.1-4.9 2-6.2-15.5a7 7 0 0 0-3.1-3.7 5 5 0 0 0-4.6 0 7 7 0 0 0-2.8 2 5 5 0 0 0-1.2 3q-.3 1.7.5 3.6m37 3.6q-3.8 1.5-7.1.9t-5.9-3a17 17 0 0 1-4.1-6.4q-1.5-3.9-1.2-7.5a12 12 0 0 1 2.3-6.2q2-2.7 5.6-4 2.1-.8 4.5-.9c2.4-.1 3 .2 4.5.8q2.2.9 4.1 3a19 19 0 0 1 3.2 5.5l.7 1.8-20.2 7.7-1.4-3.7 15.4-5.9a8 8 0 0 0-2.1-3.2q-1.4-1.2-3.2-1.5a7 7 0 0 0-3.7.4 7 7 0 0 0-3.3 2.4 8 8 0 0 0-.9 7.5l1.1 2.9q1 2.5 2.6 4t3.6 1.8a9 9 0 0 0 4.2-.5q1.3-.5 2.4-1.4t1.5-2 .5-2.5l5-.9a9 9 0 0 1-3.3 8.2 20 20 0 0 1-4.8 2.7m24.2-9.1q-3.7 1.3-7 .7t-5.8-3.2c-2.5-2.5-3-3.7-4-6.3q-1.4-4-1.1-7.4.3-3.6 2.4-6.2a12 12 0 0 1 5.7-4q2.9-1 5.6-.8t4.8 1.6 3.3 3.9l-4.8 1.8a6 6 0 0 0-7.3-2.3 6 6 0 0 0-3.2 2.4 7 7 0 0 0-1.3 4q-.2 2.2.9 5.1 1 2.8 2.6 4.5a9 9 0 0 0 3.6 2.3q2 .6 4.1-.2a6 6 0 0 0 3.8-3.7q.5-1.3.2-2.8l4.8-1.8q.6 2.6 0 5a9 9 0 0 1-2.5 4.4 12 12 0 0 1-4.8 3m15.5-35.2 1.4 4-14 5-1.4-4zm-12.5-2.5 5-1.8 8.7 24.3q.5 1.4 1.2 2 .8.6 1.5.6.8 0 1.6-.3l1-.5.7-.4 2.4 3.8-1.1.8-1.9.9q-2 .7-3.9.6a6.5 6.5 0 0 1-6-4.8zm24.3 27.3-9-25.7 5-1.8 9 25.7zm-7.9-30.6a3.4 3.4 0 0 1-4.3-1.9q-.4-1.2.2-2.4t1.9-1.7 2.5.1 1.7 1.8-.2 2.4q-.4 1.2-1.8 1.7m16.5 10.5 5.2 15.3-5 1.7-8.8-25.8 4.8-1.6 1.4 4.2.3-.1q.2-2.4 1.7-4.2t4.4-2.9q2.6-1 5-.5t4.2 2.2c1.8 1.8 2.2 2.9 2.9 5l5.6 16.4-5 1.7-5.4-15.8a6 6 0 0 0-3-3.9 6 6 0 0 0-4.6-.2q-1.8.6-2.9 1.8a6 6 0 0 0-1.4 2.9q0 1.8.6 3.8m39.6 15.2q-3.1 1-5.6.9t-4.3-1a10 10 0 0 1-3-2.2l3.8-3.2 1.7 1.2q1 .6 2.6.8 1.5.1 3.6-.5a9 9 0 0 0 4.3-2.9q1.5-2 .4-5l-1.7-5.1-.3.1-.7 2.3q-.4 1.3-1.8 2.5-1.2 1.2-3.6 2-3 1-6 .4-2.9-.6-5.3-3a16 16 0 0 1-3.7-6.5q-1.3-4.2-.9-7.5.5-3.4 2.4-5.8 2-2.4 5.1-3.4 2.4-.8 4.2-.5t2.9 1.1q1.2.8 1.9 1.5l.4-.1-1.4-4.2 4.9-1.6 8.6 26.5q1 3.3.2 6a9 9 0 0 1-3.2 4.5q-2.1 1.6-5.5 2.7m-4.9-14.8a7 7 0 0 0 3.4-2.2q1.2-1.5 1.3-3.7t-.7-4.9q-.9-2.6-2.3-4.4t-3.3-2.4a6 6 0 0 0-4.1.1 6 6 0 0 0-3.4 2.4 7 7 0 0 0-1.3 3.9q-.1 2.3.7 4.7.9 2.6 2.2 4.2t3.3 2.3a6 6 0 0 0 4.2 0m32.8 5.4q-1.2.3-2.1.4H321v-4.5q1.5 0 2.6-.4 1-.4 1.7-1.4a6 6 0 0 0 .7-3l.1-1.9-17.6-23.5 5.4-1.6 12.8 18.2.3-.1.5-22.3 5.5-1.7-1.8 32.8q-.1 2.3-.9 4a8 8 0 0 1-2.1 3 8 8 0 0 1-3.6 2m28.2-18.4q-3.7 1-6.9.2c-3.2-.8-4-1.8-5.6-3.5q-2.4-2.6-3.6-6.7t-.5-7.6a12 12 0 0 1 2.9-6q2.3-2.5 5.9-3.5 3.8-1 6.9-.2 3.3 1 5.6 3.5 2.4 2.6 3.6 6.7t.5 7.5a12 12 0 0 1-8.8 9.6m-1.3-4.3a7 7 0 0 0 3.6-2.4 7 7 0 0 0 1.3-4q.2-2.3-.6-4.8a15 15 0 0 0-2.1-4.4q-1.3-2-3.3-2.7a6 6 0 0 0-4.3-.1 7 7 0 0 0-3.6 2.4 8 8 0 0 0-1.4 4.1q-.2 2.3.6 4.8.7 2.6 2.1 4.4 1.3 1.9 3.3 2.7 2 .7 4.4 0m29.6-15.9-4.2-15.4 5.1-1.4 7.2 26.3-5 1.4-1.2-4.6-.3.1q-.3 2.4-2 4.3a9 9 0 0 1-4.6 2.7q-2.5.7-4.8.1a8 8 0 0 1-4-2.5q-1.7-2-2.6-5.2l-4.6-16.7 5.1-1.4 4.4 16.1a6 6 0 0 0 2.7 3.9 5 5 0 0 0 4.3.5 8 8 0 0 0 2.7-1.5q1.2-1.1 1.8-2.8t0-3.9">
-                        </path>
-                        <path fill="#ff705d"
-                            d="m1117.1 253.4-.8 4.2-14.6-2.9.8-4.2zm-9.4-8.5 5.2 1-4.9 25.3q-.3 1.5 0 2.4t1 1.3a5 5 0 0 0 2.6.7h.8l.1 4.5-1.3.1q-.9 0-2.1-.2a8 8 0 0 1-3.7-1.5 6 6 0 0 1-2.4-2.9 7 7 0 0 1-.3-4.2zm18 38.4q-3.8-.7-6.2-3a11 11 0 0 1-3.4-5.7q-1-3.4-.2-7.6t2.9-7 5.3-4 6.9-.5 6.2 3a12 12 0 0 1 3.5 5.7q1 3.4.2 7.6t-2.9 7a12 12 0 0 1-5.3 4q-3.3 1.2-7 .5m.9-4.3q2.4.4 4.3-.5c1.9-.9 2.2-1.7 3-3q1.1-2 1.7-4.6.4-2.5.1-4.9a8 8 0 0 0-1.7-3.9 6 6 0 0 0-3.8-2.1 7 7 0 0 0-4.3.5 9 9 0 0 0-3 3q-1.1 2-1.7 4.6t-.1 4.9q.3 2.3 1.7 3.9a7 7 0 0 0 3.8 2.1m26.5 19.2q-1.2-.2-2.1-.6l-1.4-.6 2-4.1 2.5.8a3 3 0 0 0 2.1-.5q1-.6 2-2.3l1-1.7-5.1-28.9 5.6 1 3.2 22h.3l10.4-19.7 5.6 1-16.4 28.5q-1.2 2-2.6 3.2t-3.2 1.7q-1.8.6-3.9.2m34-4.2q-3.7-.6-6.3-2.8t-3.6-5.6c-1.1-3.4-.8-4.8-.4-7.5q.8-4.2 2.7-7.1t5.2-4.2q3.1-1.3 6.9-.7 3.7.6 6.3 2.8t3.6 5.6.4 7.6-2.7 7a13 13 0 0 1-5.2 4.2q-3.2 1.3-6.9.7m.7-4.4q2.5.4 4.3-.6a7 7 0 0 0 2.9-3.1 14 14 0 0 0 1.6-4.6q.5-2.5 0-4.9a9 9 0 0 0-1.8-3.9q-1.4-1.5-3.9-2t-4.3.7a8 8 0 0 0-3 3.1q-1 2-1.5 4.6t0 4.9 1.9 3.8a5 5 0 0 0 3.8 2m33.8-2.4 2.3-15.8 5.3.8-3.9 27-5.2-.8.7-4.7h-.3a8 8 0 0 1-8.8 3.9q-2.6-.4-4.4-1.8a8 8 0 0 1-2.6-3.9q-.7-2.4-.3-5.8l2.5-17.2 5.2.8-2.4 16.5q-.4 2.8.9 4.6 1.3 1.9 3.7 2.2 1.5.1 3.1-.3t2.8-1.9q1-1.2 1.4-3.6m8 12.6 3.6-27 5.1.7-.6 4.3h.3a7 7 0 0 1 3.1-3.1q2-1 4.4-.7l1.2.2 1.1.2-.7 5-1.1-.3q-.8-.3-1.6-.3-1.9-.2-3.4.4a6 6 0 0 0-2.6 1.9q-1 1.2-1.3 3l-2.2 16.5zm34.3 4.9q-2.5-.3-4.6-1.5a8 8 0 0 1-3-3.2 8 8 0 0 1-.7-4.6q.3-2.3 1.3-3.7a7 7 0 0 1 2.7-2.1q1.6-.7 3.5-.9l3.8-.2h4q1.5 0 2.3-.4t.8-1.3v-.1q.3-2.3-.9-3.7t-3.7-1.7q-2.7-.3-4.3.7a6 6 0 0 0-2.4 2.4l-4.8-1.7q1.2-2.4 3-3.7 2-1.4 4.2-1.8a15 15 0 0 1 8.2.6q1.8.6 3.3 1.8a7 7 0 0 1 2.3 3.2q.8 2 .5 4.9l-2 18-5.2-.6.4-3.7h-.2q-.6 1-1.8 1.8a8 8 0 0 1-2.8 1.3q-1.6.4-3.9.2m1.7-4.1q2.1.3 3.8-.4t2.6-2q1-1.4 1.2-2.9l.4-3.5q-.3.3-1.2.4l-1.9.2-2 .1h-1.7q-1.5 0-2.9.3a5 5 0 0 0-2.2 1.1q-.9.7-1 2.2-.3 2 1.1 3.1 1.6 1 3.8 1.4m34.4-4.2 1.5-15.9 5.3.5-2.6 27.1-5.2-.5.4-4.7h-.3a8 8 0 0 1-3.4 3.3 9 9 0 0 1-5.2.9 9 9 0 0 1-4.5-1.6 8 8 0 0 1-2.8-3.8q-.9-2.4-.6-5.7l1.7-17.3 5.3.5-1.6 16.8q-.3 2.8 1.1 4.6c1.4 1.8 2.2 1.9 3.8 2q1.5.1 3-.5t2.7-2 1.4-3.7m18.8 13.5a11 11 0 0 1-5.7-2.1q-2.4-2-3.7-5.2-1.2-3.2-.9-7.7t2.1-7.4q1.7-3 4.5-4.5t6-1.2q2.5.2 4 1.2t2.2 2.1l1.2 2.1h.3l1.1-13.5 5.3.4-2.8 36.3-5.2-.4.3-4.2h-.4l-1.5 1.9q-1 1-2.6 1.8c-1.6.8-2.6.5-4.2.4m1.5-4.5q2.2.1 4-.9 1.6-1 2.7-3.2 1-2.1 1.2-5t-.4-5a7 7 0 0 0-2.1-3.5 6 6 0 0 0-3.8-1.5q-2.4-.2-4.1.9-1.7 1-2.7 3.2-1 2.1-1.2 4.8t.4 5a7 7 0 0 0 2.1 3.6q1.5 1.5 3.9 1.6m16.8 5.3 1.8-27.2 5.3.3-1.7 27.2zm4.7-31.2q-1.4-.1-2.3-1.1-1-1-.8-2.3 0-1.3 1.1-2.2 1-.9 2.4-.8t2.3 1.1q1 1 .8 2.3t-1.1 2.2q-1 .9-2.4.8m16.6 33q-4-.2-6.8-2.1-2.9-2-4.2-5.1a18 18 0 0 1 .8-14.8 12 12 0 0 1 11.4-6.1q2.3.1 4.4 1t3.8 2.6 2.5 4.4.6 6.3l-.1 1.9-21.7-1.2.2-4 16.4.9a8 8 0 0 0-.6-3.8q-.8-1.7-2.3-2.7a6 6 0 0 0-3.5-1.1q-2.2-.1-4 .9-1.6 1-2.7 2.7a8 8 0 0 0-1.1 3.7l-.2 3.1a10 10 0 0 0 .7 4.7 8 8 0 0 0 2.5 3.1q1.7 1 4 1.2 1.5.1 2.8-.3 1.2-.3 2.2-1.2.9-.7 1.5-2.1l5 1.2a10 10 0 0 1-2.4 3.8q-1.6 1.5-4 2.4-2.2.8-5.2.6m20.9-15.8-.6 16.2-5.3-.2 1-27.3 5.1.2-.2 4.4h.3a8 8 0 0 1 3.1-3.4 9 9 0 0 1 5.1-1.1 9 9 0 0 1 4.8 1.4q2 1.2 3.1 3.6 1 2.4.9 5.7l-.6 17.3-5.3-.2.6-16.7q.1-3-1.4-4.7a5 5 0 0 0-4.2-1.8q-1.8 0-3.3.7t-2.3 2.3q-.8 1.4-.8 3.6m32.7 17.7q-4-.1-6.8-1.9a11 11 0 0 1-4.3-5.1 17 17 0 0 1-1.4-7.3q.1-4.2 1.7-7.3t4.5-4.9 6.7-1.7q3.1 0 5.5 1.3 2.4 1.2 3.9 3.3t1.7 4.8l-5.2-.1a6 6 0 0 0-1.9-3.3q-1.5-1.3-4-1.5-2.2 0-3.9 1.1a7 7 0 0 0-2.6 3.2q-1 2.1-1 5 0 3 .8 5.2a7 7 0 0 0 2.5 3.4q1.6 1.2 3.9 1.3 1.5 0 2.8-.5t2.1-1.6q.9-1 1.2-2.5l5.2.1a10 10 0 0 1-1.8 4.7q-1.5 2-3.9 3.2-2.5 1.2-5.7 1.1m25.9.3q-4 0-6.9-1.8a13 13 0 0 1-4.5-4.9q-1.5-3.2-1.5-7.4t1.6-7.4 4.4-5 6.6-1.8q2.2 0 4.5.8 2.1.8 3.9 2.4a11 11 0 0 1 2.7 4.3q1 2.6 1 6.3v1.9l-21.7-.1v-4l16.5.1q0-2-.8-3.7a7 7 0 0 0-6-3.6q-2.2 0-3.9 1.1t-2.6 2.8a8 8 0 0 0-.9 3.8v3.1q0 2.7.9 4.7a6 6 0 0 0 2.7 2.9q1.8 1 4.1 1 1.5 0 2.8-.4t2.2-1.3a6 6 0 0 0 1.4-2.1l5 .9a8 8 0 0 1-2.2 3.9q-1.5 1.6-3.9 2.6t-5.4.9">
-                        </path>
-                    </svg> <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 1512 563"
-                        class="absolute top-0 left-0 z-above h-full w-full will-change-[transform] max-md:transform-none!"
-                        data-scroll="" data-scroll-speed="-0.05" aria-hidden="true">
-                        <lineargradient id="aaaaa" x1="1055.2" x2="812.2" y1="138.6" y2="355.6"
-                            gradientUnits="userSpaceOnUse">
-                            <stop offset=".1" stop-color="#cebd22"></stop>
-                            <stop offset=".3" stop-color="#e4d218"></stop>
-                            <stop offset=".4" stop-color="#f5e211"></stop>
-                        </lineargradient>
-                        <path fill="url(#aaaaa)"
-                            d="M1167.3 312.9q-7.5 12.6-20.4 25c-64.4 62.1-219.7 111.7-415.5 132.6-60.8 6.5-121.1 9.6-176.9 9.6-105 0-194.1-11.1-239.9-32a37.4 37.4 0 1 0-31 68.2c53.5 24.3 135 33.3 193.9 36.6q37.7 2.1 77.9 2.1c59.1 0 121.5-3.4 184-10.1a1409 1409 0 0 0 263.1-51.2c88.6-27.3 154.7-61.6 196.4-101.8a179 179 0 0 0 45.6-67.7q-41.7-5.2-77.2-11.3">
-                        </path>
-                    </svg>
-                </div>
+                </section>
+                <script>
+                    (function () {
+                        const prices = {
+                            normal: { social: '₹10,000', cosy: '₹11,000', extra: '₹12,000' },
+                            cooler: { social: '₹11,000', cosy: '₹12,000', extra: '₹13,000' },
+                            ac: { social: '₹12,000', cosy: '₹13,000', extra: '₹14,000' }
+                        };
+                        const tabs = document.querySelectorAll('.nook-tier-tab');
+                        const pSocial = document.getElementById('price-social-nook');
+                        const pCosy = document.getElementById('price-cosy-duo');
+                        const pExtra = document.getElementById('price-extra-space');
+
+                        tabs.forEach(tab => {
+                            tab.addEventListener('click', function () {
+                                tabs.forEach(t => {
+                                    t.style.background = 'transparent';
+                                    t.style.color = '#ffffff';
+                                    t.style.fontWeight = '600';
+                                });
+                                this.style.background = '#f5f1e5';
+                                this.style.color = '#ba396a';
+                                this.style.fontWeight = '700';
+
+                                const tier = this.getAttribute('data-tier');
+                                if (prices[tier] && pSocial && pCosy && pExtra) {
+                                    pSocial.textContent = prices[tier].social;
+                                    pCosy.textContent = prices[tier].cosy;
+                                    pExtra.textContent = prices[tier].extra;
+                                }
+                            });
+                        });
+                    })();
+                </script>
+                <!-- 4.3 Final Call To Action -->
+                <section class="relative block py-fluid-3xl md:py-fluid-4xl" id="section-final-cta" style="background-color: transparent;">
+                    <div class="container">
+                        <div class="grid grid-cols-6 gap-gutter md:grid-cols-16">
+                            <div class="col-span-full md:col-start-2 md:col-span-14">
+                                <div class="c-final-cta-card flex flex-col items-center justify-center text-center py-16 sm:py-20 md:py-28 px-6 sm:px-10 md:px-16"
+                                    style="background-color: #F5F1E4; border-radius: 2.5rem;">
+                                    <h2 class="font-bold tracking-tight text-center text-balance"
+                                        style="color: #232323 !important; font-size: clamp(2rem, 1.5rem + 2.4vw, 3.25rem); letter-spacing: -0.035em; line-height: 1.04;">
+                                        Okay bestie,<br>time to move in.
+                                    </h2>
+                                    <p class="font-medium mt-6 sm:mt-8 max-w-xl text-balance text-center"
+                                        style="color: #232323 !important; font-size: clamp(1.05rem, 0.95rem + 0.35vw, 1.25rem); line-height: 1.45;">
+                                        The room? Sorted. The comfort? Absolutely.<br>
+                                        The memories? Just getting started.
+                                    </p>
+                                    <div class="mt-8 sm:mt-10">
+                                        <a href="#" target="_self" data-no-swup="" data-open-enquire="true"
+                                            class="inline-flex items-center gap-4 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                                            style="background-color: #ba396a; color: #ffffff !important; border-radius: 9999px; padding: 0.85rem 1.75rem 0.85rem 2.25rem; font-weight: 700; font-size: 1.15rem; text-decoration: none;">
+                                            <span style="color: #ffffff !important;">Say Hi, Get a Corner</span>
+                                            <span style="width: 32px; height: 32px; background-color: #F5F1E4; border-radius: 9999px; display: inline-block; flex-shrink: 0;"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <div class="rounded-lg bg-beige-500" id="about-nook">
                     <div class="c-featured-articles" id="featured-articles">
-                        <h2 class="sr-only">Life at Nook living</h2>
                         <ul class="c-featured-articles_list">
                             <li class="c-featured-articles_item">
-                                <div class="c-article-card  ">
+                                <div class="c-article-card">
                                     <div class="c-article-card_image-container">
-                                        <div class="c-article-card_tags-container">
-                                            <div class="body-sm rounded-3xl bg-white px-2.5 py-1.5 text-charcoal">
-                                                Community </div>
-                                            <div class="body-sm rounded-3xl bg-white px-2.5 py-1.5 text-charcoal">
-                                                Lifestyle </div>
-                                        </div> <c-dato-image data-astro-cid-zpkbt6gy="true" id="datoimage-7">
+                                        <c-dato-image data-astro-cid-zpkbt6gy="true" id="datoimage-7">
                                             <picture class="c-article-card_picture block w-full h-full c-image block">
                                                 <img src="./assets/article-coliving.jpg"
                                                     alt="Turns Out Home Feels Better With Your People in It — Nook Living"
@@ -3500,23 +3387,12 @@
                                             </picture>
                                         </c-dato-image>
                                     </div>
-                                    <div class="c-article-card_content">
-                                        <h3 class="c-article-card_title">Turns Out Home Feels Better With Your People in
-                                            It.</h3>
-                                    </div> <a href="#" class="c-article-card_link" data-no-swup=""> <span
-                                            class="sr-only">Read more
-                                            about Turns Out Home Feels Better With Your People in It.</span> </a>
                                 </div>
                             </li>
                             <li class="c-featured-articles_item">
-                                <div class="c-article-card  ">
+                                <div class="c-article-card">
                                     <div class="c-article-card_image-container">
-                                        <div class="c-article-card_tags-container">
-                                            <div class="body-sm rounded-3xl bg-white px-2.5 py-1.5 text-charcoal">
-                                                Safety &amp; Comfort </div>
-                                            <div class="body-sm rounded-3xl bg-white px-2.5 py-1.5 text-charcoal">
-                                                Design </div>
-                                        </div> <c-dato-image data-astro-cid-zpkbt6gy="true" id="datoimage-8">
+                                        <c-dato-image data-astro-cid-zpkbt6gy="true" id="datoimage-8">
                                             <picture class="c-article-card_picture block w-full h-full c-image block">
                                                 <img src="./assets/article-sanctuary.jpg"
                                                     alt="A comfortable room, your own space and some much-needed downtime at Nook Living"
@@ -3528,24 +3404,12 @@
                                             </picture>
                                         </c-dato-image>
                                     </div>
-                                    <div class="c-article-card_content">
-                                        <h3 class="c-article-card_title">A comfortable room, your own space and some
-                                            much-needed downtime. Sounds like a good place to come back to.</h3>
-                                    </div> <a href="#" class="c-article-card_link" data-no-swup=""> <span
-                                            class="sr-only">Read more
-                                            about A comfortable room, your own space and some much-needed downtime.
-                                            Sounds like a good place to come back to.</span> </a>
                                 </div>
                             </li>
                             <li class="c-featured-articles_item">
-                                <div class="c-article-card  ">
+                                <div class="c-article-card">
                                     <div class="c-article-card_image-container">
-                                        <div class="c-article-card_tags-container">
-                                            <div class="body-sm rounded-3xl bg-white px-2.5 py-1.5 text-charcoal">
-                                                Wellness </div>
-                                            <div class="body-sm rounded-3xl bg-white px-2.5 py-1.5 text-charcoal"> Work
-                                                &amp; Study </div>
-                                        </div> <c-dato-image data-astro-cid-zpkbt6gy="true" id="datoimage-9">
+                                        <c-dato-image data-astro-cid-zpkbt6gy="true" id="datoimage-9">
                                             <picture class="c-article-card_picture block w-full h-full c-image block">
                                                 <img src="./assets/article-study.jpg"
                                                     alt="Productive Days, Calm Evenings, All Under One Roof — Nook Living"
@@ -3557,27 +3421,12 @@
                                             </picture>
                                         </c-dato-image>
                                     </div>
-                                    <div class="c-article-card_content">
-                                        <h3 class="c-article-card_title">Productive Days, Calm Evenings, All Under One
-                                            Roof</h3>
-                                    </div> <a href="#" class="c-article-card_link" data-no-swup=""> <span
-                                            class="sr-only">Read more
-                                            about Productive Days, Calm Evenings, All Under One Roof</span> </a>
                                 </div>
                             </li>
                             <li class="c-featured-articles_item">
-                                <div class="c-article-card  ">
+                                <div class="c-article-card">
                                     <div class="c-article-card_image-container">
-                                        <div class="c-article-card_tags-container">
-                                            <div class="body-sm rounded-3xl bg-white px-2.5 py-1.5 text-charcoal">
-                                                Events </div>
-                                            <div class="body-sm rounded-3xl bg-white px-2.5 py-1.5 text-charcoal">
-                                                Sisterhood </div>
-                                            <div class="body-sm rounded-3xl bg-white px-2.5 py-1.5 text-charcoal">
-                                                Wellness </div>
-                                            <div class="body-sm rounded-3xl bg-white px-2.5 py-1.5 text-charcoal">
-                                                Workshops </div>
-                                        </div> <c-dato-image data-astro-cid-zpkbt6gy="true" id="datoimage-10">
+                                        <c-dato-image data-astro-cid-zpkbt6gy="true" id="datoimage-10">
                                             <picture class="c-article-card_picture block w-full h-full c-image block">
                                                 <img src="./assets/article-community.jpg"
                                                     alt="Where Strangers Turn Into Sisters Over Chai and Dinner — Nook Living"
@@ -3589,429 +3438,116 @@
                                             </picture>
                                         </c-dato-image>
                                     </div>
-                                    <div class="c-article-card_content">
-                                        <h3 class="c-article-card_title">Where Strangers Turn Into Sisters Over Chai and
-                                            Dinner</h3>
-                                    </div> <a href="#" class="c-article-card_link" data-no-swup=""> <span
-                                            class="sr-only">Read more
-                                            about Where Strangers Turn Into Sisters Over Chai and Dinner</span> </a>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    <!-- ================================================================= -->
-                    <!-- 4.3 Community Functions & Gatherings (Swiper Carousel)            -->
-                    <!-- ================================================================= -->
-                    <section class="c-community-section" id="community-functions-slider">
+                    <!-- 4.4 The Nook Gallery Section (Swiper Carousel) -->
+                    <section class="relative block py-fluid-3xl md:py-fluid-4xl overflow-hidden" id="section-the-nook"
+                        style="background-color: transparent;">
+                        <div id="community-functions-slider" style="position: absolute; top: 0; left: 0; width: 0; height: 0; pointer-events: none;" aria-hidden="true"></div>
                         <div class="container">
                             <div class="grid grid-cols-6 gap-gutter md:grid-cols-16">
                                 <div class="col-span-full md:col-start-2 md:col-span-14">
-                                    <!-- Header Row (Title on Left, Nav Buttons on Right) -->
-                                    <div class="community-header-bar">
-                                        <div class="community-header-text">
-                                            <div class="c-community-section_badge">
-                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                                    <circle cx="9" cy="7" r="4"></circle>
-                                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                                </svg>
-                                                Events and workshops
-                                            </div>
-                                            <h2 class="c-community-section_title">Good Things Happen at Nook</h2>
-                                            <p class="c-community-section_subtitle">
-                                                Movie nights, brunch dates, wellness sessions and everything in between.
-                                                Basically, your social calendar just got a whole lot more interesting.
-                                            </p>
-                                        </div>
-                                        <div class="community-header-nav">
-                                            <button class="community-swiper-btn community-swiper-prev"
-                                                aria-label="Previous function" type="button">
-                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                    <!-- Section Header with Title & Navigation Controls -->
+                                    <div class="flex items-center justify-between mb-6 sm:mb-8 md:mb-10">
+                                        <h2 class="font-bold tracking-tight"
+                                            style="color: #232323 !important; font-size: clamp(2.25rem, 1.8rem + 3.2vw, 4.25rem); letter-spacing: -0.03em; line-height: 1.05;">
+                                            The Nook
+                                        </h2>
+                                        <div class="flex items-center gap-3">
+                                            <button type="button" class="nook-gallery-btn nook-gallery-prev" aria-label="Previous slide">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                    <polyline points="15 18 9 12 15 6"></polyline>
                                                 </svg>
                                             </button>
-                                            <button class="community-swiper-btn community-swiper-next"
-                                                aria-label="Next function" type="button">
-                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                            <button type="button" class="nook-gallery-btn nook-gallery-next" aria-label="Next slide">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                    <polyline points="9 18 15 12 9 6"></polyline>
                                                 </svg>
                                             </button>
                                         </div>
                                     </div>
 
-                                    <!-- Swiper Carousel -->
-                                    <div class="swiper community-swiper">
+                                    <!-- Swiper Gallery Carousel (Equal Height, 3 Slides Per View on Desktop) -->
+                                    <div class="swiper nook-gallery-swiper">
                                         <div class="swiper-wrapper">
-                                            <!-- Slide 1 -->
+                                            <!-- Slide 1: Community Lounge & Terrace -->
                                             <div class="swiper-slide">
-                                                <div class="c-community-card">
-                                                    <div class="c-community-card_img-wrap">
-                                                        <span class="c-community-card_badge">🎬 Movie Night</span>
-                                                        <img class="c-community-card_img"
-                                                            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&q=80"
-                                                            alt="Rooftop Cinema & Starlit Classics"
-                                                            onerror="this.onerror=null; this.src='./assets/article-community.jpg';"
-                                                            loading="lazy">
-                                                    </div>
-                                                    <div class="c-community-card_body">
-                                                        <span class="c-community-card_tag">Weekly Special</span>
-                                                        <h3 class="c-community-card_title">Rooftop Cinema &amp; Starlit
-                                                            Evenings</h3>
-                                                        <p class="c-community-card_desc">
-                                                            Under starlit Calicut skies with cozy bean bags, fresh
-                                                            popcorn, and resident-curated screenings of fan-favorite
-                                                            movies and indie cinema.
-                                                        </p>
-                                                        <div class="c-community-card_footer">
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <circle cx="12" cy="12" r="10"></circle>
-                                                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                                                </svg>
-                                                                Fridays • 7:30 PM
-                                                            </span>
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <path
-                                                                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z">
-                                                                    </path>
-                                                                    <circle cx="12" cy="10" r="3"></circle>
-                                                                </svg>
-                                                                Sky Terrace
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                                <div class="nook-gallery-card h-[280px] sm:h-[340px] md:h-[390px] lg:h-[430px] w-full"
+                                                    style="background-color: #f0ece0;">
+                                                    <img src="./assets/nook-space-1.jpg"
+                                                        alt="The Nook Community Lounge and Social Living Space"
+                                                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02]"
+                                                        loading="lazy" />
                                                 </div>
                                             </div>
 
-                                            <!-- Slide 2 -->
+                                            <!-- Slide 2: Cozy Bunk Bedroom Setup -->
                                             <div class="swiper-slide">
-                                                <div class="c-community-card">
-                                                    <div class="c-community-card_img-wrap">
-                                                        <span class="c-community-card_badge">🥞 Sunday Spread</span>
-                                                        <img class="c-community-card_img"
-                                                            src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&w=800&q=80"
-                                                            alt="Chef-Curated Sunday Soul Brunches"
-                                                            onerror="this.onerror=null; this.src='./assets/article-coliving.jpg';"
-                                                            loading="lazy">
-                                                    </div>
-                                                    <div class="c-community-card_body">
-                                                        <span class="c-community-card_tag">Dining &amp; Feasts</span>
-                                                        <h3 class="c-community-card_title">Chef-Curated Sunday Brunches
-                                                        </h3>
-                                                        <p class="c-community-card_desc">
-                                                            Slow weekend mornings over wholesome artisanal spreads,
-                                                            fresh bakes, regional Malabar delicacies, and great
-                                                            community dining table conversations.
-                                                        </p>
-                                                        <div class="c-community-card_footer">
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <circle cx="12" cy="12" r="10"></circle>
-                                                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                                                </svg>
-                                                                Sundays • 10:30 AM
-                                                            </span>
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <path
-                                                                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z">
-                                                                    </path>
-                                                                    <circle cx="12" cy="10" r="3"></circle>
-                                                                </svg>
-                                                                Dining Hall
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                                <div class="nook-gallery-card h-[280px] sm:h-[340px] md:h-[390px] lg:h-[430px] w-full"
+                                                    style="background-color: #f0ece0;">
+                                                    <img src="./assets/nook-space-2.jpg"
+                                                        alt="The Nook Bedroom Setup and Bunk Living"
+                                                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02]"
+                                                        loading="lazy" />
                                                 </div>
                                             </div>
 
-                                            <!-- Slide 3 -->
+                                            <!-- Slide 3: Comfortable Downtime Room -->
                                             <div class="swiper-slide">
-                                                <div class="c-community-card">
-                                                    <div class="c-community-card_img-wrap">
-                                                        <span class="c-community-card_badge">☕ Chai &amp; Chill</span>
-                                                        <img class="c-community-card_img"
-                                                            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80"
-                                                            alt="Sisterhood Circles & Chai Conversations"
-                                                            onerror="this.onerror=null; this.src='./assets/article-community.jpg';"
-                                                            loading="lazy">
-                                                    </div>
-                                                    <div class="c-community-card_body">
-                                                        <span class="c-community-card_tag">Ritual &amp; Bonding</span>
-                                                        <h3 class="c-community-card_title">Sisterhood Circles &amp; Chai
-                                                            Evenings</h3>
-                                                        <p class="c-community-card_desc">
-                                                            An open, welcoming space to de-stress after work or study
-                                                            hours. Sip hot Sulaimani chai, share stories, laugh, and
-                                                            support each other.
-                                                        </p>
-                                                        <div class="c-community-card_footer">
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <circle cx="12" cy="12" r="10"></circle>
-                                                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                                                </svg>
-                                                                Wednesdays • 6:30 PM
-                                                            </span>
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <path
-                                                                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z">
-                                                                    </path>
-                                                                    <circle cx="12" cy="10" r="3"></circle>
-                                                                </svg>
-                                                                The Living Nook
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                                <div class="nook-gallery-card h-[280px] sm:h-[340px] md:h-[390px] lg:h-[430px] w-full"
+                                                    style="background-color: #f0ece0;">
+                                                    <img src="./assets/article-sanctuary.jpg"
+                                                        alt="A comfortable room and personal downtime space at Nook Living"
+                                                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02]"
+                                                        loading="lazy" />
                                                 </div>
                                             </div>
 
-                                            <!-- Slide 4 -->
+                                            <!-- Slide 4: Calm Work & Study Spaces -->
                                             <div class="swiper-slide">
-                                                <div class="c-community-card">
-                                                    <div class="c-community-card_img-wrap">
-                                                        <span class="c-community-card_badge">🧘 Morning Flow</span>
-                                                        <img class="c-community-card_img"
-                                                            src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80"
-                                                            alt="Sunrise Yoga & Terrace Mindfulness"
-                                                            onerror="this.onerror=null; this.src='./assets/article-sanctuary.jpg';"
-                                                            loading="lazy">
-                                                    </div>
-                                                    <div class="c-community-card_body">
-                                                        <span class="c-community-card_tag">Wellness &amp; Health</span>
-                                                        <h3 class="c-community-card_title">Sunrise Yoga &amp;
-                                                            Mindfulness</h3>
-                                                        <p class="c-community-card_desc">
-                                                            Breathe in the morning breeze with guided yoga, gentle
-                                                            stretching, and sound meditation sessions led by certified
-                                                            wellness coaches.
-                                                        </p>
-                                                        <div class="c-community-card_footer">
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <circle cx="12" cy="12" r="10"></circle>
-                                                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                                                </svg>
-                                                                Saturdays • 6:45 AM
-                                                            </span>
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <path
-                                                                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z">
-                                                                    </path>
-                                                                    <circle cx="12" cy="10" r="3"></circle>
-                                                                </svg>
-                                                                Sky Terrace
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                                <div class="nook-gallery-card h-[280px] sm:h-[340px] md:h-[390px] lg:h-[430px] w-full"
+                                                    style="background-color: #f0ece0;">
+                                                    <img src="./assets/article-study.jpg"
+                                                        alt="Productive work and calm study spaces at Nook Living"
+                                                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02]"
+                                                        loading="lazy" />
                                                 </div>
                                             </div>
 
-                                            <!-- Slide 5 -->
+                                            <!-- Slide 5: Shared Dining & Coliving -->
                                             <div class="swiper-slide">
-                                                <div class="c-community-card">
-                                                    <div class="c-community-card_img-wrap">
-                                                        <span class="c-community-card_badge">🎨 Hands-On DIY</span>
-                                                        <img class="c-community-card_img"
-                                                            src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=800&q=80"
-                                                            alt="Sip & Paint, Clay & DIY Workshops"
-                                                            onerror="this.onerror=null; this.src='./assets/article-study.jpg';"
-                                                            loading="lazy">
-                                                    </div>
-                                                    <div class="c-community-card_body">
-                                                        <span class="c-community-card_tag">Creativity &amp; Art</span>
-                                                        <h3 class="c-community-card_title">Sip &amp; Paint &amp; Pottery
-                                                            Studios</h3>
-                                                        <p class="c-community-card_desc">
-                                                            Hands-on weekend workshops featuring acrylic canvas
-                                                            painting, handmade clay pottery, and botanical candle
-                                                            making. All materials provided.
-                                                        </p>
-                                                        <div class="c-community-card_footer">
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <circle cx="12" cy="12" r="10"></circle>
-                                                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                                                </svg>
-                                                                Monthly • 4:00 PM
-                                                            </span>
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <path
-                                                                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z">
-                                                                    </path>
-                                                                    <circle cx="12" cy="10" r="3"></circle>
-                                                                </svg>
-                                                                Creative Studio
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                                <div class="nook-gallery-card h-[280px] sm:h-[340px] md:h-[390px] lg:h-[430px] w-full"
+                                                    style="background-color: #f0ece0;">
+                                                    <img src="./assets/article-coliving.jpg"
+                                                        alt="Turns out home feels better with your people in it - Nook Living"
+                                                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02]"
+                                                        loading="lazy" />
                                                 </div>
                                             </div>
 
-                                            <!-- Slide 6 -->
+                                            <!-- Slide 6: Community Gatherings & Sisterhood -->
                                             <div class="swiper-slide">
-                                                <div class="c-community-card">
-                                                    <div class="c-community-card_img-wrap">
-                                                        <span class="c-community-card_badge">💼 Leadership</span>
-                                                        <img class="c-community-card_img"
-                                                            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
-                                                            alt="Women in Tech & Leadership Circles"
-                                                            onerror="this.onerror=null; this.src='./assets/article-study.jpg';"
-                                                            loading="lazy">
-                                                    </div>
-                                                    <div class="c-community-card_body">
-                                                        <span class="c-community-card_tag">Growth &amp; Career</span>
-                                                        <h3 class="c-community-card_title">Women in Tech &amp; Career
-                                                            Circles</h3>
-                                                        <p class="c-community-card_desc">
-                                                            Fireside chats, resume reviews, and networking sessions with
-                                                            accomplished women professionals and entrepreneurs across
-                                                            Calicut.
-                                                        </p>
-                                                        <div class="c-community-card_footer">
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <circle cx="12" cy="12" r="10"></circle>
-                                                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                                                </svg>
-                                                                Monthly • 6:00 PM
-                                                            </span>
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <path
-                                                                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z">
-                                                                    </path>
-                                                                    <circle cx="12" cy="10" r="3"></circle>
-                                                                </svg>
-                                                                Co-Work Pods
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Slide 7 -->
-                                            <div class="swiper-slide">
-                                                <div class="c-community-card">
-                                                    <div class="c-community-card_img-wrap">
-                                                        <span class="c-community-card_badge">🌸 Festive Spirit</span>
-                                                        <img class="c-community-card_img"
-                                                            src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=800&q=80"
-                                                            alt="Cultural Feasts & Festive Nights"
-                                                            onerror="this.onerror=null; this.src='./assets/article-community.jpg';"
-                                                            loading="lazy">
-                                                    </div>
-                                                    <div class="c-community-card_body">
-                                                        <span class="c-community-card_tag">Traditions &amp;
-                                                            Culture</span>
-                                                        <h3 class="c-community-card_title">Cultural Feasts &amp;
-                                                            Festival Nights</h3>
-                                                        <p class="c-community-card_desc">
-                                                            Experience family warmth away from home with traditional
-                                                            Onam Sadya, Diwali pookkalam, Eid celebrations, and festive
-                                                            community feasts.
-                                                        </p>
-                                                        <div class="c-community-card_footer">
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <circle cx="12" cy="12" r="10"></circle>
-                                                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                                                </svg>
-                                                                Seasonal
-                                                            </span>
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <path
-                                                                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z">
-                                                                    </path>
-                                                                    <circle cx="12" cy="10" r="3"></circle>
-                                                                </svg>
-                                                                Main Courtyard
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Slide 8 -->
-                                            <div class="swiper-slide">
-                                                <div class="c-community-card">
-                                                    <div class="c-community-card_img-wrap">
-                                                        <span class="c-community-card_badge">🎲 Game Night</span>
-                                                        <img class="c-community-card_img"
-                                                            src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=800&q=80"
-                                                            alt="Board Game Battles & Karaoke Jams"
-                                                            onerror="this.onerror=null; this.src='./assets/article-coliving.jpg';"
-                                                            loading="lazy">
-                                                    </div>
-                                                    <div class="c-community-card_body">
-                                                        <span class="c-community-card_tag">Social &amp; Fun</span>
-                                                        <h3 class="c-community-card_title">Board Games &amp; Karaoke
-                                                            Jams</h3>
-                                                        <p class="c-community-card_desc">
-                                                            Unwind with friendly tournaments of Catan, Uno, Taboo, and
-                                                            laughter-packed karaoke sessions to shake off weekday exam
-                                                            or sprint stress.
-                                                        </p>
-                                                        <div class="c-community-card_footer">
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <circle cx="12" cy="12" r="10"></circle>
-                                                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                                                </svg>
-                                                                Saturdays • 8:00 PM
-                                                            </span>
-                                                            <span class="c-community-card_meta">
-                                                                <svg viewBox="0 0 24 24" fill="none"
-                                                                    stroke="currentColor" stroke-width="2">
-                                                                    <path
-                                                                        d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z">
-                                                                    </path>
-                                                                    <circle cx="12" cy="10" r="3"></circle>
-                                                                </svg>
-                                                                Recreation Lounge
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                                <div class="nook-gallery-card h-[280px] sm:h-[340px] md:h-[390px] lg:h-[430px] w-full"
+                                                    style="background-color: #f0ece0;">
+                                                    <img src="./assets/article-community.jpg"
+                                                        alt="Evenings and gatherings where strangers turn into sisters"
+                                                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02]"
+                                                        loading="lazy" />
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Swiper Pagination Dots -->
-                                        <div class="swiper-pagination community-swiper-pagination"></div>
+
+                                        <!-- Swiper Pagination -->
+                                        <div class="swiper-pagination nook-gallery-pagination"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
                 </div>
+
                 <!-- ================================================================= -->
                 <!-- 5. Site Footer                                                    -->
                 <!-- ================================================================= -->
@@ -4024,8 +3560,8 @@
                                         <p class="max-md:heading-xs md:body-lg max-w-[480px] font-medium">Ready to make
                                             yourself at home? Find your own space, good people and plenty to look
                                             forward to. If Nook feels like your kind of place, we'd love to hear
-                                            from you.</p> <a
-                                            href="#" target="_self" data-no-swup="" data-open-enquire="true"
+                                            from you.</p> <a href="#" target="_self" data-no-swup=""
+                                            data-open-enquire="true"
                                             class="c-button mt-fluid-sm button-purple button-secondary"
                                             style="--color-primary: #816AB0; --button-background: #ffffff;"> <span
                                                 class="c-button_icon -hover"> <span class="c-icon"> <svg width="1em"
@@ -4172,23 +3708,22 @@
     <!-- Swiper JS Library -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Initialize Community Functions Swiper
+        // Initialize The Nook Gallery Swiper (3 slides per view, equal height)
         document.addEventListener('DOMContentLoaded', function () {
             function initSwiper() {
                 if (typeof Swiper !== 'undefined') {
-                    new Swiper('.community-swiper', {
+                    new Swiper('.nook-gallery-swiper', {
                         slidesPerView: 1.15,
-                        spaceBetween: 20,
+                        spaceBetween: 16,
                         grabCursor: true,
                         speed: 500,
                         navigation: {
-                            nextEl: '.community-swiper-next',
-                            prevEl: '.community-swiper-prev',
+                            nextEl: '.nook-gallery-next',
+                            prevEl: '.nook-gallery-prev',
                         },
                         pagination: {
-                            el: '.community-swiper-pagination',
+                            el: '.nook-gallery-pagination',
                             clickable: true,
-                            dynamicBullets: true,
                         },
                         breakpoints: {
                             640: {
