@@ -1007,14 +1007,14 @@
     <!-- ================================================================= -->
     <style id="nook-enquiry-modal-styles">
         :root {
-            --nook-plum: #3B1238;
-            --nook-plum-dark: #2A0B27;
-            --nook-dusty-pink: #E8A0BF;
-            --nook-dusty-pink-light: #F7D4E3;
-            --nook-cream: #FDFBF7;
-            --nook-cream-muted: #F5EFE6;
-            --nook-mustard: #E5A823;
-            --nook-charcoal: #231C21;
+            --nook-yellow: #FADE4B;
+            --nook-yellow-light: #FCE676;
+            --nook-pink: #E84565;
+            --nook-pink-hover: #D63756;
+            --nook-purple: #7D6BAB;
+            --nook-charcoal: #171616;
+            --nook-charcoal-muted: #4B4646;
+            --nook-white: #FFFFFF;
         }
 
         .nook-modal-overlay {
@@ -1046,28 +1046,28 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(35, 28, 33, 0.65);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(23, 22, 22, 0.72);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             cursor: pointer;
         }
 
         .nook-modal-dialog {
             position: relative;
             z-index: 2;
-            background: #ffffff;
+            background: var(--nook-yellow);
             color: var(--nook-charcoal);
             width: 100%;
-            max-width: 620px;
-            max-height: 90vh;
-            border-radius: 28px;
-            box-shadow: 0 30px 70px -15px rgba(59, 18, 56, 0.45), 0 0 0 1px rgba(59, 18, 56, 0.08);
+            max-width: 720px;
+            max-height: 92vh;
+            border-radius: clamp(28px, 4.5vw, 42px);
+            box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            transform: scale(0.88) translateY(32px);
+            transform: scale(0.9) translateY(24px);
             opacity: 0;
-            transition: transform 0.42s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.32s ease;
+            transition: transform 0.4s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.32s ease;
         }
 
         .nook-modal-overlay.is-open .nook-modal-dialog {
@@ -1075,12 +1075,41 @@
             opacity: 1;
         }
 
-        /* Header */
+        /* Top-Right Close Button */
+        .nook-modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.65rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            color: var(--nook-charcoal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 2rem;
+            font-weight: 700;
+            transition: transform 0.25s cubic-bezier(0.34, 1.5, 0.64, 1), color 0.2s ease, background 0.2s ease;
+            line-height: 1;
+            z-index: 20;
+        }
+
+        .nook-modal-close:hover {
+            color: var(--nook-pink);
+            background: rgba(23, 22, 22, 0.06);
+            transform: scale(1.15) rotate(90deg);
+        }
+
+        /* Header (Questions & Form) */
         .nook-modal-header {
-            padding: 1.5rem 1.75rem 1.15rem;
-            border-bottom: 1px solid rgba(59, 18, 56, 0.08);
-            background: var(--nook-cream);
+            padding: 2.25rem 2.25rem 0.5rem;
+            background: transparent;
+            border-bottom: none;
             position: relative;
+            text-align: center;
         }
 
         .nook-modal-kicker {
@@ -1088,77 +1117,55 @@
             align-items: center;
             gap: 0.35rem;
             font-size: 0.75rem;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            color: var(--nook-plum);
-            background: rgba(232, 160, 191, 0.35);
-            padding: 0.25rem 0.75rem;
+            color: var(--nook-pink);
+            background: rgba(232, 69, 101, 0.12);
+            padding: 0.3rem 0.85rem;
             border-radius: 9999px;
             margin-bottom: 0.5rem;
         }
 
         .nook-modal-title {
-            font-size: clamp(1.35rem, 1.2rem + 0.5vw, 1.7rem);
-            font-weight: 700;
-            color: var(--nook-plum);
-            line-height: 1.2;
-            margin: 0 0 0.3rem 0;
+            font-size: clamp(1.4rem, 1.25rem + 0.6vw, 1.85rem);
+            font-weight: 800;
+            color: var(--nook-charcoal);
+            line-height: 1.15;
+            margin: 0 0 0.35rem 0;
+            letter-spacing: -0.02em;
         }
 
         .nook-modal-subtitle {
-            font-size: 0.875rem;
-            color: #645a60;
+            font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1.05rem);
+            color: var(--nook-charcoal-muted);
+            font-weight: 600;
             margin: 0;
             line-height: 1.45;
         }
 
-        .nook-modal-close {
-            position: absolute;
-            top: 1.25rem;
-            right: 1.25rem;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 1px solid rgba(59, 18, 56, 0.12);
-            background: #ffffff;
-            color: var(--nook-plum);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.25rem;
-            font-weight: 600;
-            transition: all 0.25s ease;
-            line-height: 1;
-        }
-
-        .nook-modal-close:hover {
-            background: var(--nook-plum);
-            color: #ffffff;
-            transform: rotate(90deg);
-        }
-
         /* Progress Track */
         .nook-modal-progress-track {
-            width: 100%;
-            height: 4px;
-            background: rgba(59, 18, 56, 0.08);
+            width: calc(100% - 4.5rem);
+            height: 6px;
+            background: rgba(23, 22, 22, 0.1);
+            border-radius: 9999px;
+            margin: 0.75rem auto 0;
             position: relative;
+            overflow: hidden;
         }
 
         .nook-modal-progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, var(--nook-dusty-pink) 0%, #816AB0 50%, var(--nook-mustard) 100%);
-            background-size: 200% 100%;
+            background: var(--nook-pink);
+            border-radius: 9999px;
             width: 0%;
             transition: width 0.45s cubic-bezier(0.34, 1.25, 0.64, 1);
-            animation: nookBarShimmer 3s ease infinite;
         }
 
         /* Body & Steps */
         .nook-modal-body {
-            padding: 1.5rem 1.75rem;
+            padding: 1.75rem clamp(1.25rem, 4vw, 2.75rem) 2.25rem;
             overflow-y: auto;
             flex: 1;
             -webkit-overflow-scrolling: touch;
@@ -1174,450 +1181,122 @@
         }
 
         /* ============================================================= */
-        /* Enhanced Modal Animations & Micro-Interactions                 */
+        /* Step 0: Intro Screen (Matching Enquiry Popup Design)          */
         /* ============================================================= */
-        @keyframes nookStepSlideIn {
-            0% {
-                opacity: 0;
-                transform: translateX(24px) scale(0.97);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateX(0) scale(1);
-            }
-        }
-
-        @keyframes nookOptCascade {
-            0% {
-                opacity: 0;
-                transform: translateY(14px) scale(0.96);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        @keyframes nookSelectPulse {
-            0% {
-                transform: scale(0.97);
-            }
-
-            50% {
-                transform: scale(1.02);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes nookBadgePop {
-            0% {
-                transform: scale(0.8);
-            }
-
-            60% {
-                transform: scale(1.22);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes nookCheckSpin {
-            0% {
-                transform: scale(0) rotate(-45deg);
-                opacity: 0;
-            }
-
-            100% {
-                transform: scale(1) rotate(0deg);
-                opacity: 1;
-            }
-        }
-
-        @keyframes nookBarShimmer {
-            0% {
-                background-position: 100% 0;
-            }
-
-            100% {
-                background-position: -100% 0;
-            }
-        }
-
-        @keyframes nookBtnShine {
-            0% {
-                left: -100%;
-            }
-
-            35%,
-            100% {
-                left: 100%;
-            }
-        }
-
-        @keyframes nookFloatBadge {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-3px);
-            }
-        }
-
-        @keyframes nookHeartBeat {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            14% {
-                transform: scale(1.18);
-            }
-
-            28% {
-                transform: scale(1);
-            }
-
-            42% {
-                transform: scale(1.1);
-            }
-
-            56% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes nookWaPulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45);
-            }
-
-            70% {
-                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-
-        .nook-field-label {
-            display: block;
-            font-size: 0.925rem;
-            font-weight: 700;
-            color: var(--nook-plum);
-            margin-bottom: 0.75rem;
-        }
-
-        .nook-field-label small {
-            font-weight: 400;
-            color: #645a60;
-            font-size: 0.8rem;
-            margin-left: 0.35rem;
-        }
-
-        /* Room Selection Cards */
-        .nook-room-options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.65rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .nook-room-card {
-            border: 1.5px solid rgba(59, 18, 56, 0.12);
-            border-radius: 16px;
-            padding: 0.85rem 1.1rem;
-            background: #ffffff;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-align: left;
-        }
-
-        .nook-room-card:hover {
-            border-color: var(--nook-dusty-pink);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(59, 18, 56, 0.08);
-        }
-
-        .nook-room-card.is-selected {
-            border-color: var(--nook-plum);
-            background: rgba(232, 160, 191, 0.14);
-            box-shadow: 0 0 0 2px var(--nook-plum);
-        }
-
-        .nook-room-card_info {
-            flex: 1;
-        }
-
-        .nook-room-card_title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--nook-plum);
-            margin-bottom: 0.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.45rem;
-        }
-
-        .nook-room-card_badge {
-            font-size: 0.675rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            background: var(--nook-mustard);
-            color: var(--nook-plum-dark);
-            padding: 0.15rem 0.45rem;
-            border-radius: 9999px;
-        }
-
-        .nook-room-card_desc {
-            font-size: 0.8rem;
-            color: #645a60;
-            line-height: 1.35;
-        }
-
-        .nook-room-card_price {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--nook-plum);
-            background: rgba(59, 18, 56, 0.06);
-            padding: 0.35rem 0.65rem;
-            border-radius: 10px;
-            white-space: nowrap;
-            margin-left: 0.75rem;
-        }
-
-        /* Pill Group Options */
-        .nook-pill-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .nook-pill-option {
-            border: 1.5px solid rgba(59, 18, 56, 0.14);
-            background: #ffffff;
-            color: var(--nook-charcoal);
-            padding: 0.45rem 0.95rem;
-            border-radius: 9999px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            user-select: none;
-        }
-
-        .nook-pill-option:hover {
-            border-color: var(--nook-dusty-pink);
-            color: var(--nook-plum);
-        }
-
-        .nook-pill-option.is-selected {
-            background: var(--nook-plum);
-            color: #ffffff;
-            border-color: var(--nook-plum);
-            box-shadow: 0 4px 10px rgba(59, 18, 56, 0.2);
-        }
-
-        /* Text Inputs */
-        .nook-input-group {
-            margin-bottom: 1rem;
-        }
-
-        .nook-input-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--nook-plum);
-            margin-bottom: 0.35rem;
-        }
-
-        .nook-input {
-            width: 100%;
-            border: 1.5px solid rgba(59, 18, 56, 0.15);
-            background: var(--nook-cream);
-            border-radius: 12px;
-            padding: 0.75rem 1rem;
-            font-size: 0.925rem;
-            color: var(--nook-charcoal);
-            outline: none;
-            transition: all 0.25s ease;
-            box-sizing: border-box;
-        }
-
-        .nook-input:focus {
-            border-color: var(--nook-plum);
-            background: #ffffff;
-            box-shadow: 0 0 0 3px rgba(232, 160, 191, 0.3);
-        }
-
-        .nook-textarea {
-            width: 100%;
-            min-height: 75px;
-            resize: vertical;
-        }
-
-
-
-        /* Modal Intro Screen Styles */
         .nook-intro-view {
             text-align: center;
-            padding: 1.25rem 0.5rem 0.5rem;
+            padding: clamp(1rem, 2.5vw, 1.85rem) 0 0.5rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        .nook-intro-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--nook-plum);
-            background: rgba(232, 160, 191, 0.35);
-            padding: 0.25rem 0.85rem;
-            border-radius: 9999px;
-            margin-bottom: 0.85rem;
-            animation: nookFloatBadge 3s ease-in-out infinite;
         }
 
         .nook-intro-title {
-            font-size: clamp(1.75rem, 1.4rem + 1vw, 2.25rem);
-            font-weight: 800;
-            color: var(--nook-plum);
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-            margin: 0 0 0.65rem 0;
+            font-size: clamp(2.35rem, 1.8rem + 2.5vw, 3.65rem);
+            font-weight: 900;
+            color: var(--nook-charcoal);
+            line-height: 1.08;
+            letter-spacing: -0.035em;
+            margin: 0 0 0.75rem 0;
+        }
+
+        .nook-intro-title .nook-brand-nookie {
+            color: var(--nook-purple);
         }
 
         .nook-intro-subtitle {
-            font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.1rem);
-            color: #554a52;
-            line-height: 1.5;
-            max-width: 440px;
-            margin: 0 0 1.15rem 0;
-        }
-
-        .nook-intro-callout {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: #FFF0F5;
-            border: 1.5px dashed var(--nook-dusty-pink);
-            border-radius: 14px;
-            padding: 0.6rem 1.25rem;
-            font-size: 0.95rem;
+            font-size: clamp(1rem, 0.95rem + 0.3vw, 1.25rem);
             font-weight: 700;
-            color: var(--nook-plum);
-            margin-bottom: 1.35rem;
+            color: var(--nook-charcoal);
+            line-height: 1.45;
+            max-width: 520px;
+            margin: 0 auto 2.25rem;
         }
 
-        .nook-intro-preview-list {
+        /* 4 Pill Buttons in 2x2 Grid */
+        .nook-intro-pill-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0.6rem;
+            gap: 1.15rem 1.25rem;
             width: 100%;
-            max-width: 440px;
-            margin-bottom: 1.75rem;
-            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .nook-intro-preview-item {
-            display: flex;
-            align-items: center;
-            gap: 0.55rem;
-            background: #FAF7F2;
-            border: 1px solid rgba(59, 18, 56, 0.08);
-            border-radius: 12px;
-            padding: 0.55rem 0.75rem;
-            font-size: 0.825rem;
-            font-weight: 600;
-            color: #4a3e47;
+        @media (max-width: 560px) {
+            .nook-intro-pill-grid {
+                grid-template-columns: 1fr;
+                gap: 0.85rem;
+            }
         }
 
-        .nook-intro-preview-num {
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: #816AB0;
-            background: rgba(129, 106, 176, 0.12);
-            padding: 0.15rem 0.45rem;
-            border-radius: 6px;
-        }
-
-        .nook-intro-start-btn {
+        .nook-intro-pill-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            width: 100%;
-            max-width: 300px;
-            padding: 0.9rem 1.75rem;
-            background: var(--nook-plum);
-            color: #ffffff !important;
-            font-size: 1rem;
-            font-weight: 700;
+            text-align: center;
+            background: var(--nook-pink);
+            color: #FFFFFF !important;
             border-radius: 9999px;
+            padding: 1.15rem 1.75rem;
+            font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.15rem);
+            font-weight: 700;
             border: none;
             cursor: pointer;
-            box-shadow: 0 6px 18px rgba(59, 18, 56, 0.25);
-            transition: all 0.25s ease;
+            box-shadow: 0 6px 18px rgba(232, 69, 101, 0.28);
+            transition: transform 0.24s cubic-bezier(0.34, 1.5, 0.64, 1), box-shadow 0.24s ease, background 0.2s ease;
+            user-select: none;
             position: relative;
             overflow: hidden;
-        }
-
-        .nook-intro-start-btn:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-            animation: nookBtnShine 3s infinite ease-in-out;
+            letter-spacing: -0.01em;
         }
 
-        .nook-intro-start-btn:hover {
-            background: #816AB0;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(129, 106, 176, 0.35);
+        .nook-intro-pill-btn:hover {
+            background: var(--nook-pink-hover);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 24px rgba(232, 69, 101, 0.4);
         }
 
-        /* Modal Vibe Options Styles */
+        .nook-intro-pill-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* Question Options (Steps 1-4) */
+        .nook-field-label {
+            display: block;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--nook-charcoal);
+            margin-bottom: 0.85rem;
+        }
+
+        .nook-field-label small {
+            font-weight: 600;
+            color: var(--nook-charcoal-muted);
+            font-size: 0.85rem;
+            margin-left: 0.35rem;
+        }
+
         .nook-modal-options {
             display: flex;
             flex-direction: column;
-            gap: 0.65rem;
+            gap: 0.75rem;
             margin-bottom: 0.5rem;
         }
 
         .nook-modal-opt-btn {
             display: flex;
             align-items: flex-start;
-            gap: 0.75rem;
+            gap: 0.85rem;
             width: 100%;
             text-align: left;
-            padding: 0.85rem 1rem;
-            background: #FAF7F2;
-            border: 1.5px solid rgba(59, 18, 56, 0.1);
-            border-radius: 16px;
+            padding: 1rem 1.25rem;
+            background: #FFFFFF;
+            border: 2px solid transparent;
+            border-radius: 20px;
             cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
             transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
             font-family: inherit;
         }
@@ -1639,31 +1318,30 @@
         }
 
         .nook-modal-opt-btn:hover {
-            background: #FFF8FA;
-            border-color: var(--nook-dusty-pink);
+            border-color: var(--nook-pink);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(232, 160, 191, 0.18);
+            box-shadow: 0 8px 20px rgba(232, 69, 101, 0.18);
         }
 
         .nook-modal-opt-btn:active {
-            transform: scale(0.97);
+            transform: scale(0.98);
         }
 
         .nook-modal-opt-btn.is-selected {
-            background: #FFF5F9 !important;
-            border-color: var(--nook-plum) !important;
-            box-shadow: 0 6px 16px rgba(59, 18, 56, 0.12);
+            background: #FFF5F7 !important;
+            border-color: var(--nook-pink) !important;
+            box-shadow: 0 0 0 2px var(--nook-pink), 0 8px 20px rgba(232, 69, 101, 0.22);
             animation: nookSelectPulse 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .nook-modal-opt-badge {
-            width: 26px;
-            height: 26px;
-            border-radius: 8px;
-            background: #EAE1D5;
-            color: var(--nook-plum);
+            width: 30px;
+            height: 30px;
+            border-radius: 10px;
+            background: var(--nook-yellow);
+            color: var(--nook-charcoal);
             font-weight: 800;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1673,8 +1351,8 @@
         }
 
         .nook-modal-opt-btn.is-selected .nook-modal-opt-badge {
-            background: var(--nook-plum);
-            color: #ffffff;
+            background: var(--nook-pink);
+            color: #FFFFFF;
             animation: nookBadgePop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
@@ -1684,55 +1362,96 @@
         }
 
         .nook-modal-opt-title {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 700;
-            color: #231C21;
+            color: var(--nook-charcoal);
             line-height: 1.3;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.25rem;
         }
 
         .nook-modal-opt-desc {
-            font-size: 0.825rem;
-            color: #645a60;
+            font-size: 0.85rem;
+            color: #555555;
             line-height: 1.4;
         }
 
         .nook-modal-opt-check {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
-            border: 1.5px solid #D5CBC0;
+            border: 2px solid rgba(23, 22, 22, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
             margin-top: 0.2rem;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: transparent;
             transition: all 0.2s ease;
         }
 
         .nook-modal-opt-btn.is-selected .nook-modal-opt-check {
-            border-color: var(--nook-plum);
-            background: var(--nook-plum);
-            color: #ffffff;
+            border-color: var(--nook-pink);
+            background: var(--nook-pink);
+            color: #FFFFFF;
             animation: nookCheckSpin 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
+        /* Step 5: Contact & Vibe Match */
         .nook-vibe-summary-box {
-            background: var(--nook-cream);
-            border: 1px dashed var(--nook-dusty-pink);
-            border-radius: 14px;
+            background: #FFFFFF;
+            border: 2px solid rgba(23, 22, 22, 0.08);
+            border-radius: 20px;
+            padding: 1.15rem 1.35rem;
+            font-size: 0.95rem;
+            color: var(--nook-charcoal);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        }
+
+        .nook-input-group {
+            margin-bottom: 1.15rem;
+        }
+
+        .nook-input-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--nook-charcoal);
+            margin-bottom: 0.4rem;
+        }
+
+        .nook-input {
+            width: 100%;
+            border: 2px solid rgba(23, 22, 22, 0.12);
+            background: #FFFFFF;
+            border-radius: 16px;
             padding: 0.85rem 1.15rem;
-            font-size: 0.875rem;
-            color: var(--nook-plum);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--nook-charcoal);
+            outline: none;
+            transition: all 0.25s ease;
+            box-sizing: border-box;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .nook-input:focus {
+            border-color: var(--nook-pink);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(232, 69, 101, 0.25);
+        }
+
+        .nook-textarea {
+            width: 100%;
+            min-height: 85px;
+            resize: vertical;
         }
 
         /* Modal Footer */
         .nook-modal-footer {
-            padding: 1.1rem 1.75rem 1.35rem;
-            border-top: 1px solid rgba(59, 18, 56, 0.08);
-            background: var(--nook-cream);
+            padding: 1.15rem 2.25rem 1.5rem;
+            border-top: 1px solid rgba(23, 22, 22, 0.08);
+            background: transparent;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -1740,27 +1459,52 @@
         }
 
         .nook-btn-back {
-            border: 1.5px solid rgba(59, 18, 56, 0.2);
-            background: transparent;
-            color: var(--nook-plum);
-            padding: 0.65rem 1.25rem;
+            border: none;
+            background: rgba(23, 22, 22, 0.08);
+            color: var(--nook-charcoal);
+            padding: 0.75rem 1.4rem;
             border-radius: 9999px;
-            font-weight: 600;
-            font-size: 0.875rem;
+            font-weight: 700;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .nook-btn-back:hover {
-            background: rgba(59, 18, 56, 0.06);
+            background: rgba(23, 22, 22, 0.15);
+            transform: translateY(-1px);
         }
 
         .nook-btn-next,
         .nook-btn-submit {
             border: none;
-            background: var(--nook-plum);
-            color: #ffffff;
-            padding: 0.7rem 1.5rem;
+            background: var(--nook-pink);
+            color: #FFFFFF !important;
+            padding: 0.75rem 1.65rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.925rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            box-shadow: 0 6px 18px rgba(232, 69, 101, 0.28);
+            margin-left: auto;
+        }
+
+        .nook-btn-next:hover,
+        .nook-btn-submit:hover {
+            background: var(--nook-pink-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(232, 69, 101, 0.4);
+        }
+
+        .nook-btn-whatsapp {
+            border: none;
+            background: #25D366;
+            color: #FFFFFF !important;
+            padding: 0.75rem 1.45rem;
             border-radius: 9999px;
             font-weight: 700;
             font-size: 0.9rem;
@@ -1768,38 +1512,15 @@
             transition: all 0.25s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            box-shadow: 0 4px 14px rgba(59, 18, 56, 0.25);
-            margin-left: auto;
-        }
-
-        .nook-btn-next:hover,
-        .nook-btn-submit:hover {
-            background: var(--nook-plum-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(59, 18, 56, 0.35);
-        }
-
-        .nook-btn-whatsapp {
-            border: 1.5px solid #25D366;
-            background: #E8F8EE;
-            color: #0E7734;
-            padding: 0.7rem 1.25rem;
-            border-radius: 9999px;
-            font-weight: 700;
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
+            gap: 0.45rem;
             text-decoration: none;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
             animation: nookWaPulse 2.2s infinite;
         }
 
         .nook-btn-whatsapp:hover {
-            background: #25D366;
-            color: #ffffff;
+            background: #1EBE5D;
+            transform: translateY(-2px);
         }
 
         /* Success Screen */
@@ -1809,46 +1530,103 @@
         }
 
         .nook-success-icon {
-            width: 68px;
-            height: 68px;
-            background: rgba(232, 160, 191, 0.3);
-            color: var(--nook-plum);
+            width: 72px;
+            height: 72px;
+            background: rgba(232, 69, 101, 0.15);
+            color: var(--nook-pink);
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.25rem;
             margin-bottom: 1.25rem;
             animation: nookHeartBeat 2s ease-in-out infinite;
         }
 
-        @keyframes nookPop {
+        .nook-summary-card {
+            background: #FFFFFF;
+            border: 2px solid rgba(23, 22, 22, 0.08);
+            border-radius: 20px;
+            padding: 1.15rem 1.4rem;
+            margin: 1.5rem auto;
+            max-width: 480px;
+            text-align: left;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--nook-charcoal);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Micro-Interactions & Animations */
+        @keyframes nookStepSlideIn {
             0% {
-                transform: scale(0);
                 opacity: 0;
+                transform: translateX(20px) scale(0.97);
             }
-
-            70% {
-                transform: scale(1.15);
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
             }
+        }
 
+        @keyframes nookOptCascade {
+            0% {
+                opacity: 0;
+                transform: translateY(12px) scale(0.97);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes nookSelectPulse {
+            0% {
+                transform: scale(0.98);
+            }
+            50% {
+                transform: scale(1.02);
+            }
             100% {
                 transform: scale(1);
+            }
+        }
+
+        @keyframes nookBadgePop {
+            0% {
+                transform: scale(0.8);
+            }
+            60% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes nookCheckSpin {
+            0% {
+                transform: scale(0) rotate(-45deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
                 opacity: 1;
             }
         }
 
-        .nook-summary-card {
-            background: var(--nook-cream);
-            border-radius: 16px;
-            border: 1px dashed rgba(59, 18, 56, 0.2);
-            padding: 1rem 1.25rem;
-            margin: 1.5rem auto;
-            max-width: 440px;
-            text-align: left;
-            font-size: 0.85rem;
-            line-height: 1.7;
-            color: var(--nook-charcoal);
+        @keyframes nookHeartBeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.18); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            56% { transform: scale(1); }
+        }
+
+        @keyframes nookWaPulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
     </style>
 
@@ -3550,13 +3328,24 @@
                                             data-scroll-repeat="">
                                             Let’s <br> <u>Connect</u> </p>
                                     </div>
-                                    <div class="col-span-full max-lg:row-start-1 lg:col-span-4 lg:col-start-10">
-                                        <div class="c-footer_contact">
-                                            <p><strong>Calicut Community</strong> <br>
-                                                Nook living, Wayanad Road, Near Cyberpark &amp; Hilite City,<br>
-                                                Calicut, Kerala 673014, India<br>Mon-Sat 9:00 am - 8:00 pm (IST)</p>
-                                            <p><a href="mailto:hello@nookliving.in">
-                                                    <strong>hello@nookliving.in</strong> </a></p>
+                                    <div class="col-span-full max-lg:row-start-1 lg:col-span-5 lg:col-start-9 xl:col-span-5 xl:col-start-10">
+                                        <div class="c-footer_contact flex flex-col gap-y-2">
+                                            <p>
+                                                <strong>Nook Living</strong><br>
+                                                Eriyankandi Paramba<br>
+                                                Iringallur HSS Road<br>
+                                                Palazhi, GA College P.O.<br>
+                                                673014
+                                            </p>
+                                            <p>
+                                                <strong>Phone:</strong> <a href="tel:+918943873813" class="hover:underline font-semibold">+91 8943873813</a>
+                                            </p>
+                                            <p>
+                                                <strong>Instagram:</strong> <a href="https://www.instagram.com/nooklivings/" target="_blank" rel="noopener noreferrer" class="hover:underline font-semibold">@nooklivings</a>
+                                            </p>
+                                            <p>
+                                                <strong>Email:</strong> <a href="mailto:nooklivings@gmail.com" class="hover:underline font-semibold">nooklivings@gmail.com</a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -3567,9 +3356,9 @@
                                     </div>
 
                                     <div
-                                        class="col-span-7 flex flex-wrap items-center justify-end gap-x-8 text-right max-xs:flex-col max-xs:items-end lg:col-span-2 lg:col-start-13">
+                                        class="col-span-7 flex flex-wrap items-center justify-end gap-x-8 text-right max-xs:flex-col max-xs:items-end lg:col-span-4 lg:col-start-11">
                                         <ul class="max-lg:underline">
-                                            <li> <a href="#" target="_self" class="hover:underline"> Instagram </a>
+                                            <li> <a href="https://www.instagram.com/nooklivings/" target="_blank" rel="noopener noreferrer" class="hover:underline font-medium"> Instagram (@nooklivings) </a>
                                             </li>
                                         </ul>
                                     </div>
@@ -3692,61 +3481,49 @@
     <div id="nook-enquire-modal" class="nook-modal-overlay" aria-hidden="true" data-lenis-prevent="true">
         <div class="nook-modal-backdrop" id="nook-modal-backdrop" title="Click to close"></div>
         <div class="nook-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="nook-modal-title">
-            <!-- Header -->
-            <div class="nook-modal-header">
+            <!-- Modal Close Button (Top Right) -->
+            <button type="button" class="nook-modal-close" id="nook-modal-close-btn"
+                aria-label="Close Questionnaire">&times;</button>
+
+            <!-- Header (shown on Questions 1-5, hidden on Step 0) -->
+            <div class="nook-modal-header" id="nook-modal-header" style="display: none;">
                 <span class="nook-modal-kicker">✨ Pick Your Vibe</span>
-                <button type="button" class="nook-modal-close" id="nook-modal-close-btn"
-                    aria-label="Close Questionnaire">&times;</button>
                 <h3 class="nook-modal-title" id="nook-modal-title">Hey, future Nookie!</h3>
                 <p class="nook-modal-subtitle" id="nook-modal-subtitle">Before you move in, we'd love to know a little
                     about you!</p>
             </div>
 
-            <!-- Progress Bar -->
-            <div class="nook-modal-progress-track">
+            <!-- Progress Bar (shown on Questions 1-5, hidden on Step 0) -->
+            <div class="nook-modal-progress-track" id="nook-progress-track" style="display: none;">
                 <div class="nook-modal-progress-bar" id="nook-progress-bar"></div>
             </div>
 
             <!-- Modal Content Body -->
             <div class="nook-modal-body">
-                <!-- STEP 0: INTRO SCREEN -->
+                <!-- STEP 0: INTRO SCREEN (Matching Reference Design) -->
                 <div class="nook-step-section is-active" id="nook-step-0">
                     <div class="nook-intro-view">
-                        <div class="nook-intro-badge">✨ Welcome to Nook</div>
                         <h2 class="nook-intro-title">
-                            Hey, future <span style="color: #816AB0;">Nookie!</span>
+                            Hey, future <span class="nook-brand-nookie">Nookie!</span>
                         </h2>
                         <p class="nook-intro-subtitle">
                             Before you move in, we'd love to know a little about you!
                         </p>
 
-                        <div class="nook-intro-callout">
-                            <span class="nook-intro-callout-icon">✨</span>
-                            <span class="nook-intro-callout-text">4 little questions, Pick your vibe!</span>
+                        <div class="nook-intro-pill-grid">
+                            <button type="button" class="nook-intro-pill-btn" id="nook-intro-start-btn" data-step-target="1">
+                                At-home personality
+                            </button>
+                            <button type="button" class="nook-intro-pill-btn" data-step-target="2">
+                                Dream roommate energy
+                            </button>
+                            <button type="button" class="nook-intro-pill-btn" data-step-target="3">
+                                What feels like home
+                            </button>
+                            <button type="button" class="nook-intro-pill-btn" data-step-target="4">
+                                Daily routine
+                            </button>
                         </div>
-
-                        <div class="nook-intro-preview-list">
-                            <div class="nook-intro-preview-item">
-                                <span class="nook-intro-preview-num">01</span>
-                                <span>At-home personality</span>
-                            </div>
-                            <div class="nook-intro-preview-item">
-                                <span class="nook-intro-preview-num">02</span>
-                                <span>Dream roommate energy</span>
-                            </div>
-                            <div class="nook-intro-preview-item">
-                                <span class="nook-intro-preview-num">03</span>
-                                <span>What feels like home</span>
-                            </div>
-                            <div class="nook-intro-preview-item">
-                                <span class="nook-intro-preview-num">04</span>
-                                <span>Daily routine</span>
-                            </div>
-                        </div>
-
-                        <button type="button" class="nook-intro-start-btn" id="nook-intro-start-btn">
-                            Pick Your Vibe &rarr;
-                        </button>
                     </div>
                 </div>
 
@@ -3975,7 +3752,7 @@
                 <button type="button" class="nook-btn-back" id="nook-btn-back" style="display: none;">&larr;
                     Back</button>
                 <div style="display: flex; gap: 0.5rem; margin-left: auto;">
-                    <a href="https://wa.me/919999999999?text=Hi%20Nook!%20I'd%20like%20to%20say%20hi%20and%20find%20my%20corner."
+                    <a href="https://wa.me/918943873813?text=Hi%20Nook!%20I'd%20like%20to%20say%20hi%20and%20find%20my%20corner."
                         target="_blank" rel="noopener" class="nook-btn-whatsapp" id="nook-footer-wa-btn"
                         style="display: none;">
                         <span>💬</span> Chat on WhatsApp
@@ -3999,6 +3776,8 @@
             const modal = document.getElementById('nook-enquire-modal');
             const backdrop = document.getElementById('nook-modal-backdrop');
             const closeBtn = document.getElementById('nook-modal-close-btn');
+            const modalHeader = document.getElementById('nook-modal-header');
+            const progressTrack = document.getElementById('nook-progress-track');
             const progressBar = document.getElementById('nook-progress-bar');
             const modalTitle = document.getElementById('nook-modal-title');
             const modalSubtitle = document.getElementById('nook-modal-subtitle');
@@ -4096,12 +3875,16 @@
                 }
 
                 if (step === 0) {
-                    // STEP 0: INTRO SCREEN
-                    progressBar.style.width = '0%';
+                    // STEP 0: INTRO SCREEN (Matching Enquiry Popup Design)
+                    if (progressBar) progressBar.style.width = '0%';
+                    if (modalHeader) modalHeader.style.display = 'none';
+                    if (progressTrack) progressTrack.style.display = 'none';
                     modalTitle.textContent = 'Hey, future Nookie!';
                     modalSubtitle.textContent = "Before you move in, we'd love to know a little about you!";
                     modalFooter.style.display = 'none';
                 } else if (step === 1) {
+                    if (modalHeader) modalHeader.style.display = 'block';
+                    if (progressTrack) progressTrack.style.display = 'block';
                     progressBar.style.width = '20%';
                     btnBack.style.display = 'inline-block';
                     footerWaBtn.style.display = 'none';
@@ -4110,6 +3893,8 @@
                     modalSubtitle.textContent = "What's your at-home personality?";
                     modalFooter.style.display = 'flex';
                 } else if (step === 2) {
+                    if (modalHeader) modalHeader.style.display = 'block';
+                    if (progressTrack) progressTrack.style.display = 'block';
                     progressBar.style.width = '40%';
                     btnBack.style.display = 'inline-block';
                     footerWaBtn.style.display = 'none';
@@ -4118,6 +3903,8 @@
                     modalSubtitle.textContent = "Whats your dream roommate energy?";
                     modalFooter.style.display = 'flex';
                 } else if (step === 3) {
+                    if (modalHeader) modalHeader.style.display = 'block';
+                    if (progressTrack) progressTrack.style.display = 'block';
                     progressBar.style.width = '60%';
                     btnBack.style.display = 'inline-block';
                     footerWaBtn.style.display = 'none';
@@ -4126,6 +3913,8 @@
                     modalSubtitle.textContent = "What feels like home to you?";
                     modalFooter.style.display = 'flex';
                 } else if (step === 4) {
+                    if (modalHeader) modalHeader.style.display = 'block';
+                    if (progressTrack) progressTrack.style.display = 'block';
                     progressBar.style.width = '80%';
                     btnBack.style.display = 'inline-block';
                     footerWaBtn.style.display = 'none';
@@ -4135,6 +3924,8 @@
                     modalFooter.style.display = 'flex';
                 } else if (step === 5) {
                     // Contact step
+                    if (modalHeader) modalHeader.style.display = 'block';
+                    if (progressTrack) progressTrack.style.display = 'block';
                     progressBar.style.width = '100%';
                     btnBack.style.display = 'inline-block';
                     footerWaBtn.style.display = 'inline-flex';
@@ -4156,6 +3947,8 @@
                     }
                 } else {
                     // Success View
+                    if (modalHeader) modalHeader.style.display = 'none';
+                    if (progressTrack) progressTrack.style.display = 'none';
                     progressBar.style.width = '100%';
                     modalTitle.textContent = 'Welcome, future Nookie!';
                     modalSubtitle.textContent = 'We have your vibe match and will get in touch shortly.';
@@ -4163,13 +3956,13 @@
                 }
             }
 
-            // Hook up Intro Start Button
-            const introStartBtn = document.getElementById('nook-intro-start-btn');
-            if (introStartBtn) {
-                introStartBtn.addEventListener('click', function () {
-                    showStep(1);
+            // Hook up Intro Pill Buttons (any of the 4 buttons launches questionnaire)
+            document.querySelectorAll('.nook-intro-pill-btn').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const target = parseInt(this.getAttribute('data-step-target') || '1', 10);
+                    showStep(target);
                 });
-            }
+            });
 
             // Options Selection in Modal
             document.querySelectorAll('.nook-modal-opt-btn').forEach(function (btn) {
@@ -4257,7 +4050,7 @@
 • Notes: ${enquiryData.notes}`;
                     }
                     const waText = encodeURIComponent(waBody);
-                    const waUrl = `https://wa.me/919999999999?text=${waText}`;
+                    const waUrl = `https://wa.me/918943873813?text=${waText}`;
 
                     document.getElementById('nook-success-whatsapp-link').href = waUrl;
                     footerWaBtn.href = waUrl;
@@ -4269,6 +4062,8 @@
             btnBack.addEventListener('click', function () {
                 if (currentStep > 1) {
                     showStep(currentStep - 1);
+                } else if (currentStep === 1) {
+                    showStep(0);
                 }
             });
 
