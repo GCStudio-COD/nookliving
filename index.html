@@ -61,11 +61,9 @@
         img[src*="joystick"],
         img[src*="soccer"],
         img[src*="hero-background-illustration"],
-        img[src*="timeline-end"],
         img[src*="timeline_end_cloud"],
         .c-homepage-timeline_path_wrapper>img,
-        .c-homepage-timeline_intro_illustration_background,
-        .c-homepage-timeline_end>img {
+        .c-homepage-timeline_intro_illustration_background {
             display: none !important;
             visibility: hidden !important;
             opacity: 0 !important;
@@ -225,15 +223,6 @@
         .c-final-cta-card a,
         .c-final-cta-card a span:first-child {
             color: #ffffff !important;
-        }
-
-        /* Clean Featured Articles (Images only, no padding gap) */
-        .c-featured-articles_item {
-            padding-bottom: 0 !important;
-        }
-
-        .c-featured-articles {
-            padding-bottom: clamp(1rem, 2vw, 2.5rem) !important;
         }
 
         /* The Nook Gallery Section */
@@ -931,21 +920,48 @@
             filter: drop-shadow(0 16px 32px rgba(129, 106, 176, 0.2));
         }
 
-        /* Dedicated Bottom Character Styling for nook5.svg **/
+        /* Timeline End Green Hills */
+        .c-homepage-timeline_end_green_back,
+        .c-homepage-timeline_end_green_middle,
+        .c-homepage-timeline_end_green_front,
+        img[src*="timeline-end-green"] {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+
+        .c-homepage-timeline_end_green_back {
+            z-index: 5 !important;
+            bottom: -5% !important;
+        }
+
+        .c-homepage-timeline_end_green_middle {
+            z-index: 10 !important;
+            bottom: 0 !important;
+        }
+
+        .c-homepage-timeline_end_green_front {
+            z-index: 45 !important;
+            bottom: 0 !important;
+            pointer-events: none !important;
+        }
+
+        /* Dedicated Bottom Character Styling for nook5.svg (Enlarged) **/
         .c-nook5-bottom-character {
             position: absolute !important;
-            bottom: -100px !important;
+            bottom: -135px !important;
             left: 50% !important;
             transform: translateX(-50%) !important;
-            width: 70% !important;
-            max-width: 1070px !important;
-            z-index: 25 !important;
+            width: 90% !important;
+            max-width: 1380px !important;
+            z-index: 35 !important;
         }
 
         .c-nook5-bottom-character img {
             width: 100% !important;
             height: auto !important;
-            max-height: 64vw !important;
+            max-height: 80vw !important;
             object-fit: contain !important;
             object-position: bottom center !important;
             filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.05)) !important;
@@ -954,12 +970,12 @@
 
         @media (max-width: 768px) {
             .c-nook5-bottom-character {
-                width: 104% !important;
-                bottom: -30px !important;
+                width: 118% !important;
+                bottom: -60px !important;
             }
 
             .c-nook5-bottom-character img {
-                max-height: 78vw !important;
+                max-height: 90vw !important;
             }
         }
     </style>
@@ -2951,22 +2967,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="c-homepage-timeline-cards" data-scroll="" data-scroll-speed="0.1">
-                            <div class="c-tile-animated" data-scroll="" data-scroll-offset="20%"
-                                data-scroll-ignore-fold="true">
-                                <div class="c-tile-animated_bg -colored" style="--color-bg: #CD266B"></div>
-                                <div class="c-tile-animated_bg -white"></div>
-                                <div class="c-tile-animated_inner">
-                                    <h3 class="c-tile-animated_title">About Us<br>Why We Exist</h3>
-                                    <p class="c-tile-animated_description" style="font-size: 0.95rem; line-height: 1.45;">
-                                        Because moving out shouldn’t mean missing out.<br>
-                                        We get it. The excitement of moving out. The nerves of starting over. The need for independence. And sometimes, the simple wish to come home to people who understand.<br>
-                                        That’s why Nook exists. To create a space where women can be independent without feeling disconnected. Where your room feels like yours, your individuality matters, and your next chapter has room to grow.<br>
-                                        Built around women. Made for real life. Not just a place to stay. A place to become.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="c-homepage-timeline-cards" data-scroll="" data-scroll-speed="0.1">
                             <div class="c-tile-animated" data-scroll="" data-scroll-offset="20%"
                                 data-scroll-ignore-fold="true">
@@ -3168,29 +3169,27 @@
            c1.9,0,3.9-0.1,5.8-0.1c335.8,0,514.9,555.2,112.5,1261.5c-326.6,573.2-77.6,980.7-77.6,1271.6"></path>
                             </svg> </c-homepage-timeline>
                         <div class="c-homepage-timeline_end" data-scroll="" data-scroll-css-progress="">
-                            <!-- Timeline End Character (nook5.svg) -->
-                            <div id="nook5-bottom-character" class="c-nook5-bottom-character c-nook-rive-character"
-                                style="position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%); width: 70%; max-width: 1070px; z-index: 25;">
-                                <img src="./images/nook5.svg" alt="Nook Characters"
-                                    style="display: block; width: 100%; height: auto; max-height: 64vw; object-fit: contain; object-position: bottom center;" />
-                            </div> <img src="./assets/timeline_end_cloud_1.svg" alt=""
-                                class="c-homepage-timeline_end_cloud_1" width="517" height="104" aria-hidden="true">
-                            <img src="./assets/timeline_end_cloud_2.svg" alt="" class="c-homepage-timeline_end_cloud_2"
-                                width="247" height="58" aria-hidden="true"> <img src="./assets/timeline_end_cloud_3.svg"
-                                alt="" class="c-homepage-timeline_end_cloud_3" width="372" height="75"
-                                aria-hidden="true"> <img src="./assets/timeline_end_cloud_4.svg" alt=""
-                                class="c-homepage-timeline_end_cloud_4" width="173" height="40" aria-hidden="true"> <img
-                                src="./assets/timeline_end_cloud_5.svg" alt="" class="c-homepage-timeline_end_cloud_5"
-                                width="108" height="34" aria-hidden="true"> <img
-                                src="./assets/timeline-end-green-back.svg" alt=""
+                            <!-- 1. Background Green Hill (Back) -->
+                            <img src="./assets/timeline-end-green-back.svg" alt=""
                                 class="c-homepage-timeline_end_green_back z-0 max-md:transform-none!" width="1512"
-                                height="432" data-scroll="" data-scroll-speed="-0.15" aria-hidden="true"> <img
-                                src="./assets/timeline-end-green-middle.svg" alt=""
+                                height="432" data-scroll="" data-scroll-speed="-0.15" aria-hidden="true">
+
+                            <!-- 2. Middle Green Hill -->
+                            <img src="./assets/timeline-end-green-middle.svg" alt=""
                                 class="c-homepage-timeline_end_green_middle z-20 max-md:transform-none!" width="1512"
-                                height="215" data-scroll="" data-scroll-speed="-0.075" aria-hidden="true"> <img
-                                src="./assets/timeline-end-green-front.svg" alt=""
-                                class="c-homepage-timeline_end_green_front z-30" width="1512" height="285"
+                                height="215" data-scroll="" data-scroll-speed="-0.075" aria-hidden="true">
+
+                            <!-- 3. Foreground Green Hill (Front) -->
+                            <img src="./assets/timeline-end-green-front.svg" alt=""
+                                class="c-homepage-timeline_end_green_front z-40" width="1512" height="285"
                                 aria-hidden="true">
+
+                            <!-- 4. Timeline End Character (nook5.svg - Enlarged) -->
+                            <div id="nook5-bottom-character" class="c-nook5-bottom-character c-nook-rive-character"
+                                style="position: absolute; bottom: -135px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1380px; z-index: 35;">
+                                <img src="./images/nook5.svg" alt="Nook Characters"
+                                    style="display: block; width: 100%; height: auto; max-height: 80vw; object-fit: contain; object-position: bottom center;" />
+                            </div>
                         </div>
                     </div>
                     <script type="module"
@@ -3340,108 +3339,12 @@
                         });
                     })();
                 </script>
-                <!-- 4.3 Final Call To Action -->
-                <section class="relative block py-fluid-3xl md:py-fluid-4xl" id="section-final-cta" style="background-color: transparent;">
-                    <div class="container">
-                        <div class="grid grid-cols-6 gap-gutter md:grid-cols-16">
-                            <div class="col-span-full md:col-start-2 md:col-span-14">
-                                <div class="c-final-cta-card flex flex-col items-center justify-center text-center py-16 sm:py-20 md:py-28 px-6 sm:px-10 md:px-16"
-                                    style="background-color: #F5F1E4; border-radius: 2.5rem;">
-                                    <h2 class="font-bold tracking-tight text-center text-balance"
-                                        style="color: #232323 !important; font-size: clamp(2rem, 1.5rem + 2.4vw, 3.25rem); letter-spacing: -0.035em; line-height: 1.04;">
-                                        Okay bestie,<br>time to move in.
-                                    </h2>
-                                    <p class="font-medium mt-6 sm:mt-8 max-w-xl text-balance text-center"
-                                        style="color: #232323 !important; font-size: clamp(1.05rem, 0.95rem + 0.35vw, 1.25rem); line-height: 1.45;">
-                                        The room? Sorted. The comfort? Absolutely.<br>
-                                        The memories? Just getting started.
-                                    </p>
-                                    <div class="mt-8 sm:mt-10">
-                                        <a href="#" target="_self" data-no-swup="" data-open-enquire="true"
-                                            class="inline-flex items-center gap-4 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
-                                            style="background-color: #ba396a; color: #ffffff !important; border-radius: 9999px; padding: 0.85rem 1.75rem 0.85rem 2.25rem; font-weight: 700; font-size: 1.15rem; text-decoration: none;">
-                                            <span style="color: #ffffff !important;">Say Hi, Get a Corner</span>
-                                            <span style="width: 32px; height: 32px; background-color: #F5F1E4; border-radius: 9999px; display: inline-block; flex-shrink: 0;"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <!-- Community Callout Banner (Connecting you to your audience) -->
+                <div class="relative aspect-[2268/1350] overflow-hidden rounded-lg">
+                    <img src="./images/banner-full.svg" alt="Connecting you to your audience"
+                        class="w-full h-full object-cover block" width="645" height="384" loading="lazy" />
+                </div>
                 <div class="rounded-lg bg-beige-500" id="about-nook">
-                    <div class="c-featured-articles" id="featured-articles">
-                        <ul class="c-featured-articles_list">
-                            <li class="c-featured-articles_item">
-                                <div class="c-article-card">
-                                    <div class="c-article-card_image-container">
-                                        <c-dato-image data-astro-cid-zpkbt6gy="true" id="datoimage-7">
-                                            <picture class="c-article-card_picture block w-full h-full c-image block">
-                                                <img src="./assets/article-coliving.jpg"
-                                                    alt="Turns Out Home Feels Better With Your People in It — Nook Living"
-                                                    title="Turns Out Home Feels Better With Your People in It."
-                                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                                                    class="object-cover w-full h-full c-image_img"
-                                                    style="aspect-ratio:1376 / 768;object-position:center center"
-                                                    data-testid="img" data-astro-cid-zpkbt6gy="">
-                                            </picture>
-                                        </c-dato-image>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="c-featured-articles_item">
-                                <div class="c-article-card">
-                                    <div class="c-article-card_image-container">
-                                        <c-dato-image data-astro-cid-zpkbt6gy="true" id="datoimage-8">
-                                            <picture class="c-article-card_picture block w-full h-full c-image block">
-                                                <img src="./assets/article-sanctuary.jpg"
-                                                    alt="A comfortable room, your own space and some much-needed downtime at Nook Living"
-                                                    title="A comfortable room, your own space and some much-needed downtime"
-                                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                                                    class="object-cover w-full h-full c-image_img"
-                                                    style="aspect-ratio:1376 / 768;object-position:center center"
-                                                    data-testid="img" data-astro-cid-zpkbt6gy="">
-                                            </picture>
-                                        </c-dato-image>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="c-featured-articles_item">
-                                <div class="c-article-card">
-                                    <div class="c-article-card_image-container">
-                                        <c-dato-image data-astro-cid-zpkbt6gy="true" id="datoimage-9">
-                                            <picture class="c-article-card_picture block w-full h-full c-image block">
-                                                <img src="./assets/article-study.jpg"
-                                                    alt="Productive Days, Calm Evenings, All Under One Roof — Nook Living"
-                                                    title="Productive Days, Calm Evenings, All Under One Roof"
-                                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                                                    class="object-cover w-full h-full c-image_img"
-                                                    style="aspect-ratio:1376 / 768;object-position:center center"
-                                                    data-testid="img" data-astro-cid-zpkbt6gy="">
-                                            </picture>
-                                        </c-dato-image>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="c-featured-articles_item">
-                                <div class="c-article-card">
-                                    <div class="c-article-card_image-container">
-                                        <c-dato-image data-astro-cid-zpkbt6gy="true" id="datoimage-10">
-                                            <picture class="c-article-card_picture block w-full h-full c-image block">
-                                                <img src="./assets/article-community.jpg"
-                                                    alt="Where Strangers Turn Into Sisters Over Chai and Dinner — Nook Living"
-                                                    title="Where Strangers Turn Into Sisters Over Chai and Dinner"
-                                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                                                    class="object-cover w-full h-full c-image_img"
-                                                    style="aspect-ratio:1376 / 768;object-position:center center"
-                                                    data-testid="img" data-astro-cid-zpkbt6gy="">
-                                            </picture>
-                                        </c-dato-image>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
                     <!-- 4.4 The Nook Gallery Section (Swiper Carousel) -->
                     <section class="relative block py-fluid-3xl md:py-fluid-4xl overflow-hidden" id="section-the-nook"
                         style="background-color: transparent;">
@@ -3472,73 +3375,39 @@
                                     <!-- Swiper Gallery Carousel (Equal Height, 3 Slides Per View on Desktop) -->
                                     <div class="swiper nook-gallery-swiper">
                                         <div class="swiper-wrapper">
-                                            <!-- Slide 1: Community Lounge & Terrace -->
+                                            <!-- Slide 1 -->
                                             <div class="swiper-slide">
                                                 <div class="nook-gallery-card h-[280px] sm:h-[340px] md:h-[390px] lg:h-[430px] w-full"
                                                     style="background-color: #f0ece0;">
-                                                    <img src="./assets/nook-space-1.jpg"
-                                                        alt="The Nook Community Lounge and Social Living Space"
+                                                    <img src="./images/img1.svg"
+                                                        alt="The Nook Space 1"
                                                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02]"
                                                         loading="lazy" />
                                                 </div>
                                             </div>
 
-                                            <!-- Slide 2: Cozy Bunk Bedroom Setup -->
+                                            <!-- Slide 2 -->
                                             <div class="swiper-slide">
                                                 <div class="nook-gallery-card h-[280px] sm:h-[340px] md:h-[390px] lg:h-[430px] w-full"
                                                     style="background-color: #f0ece0;">
-                                                    <img src="./assets/nook-space-2.jpg"
-                                                        alt="The Nook Bedroom Setup and Bunk Living"
+                                                    <img src="./images/img2.svg"
+                                                        alt="The Nook Space 2"
                                                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02]"
                                                         loading="lazy" />
                                                 </div>
                                             </div>
 
-                                            <!-- Slide 3: Comfortable Downtime Room -->
+                                            <!-- Slide 3 -->
                                             <div class="swiper-slide">
                                                 <div class="nook-gallery-card h-[280px] sm:h-[340px] md:h-[390px] lg:h-[430px] w-full"
                                                     style="background-color: #f0ece0;">
-                                                    <img src="./assets/article-sanctuary.jpg"
-                                                        alt="A comfortable room and personal downtime space at Nook Living"
-                                                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02]"
-                                                        loading="lazy" />
-                                                </div>
-                                            </div>
-
-                                            <!-- Slide 4: Calm Work & Study Spaces -->
-                                            <div class="swiper-slide">
-                                                <div class="nook-gallery-card h-[280px] sm:h-[340px] md:h-[390px] lg:h-[430px] w-full"
-                                                    style="background-color: #f0ece0;">
-                                                    <img src="./assets/article-study.jpg"
-                                                        alt="Productive work and calm study spaces at Nook Living"
-                                                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02]"
-                                                        loading="lazy" />
-                                                </div>
-                                            </div>
-
-                                            <!-- Slide 5: Shared Dining & Coliving -->
-                                            <div class="swiper-slide">
-                                                <div class="nook-gallery-card h-[280px] sm:h-[340px] md:h-[390px] lg:h-[430px] w-full"
-                                                    style="background-color: #f0ece0;">
-                                                    <img src="./assets/article-coliving.jpg"
-                                                        alt="Turns out home feels better with your people in it - Nook Living"
-                                                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02]"
-                                                        loading="lazy" />
-                                                </div>
-                                            </div>
-
-                                            <!-- Slide 6: Community Gatherings & Sisterhood -->
-                                            <div class="swiper-slide">
-                                                <div class="nook-gallery-card h-[280px] sm:h-[340px] md:h-[390px] lg:h-[430px] w-full"
-                                                    style="background-color: #f0ece0;">
-                                                    <img src="./assets/article-community.jpg"
-                                                        alt="Evenings and gatherings where strangers turn into sisters"
+                                                    <img src="./images/img3.svg"
+                                                        alt="The Nook Space 3"
                                                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.02]"
                                                         loading="lazy" />
                                                 </div>
                                             </div>
                                         </div>
-
                                         <!-- Swiper Pagination -->
                                         <div class="swiper-pagination nook-gallery-pagination"></div>
                                     </div>
@@ -3547,6 +3416,36 @@
                         </div>
                     </section>
                 </div>
+
+                <!-- 4.3 Final Call To Action -->
+                <section class="relative block py-fluid-3xl md:py-fluid-4xl" id="section-final-cta" style="background-color: transparent;">
+                    <div class="container">
+                        <div class="grid grid-cols-6 gap-gutter md:grid-cols-16">
+                            <div class="col-span-full md:col-start-2 md:col-span-14">
+                                <div class="c-final-cta-card flex flex-col items-center justify-center text-center py-16 sm:py-20 md:py-28 px-6 sm:px-10 md:px-16"
+                                    style="background-color: #F5F1E4; border-radius: 2.5rem;">
+                                    <h2 class="font-bold tracking-tight text-center text-balance"
+                                        style="color: #232323 !important; font-size: clamp(2rem, 1.5rem + 2.4vw, 3.25rem); letter-spacing: -0.035em; line-height: 1.04;">
+                                        Okay bestie,<br>time to move in.
+                                    </h2>
+                                    <p class="font-medium mt-6 sm:mt-8 max-w-xl text-balance text-center"
+                                        style="color: #232323 !important; font-size: clamp(1.05rem, 0.95rem + 0.35vw, 1.25rem); line-height: 1.45;">
+                                        The room? Sorted. The comfort? Absolutely.<br>
+                                        The memories? Just getting started.
+                                    </p>
+                                    <div class="mt-8 sm:mt-10">
+                                        <a href="#" target="_self" data-no-swup="" data-open-enquire="true"
+                                            class="inline-flex items-center gap-4 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                                            style="background-color: #ba396a; color: #ffffff !important; border-radius: 9999px; padding: 0.85rem 1.75rem 0.85rem 2.25rem; font-weight: 700; font-size: 1.15rem; text-decoration: none;">
+                                            <span style="color: #ffffff !important;">Say Hi, Get a Corner</span>
+                                            <span style="width: 32px; height: 32px; background-color: #F5F1E4; border-radius: 9999px; display: inline-block; flex-shrink: 0;"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <!-- ================================================================= -->
                 <!-- 5. Site Footer                                                    -->
@@ -3717,6 +3616,7 @@
                         spaceBetween: 16,
                         grabCursor: true,
                         speed: 500,
+                        rewind: true,
                         navigation: {
                             nextEl: '.nook-gallery-next',
                             prevEl: '.nook-gallery-prev',
