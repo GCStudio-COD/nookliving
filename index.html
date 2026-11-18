@@ -1058,16 +1058,16 @@
             background: var(--nook-yellow);
             color: var(--nook-charcoal);
             width: 100%;
-            max-width: 720px;
+            max-width: 840px;
             max-height: 92vh;
-            border-radius: clamp(28px, 4.5vw, 42px);
+            border-radius: clamp(32px, 5vw, 44px);
             box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
             overflow: hidden;
             transform: scale(0.9) translateY(24px);
             opacity: 0;
-            transition: transform 0.4s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.32s ease;
+            transition: transform 0.35s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.25s ease;
         }
 
         .nook-modal-overlay.is-open .nook-modal-dialog {
@@ -1209,17 +1209,17 @@
             font-weight: 700;
             color: var(--nook-charcoal);
             line-height: 1.45;
-            max-width: 520px;
-            margin: 0 auto 2.25rem;
+            max-width: 100%;
+            margin: 0.5rem auto 2.5rem;
         }
 
         /* 4 Pill Buttons in 2x2 Grid */
         .nook-intro-pill-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.15rem 1.25rem;
+            gap: 1.25rem 1.5rem;
             width: 100%;
-            max-width: 600px;
+            max-width: 720px;
             margin: 0 auto;
         }
 
@@ -1238,12 +1238,12 @@
             background: var(--nook-pink);
             color: #FFFFFF !important;
             border-radius: 9999px;
-            padding: 1.15rem 1.75rem;
-            font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.15rem);
+            padding: 1.25rem 2rem;
+            font-size: clamp(1rem, 0.95rem + 0.25vw, 1.18rem);
             font-weight: 700;
             border: none;
             cursor: pointer;
-            box-shadow: 0 6px 18px rgba(232, 69, 101, 0.28);
+            box-shadow: 0 4px 14px rgba(232, 69, 101, 0.25);
             transition: transform 0.24s cubic-bezier(0.34, 1.5, 0.64, 1), box-shadow 0.24s ease, background 0.2s ease;
             user-select: none;
             position: relative;
@@ -1560,8 +1560,8 @@
         /* Micro-Interactions & Animations */
         @keyframes nookStepSlideIn {
             0% {
-                opacity: 0;
-                transform: translateX(20px) scale(0.97);
+                opacity: 1;
+                transform: translateX(14px) scale(0.98);
             }
             100% {
                 opacity: 1;
@@ -3748,7 +3748,7 @@
             </div>
 
             <!-- Footer Controls -->
-            <div class="nook-modal-footer" id="nook-modal-footer">
+            <div class="nook-modal-footer" id="nook-modal-footer" style="display: none;">
                 <button type="button" class="nook-btn-back" id="nook-btn-back" style="display: none;">&larr;
                     Back</button>
                 <div style="display: flex; gap: 0.5rem; margin-left: auto;">
