@@ -193,7 +193,9 @@
         .c-pricing-card-yellow h3,
         .c-pricing-card-yellow p,
         .c-pricing-card-yellow div,
-        .c-pricing-card-yellow span {
+        .c-pricing-card-yellow span,
+        .c-pricing-card-yellow ul,
+        .c-pricing-card-yellow li {
             color: #232323 !important;
         }
 
@@ -201,7 +203,9 @@
         .c-pricing-card-coral h3,
         .c-pricing-card-coral p,
         .c-pricing-card-coral div,
-        .c-pricing-card-coral span {
+        .c-pricing-card-coral span,
+        .c-pricing-card-coral ul,
+        .c-pricing-card-coral li {
             color: #ffffff !important;
         }
 
@@ -209,7 +213,9 @@
         .c-pricing-card-blue h3,
         .c-pricing-card-blue p,
         .c-pricing-card-blue div,
-        .c-pricing-card-blue span {
+        .c-pricing-card-blue span,
+        .c-pricing-card-blue ul,
+        .c-pricing-card-blue li {
             color: #ffffff !important;
         }
 
@@ -3114,18 +3120,25 @@
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                                     <!-- Card 1: The Social Nook -->
                                     <div class="c-pricing-card-yellow flex flex-col justify-between"
-                                        style="background-color: #f1e34d; border-radius: 2rem; padding: 2.25rem 2rem; min-height: 420px;">
+                                        style="background-color: #f1e34d; border-radius: 2rem; padding: 2.25rem 2rem; min-height: 520px;">
                                         <div>
                                             <h3
                                                 style="color: #232323; font-size: 1.65rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em;">
                                                 The Social Nook
                                             </h3>
-                                            <p
-                                                style="color: #232323; font-size: 0.95rem; font-weight: 500; margin-top: 0.75rem;">
-                                                4 sharing
+                                            <ul id="features-social-nook"
+                                                style="list-style-type: disc; padding-left: 1.25rem; margin-top: 1.25rem; font-size: 0.95rem; font-weight: 500; line-height: 1.5; display: flex; flex-direction: column; gap: 0.5rem; color: #232323;">
+                                                <li>Standard bunk beds</li>
+                                                <li>Own kitchen access</li>
+                                                <li>Dedicated work/study pods</li>
+                                                <li>Co working space</li>
+                                            </ul>
+                                            <p id="tagline-social-nook"
+                                                style="color: #232323; margin-top: 1.5rem; font-size: 0.92rem; font-weight: 600; opacity: 0.85; line-height: 1.4;">
+                                                For the girl who loves keeping it simple.
                                             </p>
                                         </div>
-                                        <div>
+                                        <div style="margin-top: 1.5rem;">
                                             <hr
                                                 style="border: none; border-top: 1.5px solid rgba(35, 35, 35, 0.25); margin: 0 0 1.25rem 0;">
                                             <div id="price-social-nook"
@@ -3137,23 +3150,26 @@
 
                                     <!-- Card 2: The Cosy Duo -->
                                     <div class="c-pricing-card-coral flex flex-col justify-between"
-                                        style="background-color: #e33864; border-radius: 2rem; padding: 2.25rem 2rem; min-height: 420px;">
+                                        style="background-color: #e33864; border-radius: 2rem; padding: 2.25rem 2rem; min-height: 520px;">
                                         <div>
                                             <h3
                                                 style="color: #ffffff; font-size: 1.65rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em;">
                                                 The Cosy Duo
                                             </h3>
-                                            <p
-                                                style="color: #ffffff; font-size: 0.95rem; font-weight: 500; margin-top: 0.75rem; display: flex; align-items: center; gap: 0.45rem;">
-                                                <svg width="15" height="15" viewBox="0 0 24 24" fill="#f1e34d"
-                                                    aria-hidden="true" style="flex-shrink: 0;">
-                                                    <path
-                                                        d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
-                                                </svg>
-                                                <span>2 sharing, single wardrobe</span>
+                                            <ul id="features-cosy-duo"
+                                                style="list-style-type: disc; padding-left: 1.25rem; margin-top: 1.25rem; font-size: 0.95rem; font-weight: 500; line-height: 1.5; display: flex; flex-direction: column; gap: 0.5rem; color: #ffffff;">
+                                                <li>2 sharing room with individual single beds</li>
+                                                <li>Single wardrobe</li>
+                                                <li>Own kitchen access</li>
+                                                <li>Dedicated work/study pods</li>
+                                                <li>Co working space</li>
+                                            </ul>
+                                            <p id="tagline-cosy-duo"
+                                                style="color: #ffffff; margin-top: 1.5rem; font-size: 0.92rem; font-weight: 600; opacity: 0.9; line-height: 1.4;">
+                                                For the girl who loves, simple comfy living.
                                             </p>
                                         </div>
-                                        <div>
+                                        <div style="margin-top: 1.5rem;">
                                             <hr
                                                 style="border: none; border-top: 1.5px solid rgba(255, 255, 255, 0.3); margin: 0 0 1.25rem 0;">
                                             <div id="price-cosy-duo"
@@ -3165,23 +3181,26 @@
 
                                     <!-- Card 3: The Extra Space Duo -->
                                     <div class="c-pricing-card-blue flex flex-col justify-between"
-                                        style="background-color: #4d7fe8; border-radius: 2rem; padding: 2.25rem 2rem; min-height: 420px;">
+                                        style="background-color: #4d7fe8; border-radius: 2rem; padding: 2.25rem 2rem; min-height: 520px;">
                                         <div>
                                             <h3
                                                 style="color: #ffffff; font-size: 1.65rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.03em;">
                                                 The Extra<br>Space Duo
                                             </h3>
-                                            <p
-                                                style="color: #ffffff; font-size: 0.95rem; font-weight: 500; margin-top: 0.75rem; display: flex; align-items: center; gap: 0.45rem;">
-                                                <svg width="15" height="15" viewBox="0 0 24 24" fill="#f1e34d"
-                                                    aria-hidden="true" style="flex-shrink: 0;">
-                                                    <path
-                                                        d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
-                                                </svg>
-                                                <span>2 sharing, full wardrobe</span>
+                                            <ul id="features-extra-space"
+                                                style="list-style-type: disc; padding-left: 1.25rem; margin-top: 1.25rem; font-size: 0.95rem; font-weight: 500; line-height: 1.5; display: flex; flex-direction: column; gap: 0.5rem; color: #ffffff;">
+                                                <li>2 sharing room with individual single beds</li>
+                                                <li>Full wardrobe</li>
+                                                <li>Own kitchen access</li>
+                                                <li>Dedicated work/study pods</li>
+                                                <li>Co working space</li>
+                                            </ul>
+                                            <p id="tagline-extra-space"
+                                                style="color: #ffffff; margin-top: 1.5rem; font-size: 0.92rem; font-weight: 600; opacity: 0.9; line-height: 1.4;">
+                                                For the girl who loves, simple comfy living.
                                             </p>
                                         </div>
-                                        <div>
+                                        <div style="margin-top: 1.5rem;">
                                             <hr
                                                 style="border: none; border-top: 1.5px solid rgba(255, 255, 255, 0.3); margin: 0 0 1.25rem 0;">
                                             <div id="price-extra-space"
@@ -3202,15 +3221,130 @@
                 </section>
                 <script>
                     (function () {
-                        const prices = {
-                            normal: { social: '₹10,000', cosy: '₹15,000', extra: '₹18,000' },
-                            cooler: { social: '₹11,000', cosy: '₹16,000', extra: '₹19,000' },
-                            ac: { social: '₹12,000', cosy: '₹17,000', extra: '₹20,000' }
+                        const tierData = {
+                            normal: {
+                                prices: { social: '₹10,000', cosy: '₹15,000', extra: '₹18,000' },
+                                social: {
+                                    features: [
+                                        'Standard bunk beds',
+                                        'Own kitchen access',
+                                        'Dedicated work/study pods',
+                                        'Co working space'
+                                    ],
+                                    tagline: 'For the girl who loves keeping it simple.'
+                                },
+                                cosy: {
+                                    features: [
+                                        '2 sharing room with individual single beds',
+                                        'Single wardrobe',
+                                        'Own kitchen access',
+                                        'Dedicated work/study pods',
+                                        'Co working space'
+                                    ],
+                                    tagline: 'For the girl who loves, simple comfy living.'
+                                },
+                                extra: {
+                                    features: [
+                                        '2 sharing room with individual single beds',
+                                        'Full wardrobe',
+                                        'Own kitchen access',
+                                        'Dedicated work/study pods',
+                                        'Co working space'
+                                    ],
+                                    tagline: 'For the girl who loves, simple comfy living.'
+                                }
+                            },
+                            cooler: {
+                                prices: { social: '₹11,000', cosy: '₹16,000', extra: '₹19,000' },
+                                social: {
+                                    features: [
+                                        'Standard bunk beds',
+                                        'Cooler included for extra comfort',
+                                        'Own kitchen access',
+                                        'Dedicated work/study pods',
+                                        'Co working space'
+                                    ],
+                                    tagline: 'For the girl who likes her space a little cooler'
+                                },
+                                cosy: {
+                                    features: [
+                                        '2 sharing room with individual single beds',
+                                        'Cooler included for extra comfort',
+                                        'Single wardrobe',
+                                        'Own kitchen access',
+                                        'Dedicated work/study pods',
+                                        'Co working space'
+                                    ],
+                                    tagline: 'For the girl who likes to keep things chill'
+                                },
+                                extra: {
+                                    features: [
+                                        '2 sharing room with individual single beds',
+                                        'Cooler included for extra comfort',
+                                        'Full wardrobe',
+                                        'Own kitchen access',
+                                        'Dedicated work/study pods',
+                                        'Co working space'
+                                    ],
+                                    tagline: 'For the girl who likes to keep things chill'
+                                }
+                            },
+                            ac: {
+                                prices: { social: '₹12,000', cosy: '₹17,000', extra: '₹20,000' },
+                                social: {
+                                    features: [
+                                        'Standard bunk beds',
+                                        'AC included for extra comfort',
+                                        'Own kitchen access',
+                                        'Dedicated work/study pods',
+                                        'Co working space'
+                                    ],
+                                    tagline: 'For the girl who loves her space cool & comfortable.'
+                                },
+                                cosy: {
+                                    features: [
+                                        '2 sharing room with individual single beds',
+                                        'AC included for extra comfort',
+                                        'Single wardrobe',
+                                        'Own kitchen access',
+                                        'Dedicated work/study pods',
+                                        'Co working space'
+                                    ],
+                                    tagline: 'For the girl who loves, cool comfy living.'
+                                },
+                                extra: {
+                                    features: [
+                                        '2 sharing room with individual single beds',
+                                        'AC included for extra comfort',
+                                        'Full wardrobe',
+                                        'Own kitchen access',
+                                        'Dedicated work/study pods',
+                                        'Co working space'
+                                    ],
+                                    tagline: 'For the girl who loves, cool comfy living.'
+                                }
+                            }
                         };
+
                         const tabs = document.querySelectorAll('.nook-tier-tab');
                         const pSocial = document.getElementById('price-social-nook');
                         const pCosy = document.getElementById('price-cosy-duo');
                         const pExtra = document.getElementById('price-extra-space');
+
+                        const fSocial = document.getElementById('features-social-nook');
+                        const fCosy = document.getElementById('features-cosy-duo');
+                        const fExtra = document.getElementById('features-extra-space');
+
+                        const tSocial = document.getElementById('tagline-social-nook');
+                        const tCosy = document.getElementById('tagline-cosy-duo');
+                        const tExtra = document.getElementById('tagline-extra-space');
+
+                        function renderFeatures(el, items) {
+                            if (!el || !items) return;
+                            el.innerHTML = items.map(function(item) {
+                                return '<li>' + item + '</li>';
+                            }).join('');
+                        }
 
                         tabs.forEach(tab => {
                             tab.addEventListener('click', function () {
@@ -3224,11 +3358,20 @@
                                 this.style.fontWeight = '700';
 
                                 const tier = this.getAttribute('data-tier');
-                                if (prices[tier] && pSocial && pCosy && pExtra) {
-                                    pSocial.textContent = prices[tier].social;
-                                    pCosy.textContent = prices[tier].cosy;
-                                    pExtra.textContent = prices[tier].extra;
-                                }
+                                const data = tierData[tier];
+                                if (!data) return;
+
+                                if (pSocial) pSocial.textContent = data.prices.social;
+                                if (pCosy) pCosy.textContent = data.prices.cosy;
+                                if (pExtra) pExtra.textContent = data.prices.extra;
+
+                                renderFeatures(fSocial, data.social.features);
+                                renderFeatures(fCosy, data.cosy.features);
+                                renderFeatures(fExtra, data.extra.features);
+
+                                if (tSocial) tSocial.textContent = data.social.tagline;
+                                if (tCosy) tCosy.textContent = data.cosy.tagline;
+                                if (tExtra) tExtra.textContent = data.extra.tagline;
                             });
                         });
                     })();
